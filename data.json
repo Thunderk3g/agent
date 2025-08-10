@@ -1,0 +1,65 @@
+{
+    "meta": {
+      "cfPath": "",
+      "applicationNumber": "",
+      "identifier": "",
+      "journeyType": "",
+      "journeyFlag": ""
+    },
+    "personalDetails": {
+      "fullName": "",
+      "firstName": "",
+      "middleName": "",
+      "lastName": "",
+      "dateOfBirth": "",
+      "age": null,
+      "gender": "",
+      "mobileNumber": "",
+      "mobileNumberCountryCode": "",
+      "email": "",
+      "pinCode": "",
+      "state": "",
+      "nationality": "",
+      "residentialStatus": "",
+      "isNri": "",
+      "isNriEmergency": "",
+      "isBajajGroupEmployee": "",
+      "tobaccoUser": "",
+      "occupationCode": "",
+      "educationCode": "",
+      "annualIncome": null,
+      "acceptTerms": false,
+      "kycAccepted": false,
+      "enquiryId": "",
+      "toolFreeNumber": ""
+    },
+    "quoteDetails": {
+      "variantType": "",
+      "productUIN": "",
+      "sumAssured": null,
+      "frequency": null,
+      "frequencyLabel": "",
+      "premiumPayingTerm_years": null,
+      "policyTerm_years": null,
+      "payFor": "",
+      "coverTillAge": "",
+      "payoutNomineeOption": "",
+      "premiumHolidaySelectedYears": null,
+      "quotationId": "",
+      "transactionId": "",
+      "premiumAmounts": {
+        "annualPremium_reported": "",
+        "modalPrem_raw": null,
+        "modalPremium_tax_inclusive_raw": null
+      }
+    },
+    "addOns": {
+      "ridersSelected": [],
+      "riderPremium_total": null,
+      "coverageValue": null,
+      "accidentalValue": null,
+      "protectionFor": "",
+      "selectedRiderArray": []
+    }
+  }
+  

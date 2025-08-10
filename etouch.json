@@ -1,0 +1,263 @@
+{
+    "source": "etouch-plan-sl.pdf",
+    "product": "Bajaj Allianz Life eTouch II",
+    "type": "Non-Linked, Non-Participating, Individual Life Insurance Term Plan",
+    "meta": {
+      "uin": "116N198V04",
+      "irda_reg_no": "116",
+      "cin": "U66010PN2001PLC015959",
+      "sales_contact": "1800 209 4040",
+      "service_contact": "1800 209 7272",
+      "email": "customercare@bajajallianz.co.in",
+      "website": "https://www.bajajallianzlife.co.in"
+    },
+    "variants": {
+      "Life Shield": {
+        "death_benefit": true,
+        "terminal_illness": true,
+        "adb": false,
+        "wop_atpd_ti": true,
+        "return_of_premium": false,
+        "notes": "Maturity benefit not applicable"
+      },
+      "Life Shield Plus": {
+        "death_benefit": true,
+        "terminal_illness": true,
+        "adb": true,
+        "wop_atpd_ti": true,
+        "return_of_premium": false,
+        "adb_details": {
+          "min": 500000,
+          "max": 20000000,
+          "proportion": "10% - 100% of base sum assured",
+          "paid_as": "lump_sum"
+        },
+        "notes": "ADB sum assured includes Life-Stage Upgrade proportion"
+      },
+      "Life Shield ROP": {
+        "death_benefit": true,
+        "terminal_illness": true,
+        "adb": false,
+        "wop_atpd_ti": true,
+        "return_of_premium": true,
+        "maturity_benefit": "Total Premiums Paid (if surviving till maturity)",
+        "notes": "SISO discounts apply for monthly mode"
+      }
+    },
+    "eligibility_limits": {
+      "entry_age": {
+        "min": 18,
+        "max": 65,
+        "pay_till_60_option": {
+          "max_entry_age": 55,
+          "min_entry_age_for_rop_pay_till_60": 25
+        }
+      },
+      "maturity_age": {
+        "max_general": 99,
+        "adb_specific": 85
+      },
+      "policy_term": {
+        "min": 10,
+        "max_rop": 50,
+        "max_general_formula": "85 - entry_age or as per product"
+      },
+      "sum_assured": {
+        "min": 5000000,
+        "max": "No explicit cap; subject to BAUP"
+      },
+      "ti_sum_assured": {
+        "min": 5000000,
+        "max": 20000000
+      }
+    },
+    "modal_factors": {
+      "monthly": 0.0875,
+      "quarterly": 0.26,
+      "half_yearly": 0.51,
+      "yearly": 1.0
+    },
+    "discounts": {
+      "hsar": "Available for sum assured >= 1 crore",
+      "preferential": "Non-tobacco users and women (female 3-year setback)",
+      "loyalty_rebate": "1% of premium through PPT for existing customers (policy matured or in-force for >= 3 months)",
+      "salary_rebate": "5% of first-year premium for salaried employees",
+      "first_time_buyer_discount": "Insurance for All Discount: 5% on first-year premium",
+      "online_direct_discount": "6% on first-year premium (online/direct/web aggregator/ISNP)",
+      "staff_discount": "4% through PPT",
+      "siso": "6% discount for monthly mode under Life Shield ROP (if opted)",
+      "note": "If SISO is opted then Online/Direct/Web aggregator discount not applicable for ROP"
+    },
+    "benefits": {
+      "death": {
+        "no_prior_ti_claim": "Sum Assured on Death to nominee",
+        "prior_ti_claim": "Prevailing Sum Assured on Death = Sum Assured on Death - Sum Assured on TI",
+        "policy_termination": "Payment of Death Benefit terminates policy",
+        "sum_assured_on_death_definition": "Higher of (10 x Annualized Premium) or Sum Assured (incl. life-stage upgrades); minimum 105% of Total Premiums Paid"
+      },
+      "terminal_illness": {
+        "definition": "Condition likely to lead to death within 6 months as certified by Medical Practitioner",
+        "payment": "Sum Assured on TI (acceleration of Death Benefit)",
+        "special_case_sum_assured_gt_2cr": "If sum assured > 2 cr, company pays 2 cr and policy continues for remaining SA with waiver of future premiums"
+      },
+      "adb": {
+        "description": "Available only under Life Shield Plus; additional benefit equal to ADB sum assured in case of accidental death; paid as lump sum"
+      },
+      "wop_atpd_ti": {
+        "description": "Waiver of future premiums upon ATPD or TI depending on conditions; policy continues for existing benefits"
+      },
+      "maturity_rop": {
+        "for_rop": "Total Premiums Paid if LA survives to maturity",
+        "if_ti_paid_prior": "[1 - (Sum Assured on TI / Sum Assured on Death)] x Total Premiums Paid"
+      }
+    },
+    "life_stage_upgrade": {
+      "available_with": ["Life Shield", "Life Shield Plus"],
+      "opt_in": "Must be chosen at inception",
+      "events_and_limits": {
+        "marriage": {"max_pct_increase": 50, "max_increase_amount": 5000000},
+        "birth_1st_child": {"max_pct_increase": 25, "max_increase_amount": 2500000},
+        "birth_2nd_child": {"max_pct_increase": 25, "max_increase_amount": 2500000},
+        "home_loan": {"max_pct_increase": 25, "max_increase_amount": 5000000},
+        "education_loan": {"max_pct_increase": 25, "max_increase_amount": 2500000}
+      },
+      "other_rules": {
+        "exercise_window": "Within 6 months of the event",
+        "effective_date": "Next policy anniversary",
+        "underwriting": "Underwriting as per BAUP at time of upgrade",
+        "total_upgrade_cap_pct": 100,
+        "no_upgrade_if_premium_holiday": true,
+        "multiple_upgrades_allowed": true,
+        "documentation_required": true,
+        "no_upgrade_if_it_exceeds_adb_ti_limits_for_plus_variant": true
+      }
+    },
+    "premium_holiday": {
+      "available_with": ["all variants"],
+      "select_at_inception": true,
+      "options": [1, 2, 3],
+      "first_ph_eligibility": "After 5 policy years and policy in-force with premiums paid",
+      "ph_duration": "12 months per PH year",
+      "next_ph_gap": "Next premium holiday only after 5 policy years after previous PH year",
+      "inform_within_grace_period": true,
+      "premiums_during_ph": "Not included in Total Premiums Paid",
+      "if_not_exercised": "Company will waive last 1/2/3 policy year premiums depending on unutilized PH count"
+    },
+    "auto_cover_continuance": {
+      "description": "Defer premiums up to 12 months while maintaining cover; no additional premium",
+      "eligibility": "At least 3 policy years complete, all due premiums paid, policy in-force",
+      "multiple_times_allowed_with_gap": "Yes, with at least 5 policy years between instances",
+      "notice_period": {"general": 30, "monthly_mode": 15},
+      "not_available_in": "Last year of PPT",
+      "no_interest": true
+    },
+    "surrender_termination_paidup": {
+      "life_shield_plus_life_shield": {
+        "termination_value_limited_pay": "Termination factor x Total Premiums Paid (no Termination Value during PPT). Termination factors not guaranteed.",
+        "termination_value_not_less_than": "Early Exit Value"
+      },
+      "life_shield_rop": {
+        "surrender_value_availability": "Only if 1 full year premiums paid",
+        "ssv": "Special Surrender Value after completion of 1 full year",
+        "gsv": "Guaranteed Surrender Value after completion of 2 full years",
+        "surrender_value": "Higher of GSV (GSV factor x Total Premiums Paid) or SSV; not to exceed 100% of Total Premiums Paid",
+        "paid_up_rules": "If 1 full year paid and later premiums not paid → converted to paid-up; paid-up sums proportionate to premiums paid; no paid-up for WOP"
+      }
+    },
+    "revival": {
+      "window": "Within 5 years from due date of first unpaid premium but before end of policy term",
+      "requirements": ["All due premiums + revival interest + applicable taxes", "Medical evidence of insurability", "Company discretion under BAUP"],
+      "revival_interest_current_document": "9% p.a. compounded half-yearly",
+      "revival_interest_formula": "[10-year G-Sec yield + 2%] rounded up (benchmark basis), reviewed annually"
+    },
+    "suicide_exclusion": {
+      "within_12_months": "Nominee receives higher of 80% of Total Premiums Paid or Surrender/Termination Value (if policy in-force)"
+    },
+    "adb_atpd_exclusions": {
+      "list": [
+        "Death/disability due to commission of criminal act with criminal intent",
+        "Under influence of alcohol/drugs (other than prescribed)",
+        "Self-inflicted injuries",
+        "Participation in naval/military/air force operations (peace time)",
+        "Participation/training for dangerous/hazardous sports/competitions",
+        "Riding/driving in races or competitions",
+        "Aviation incidents other than fare-paying passenger on scheduled airlines",
+        "War, invasion, civil war, rebellion, riots",
+        "Failure to follow medical advice",
+        "Nuclear contamination",
+        "Poison/gas/fume (for ATPD exclusions)"
+      ]
+    },
+    "atpd_definition": {
+      "basis": "Loss of both eyes; loss of both arms and both hands; loss of one arm & one leg; loss of both legs; loss definitions for amputation vs non-amputation (motor power grades) and 6-month documentation requirement; certified by registered company-appointed medical practitioner"
+    },
+    "loan": {
+      "available_for": "Life Shield ROP variant (if policy has surrender value)",
+      "max_loan": "50% of surrender value",
+      "loan_interest": "As decided by company; currently linked to G-Sec + 2% (applied annually)",
+      "deduction_on_claim": "Outstanding loan + interest will be deducted from benefits payable",
+      "foreclosure_conditions": "If outstanding loan + interest > surrender value → notice + 30-day cure → foreclosure if not paid"
+    },
+    "riders": [
+      {"name": "Bajaj Allianz Life Family Protect Rider", "uin": "116B056V01"},
+      {"name": "Bajaj Allianz Life New Critical Illness Benefit Rider", "uin": "116B058V01"}
+    ],
+    "illustrations": {
+      "ravi": {
+        "age": 35,
+        "variant": "Life Shield",
+        "sum_assured": 10000000,
+        "policy_term": 50,
+        "ppt": 50,
+        "annual_premium": 22777,
+        "total_premium_payable": 1138850,
+        "scenarios": {
+          "death_at_50": "1 crore to nominee; policy terminates",
+          "terminal_illness_at_50": "1 crore terminal illness benefit; policy terminates",
+          "atpd_at_50": "future premiums waived; cover continues till 85"
+        }
+      },
+      "rajesh": {
+        "age": 35,
+        "variant": "Life Shield Plus",
+        "sum_assured": 10000000,
+        "adb": 10000000,
+        "policy_term": 50,
+        "ppt": 50,
+        "annual_premium": 28999,
+        "total_premium_payable": 1449950,
+        "scenarios": {
+          "accidental_death_at_50": "2 crore total (1C base + 1C ADB); policy terminates",
+          "nonaccidental_death_at_50": "1 crore; policy terminates",
+          "atpd_at_50": "future premiums waived; cover continues"
+        }
+      },
+      "rahul": {
+        "age": 45,
+        "variant": "Life Shield ROP",
+        "sum_assured": 10000000,
+        "policy_term": 40,
+        "ppt": 40,
+        "annual_premium": 76319,
+        "total_premium_payable": 3052760,
+        "scenarios": {
+          "survive_to_maturity": "Total premiums paid returned (30,52,760); policy terminates",
+          "ti_at_55": "1 crore TI paid; policy terminates",
+          "atpd_at_55": "future premiums waived; cover continues; maturity benefit payable if survived to maturity"
+        }
+      }
+    },
+    "definitions": {
+      "annualized_premium": "premium payable in a year excluding taxes, rider premiums, underwriting extra premium and modal loadings",
+      "total_premiums_paid": "sum of all premiums paid under base policy excluding extra premiums and taxes",
+      "medical_practitioner": "registered doctor with valid registration; not the policyholder; not employed by insurer; not related to policyholder"
+    },
+    "statutory_info": {
+      "prohibition_of_rebate_section_41": "No person shall offer rebate of commission or premium except per published prospectuses or tables; penalty up to 10 lakh rupees.",
+      "assignment_section_38": "Assignment per section 38, Insurance Act 1938",
+      "nomination_section_39": "Nomination per section 39, Insurance Act 1938",
+      "fraud_misstatement_section_45": "Fraud & misstatement dealt as per section 45"
+    },
+    "disclaimer": "This JSON is a structured extract from the brochure etouch-plan-sl.pdf and intended for RAG ingestion. For contractual terms and full legal wording refer to official policy documents and company website."
+  }
+  

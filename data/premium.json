@@ -1,0 +1,322 @@
+{
+  "version": "1.0",
+  "effective_date": "2024-01-01",
+  "currency": "INR",
+  "description": "Premium calculation tables for Bajaj Allianz eTouch II variants",
+  
+  "base_rates": {
+    "Life Shield": {
+      "description": "Basic term insurance with death benefit and terminal illness cover",
+      "age_bands": {
+        "18-25": {
+          "male": 1.20,
+          "female": 1.05
+        },
+        "26-30": {
+          "male": 1.35,
+          "female": 1.18
+        },
+        "31-35": {
+          "male": 1.65,
+          "female": 1.42
+        },
+        "36-40": {
+          "male": 2.15,
+          "female": 1.85
+        },
+        "41-45": {
+          "male": 2.95,
+          "female": 2.48
+        },
+        "46-50": {
+          "male": 4.25,
+          "female": 3.58
+        },
+        "51-55": {
+          "male": 6.85,
+          "female": 5.75
+        },
+        "56-60": {
+          "male": 11.45,
+          "female": 9.58
+        },
+        "61-65": {
+          "male": 18.95,
+          "female": 15.85
+        }
+      },
+      "policy_term_factors": {
+        "10": 1.15,
+        "15": 1.08,
+        "20": 1.00,
+        "25": 0.95,
+        "30": 0.92,
+        "35": 0.90,
+        "40": 0.88
+      }
+    },
+    
+    "Life Shield Plus": {
+      "description": "Term insurance with accidental death benefit",
+      "age_bands": {
+        "18-25": {
+          "male": 1.45,
+          "female": 1.28
+        },
+        "26-30": {
+          "male": 1.65,
+          "female": 1.45
+        },
+        "31-35": {
+          "male": 2.05,
+          "female": 1.78
+        },
+        "36-40": {
+          "male": 2.68,
+          "female": 2.32
+        },
+        "41-45": {
+          "male": 3.72,
+          "female": 3.15
+        },
+        "46-50": {
+          "male": 5.38,
+          "female": 4.58
+        },
+        "51-55": {
+          "male": 8.75,
+          "female": 7.45
+        },
+        "56-60": {
+          "male": 14.68,
+          "female": 12.48
+        },
+        "61-65": {
+          "male": 24.38,
+          "female": 20.75
+        }
+      },
+      "policy_term_factors": {
+        "10": 1.18,
+        "15": 1.10,
+        "20": 1.00,
+        "25": 0.96,
+        "30": 0.93,
+        "35": 0.91,
+        "40": 0.89
+      },
+      "adb_loading": 0.25
+    },
+    
+    "Life Shield ROP": {
+      "description": "Return of premium term insurance",
+      "age_bands": {
+        "18-25": {
+          "male": 18.50,
+          "female": 16.85
+        },
+        "26-30": {
+          "male": 21.85,
+          "female": 19.95
+        },
+        "31-35": {
+          "male": 26.75,
+          "female": 24.48
+        },
+        "36-40": {
+          "male": 33.95,
+          "female": 31.15
+        },
+        "41-45": {
+          "male": 44.85,
+          "female": 41.25
+        },
+        "46-50": {
+          "male": 61.75,
+          "female": 57.18
+        },
+        "51-55": {
+          "male": 87.95,
+          "female": 81.85
+        },
+        "56-60": {
+          "male": 128.75,
+          "female": 120.45
+        },
+        "61-65": {
+          "male": 189.95,
+          "female": 178.25
+        }
+      },
+      "policy_term_factors": {
+        "10": 1.25,
+        "15": 1.15,
+        "20": 1.00,
+        "25": 0.88,
+        "30": 0.82,
+        "35": 0.78,
+        "40": 0.75
+      }
+    }
+  },
+  
+  "adjustments": {
+    "tobacco_usage": {
+      "non_tobacco": 1.0,
+      "tobacco": 1.75
+    },
+    
+    "occupation_categories": {
+      "class_1": {
+        "description": "Office workers, teachers, doctors, engineers",
+        "factor": 1.0,
+        "occupations": ["software_engineer", "teacher", "doctor", "accountant", "lawyer", "banker", "consultant"]
+      },
+      "class_2": {
+        "description": "Field workers, sales, technicians",
+        "factor": 1.15,
+        "occupations": ["sales_executive", "technician", "mechanic", "electrician", "plumber", "driver"]
+      },
+      "class_3": {
+        "description": "Manual labor, factory workers",
+        "factor": 1.35,
+        "occupations": ["factory_worker", "construction_worker", "security_guard", "cook", "cleaner"]
+      },
+      "class_4": {
+        "description": "High-risk occupations",
+        "factor": 2.0,
+        "occupations": ["pilot", "military", "police", "firefighter", "miner", "offshore_worker"]
+      }
+    },
+    
+    "health_conditions": {
+      "excellent": {
+        "description": "No health issues, regular exercise, ideal BMI",
+        "factor": 0.95
+      },
+      "good": {
+        "description": "Minor controlled conditions (BP, diabetes under control)",
+        "factor": 1.0
+      },
+      "average": {
+        "description": "Some health concerns, overweight",
+        "factor": 1.25
+      },
+      "poor": {
+        "description": "Multiple health issues, requires medical underwriting",
+        "factor": 1.75
+      }
+    },
+    
+    "lifestyle_factors": {
+      "exercise_regular": -0.05,
+      "non_smoker_5_years": -0.10,
+      "alcohol_moderate": 0.0,
+      "alcohol_heavy": 0.15,
+      "family_history_heart": 0.10,
+      "family_history_cancer": 0.15,
+      "family_history_diabetes": 0.08
+    },
+    
+    "sum_assured_bands": {
+      "up_to_25_lakh": 1.0,
+      "25_to_50_lakh": 0.98,
+      "50_lakh_to_1_crore": 0.95,
+      "1_to_2_crore": 0.92,
+      "above_2_crore": 0.90
+    },
+    
+    "payment_frequency": {
+      "yearly": 1.0,
+      "half_yearly": 1.02,
+      "quarterly": 1.04,
+      "monthly": 1.08
+    },
+    
+    "discounts": {
+      "online_purchase": {
+        "description": "Online/digital purchase discount",
+        "percentage": 6,
+        "applicable_variants": ["Life Shield", "Life Shield Plus", "Life Shield ROP"]
+      },
+      "female_discount": {
+        "description": "Female lives discount (already in base rates)",
+        "percentage": 15,
+        "applicable_variants": ["Life Shield", "Life Shield Plus", "Life Shield ROP"]
+      },
+      "non_tobacco_preferred": {
+        "description": "Non-tobacco preferred rates",
+        "percentage": 10,
+        "applicable_variants": ["Life Shield", "Life Shield Plus", "Life Shield ROP"]
+      },
+      "high_sum_assured": {
+        "description": "High sum assured rebate (1 crore+)",
+        "percentage": 8,
+        "minimum_sum_assured": 10000000,
+        "applicable_variants": ["Life Shield", "Life Shield Plus", "Life Shield ROP"]
+      },
+      "loyalty_discount": {
+        "description": "Existing customer discount",
+        "percentage": 3,
+        "applicable_variants": ["Life Shield", "Life Shield Plus", "Life Shield ROP"]
+      },
+      "salary_account": {
+        "description": "Salary account holder discount",
+        "percentage": 5,
+        "applicable_variants": ["Life Shield", "Life Shield Plus", "Life Shield ROP"]
+      }
+    }
+  },
+  
+  "underwriting_rules": {
+    "medical_requirements": {
+      "sum_assured_bands": {
+        "up_to_50_lakh": {
+          "age_up_to_45": "self_declaration",
+          "age_46_to_60": "basic_medical",
+          "age_above_60": "comprehensive_medical"
+        },
+        "50_lakh_to_1_crore": {
+          "age_up_to_40": "self_declaration", 
+          "age_41_to_55": "basic_medical",
+          "age_above_55": "comprehensive_medical"
+        },
+        "above_1_crore": {
+          "all_ages": "comprehensive_medical"
+        }
+      }
+    },
+    
+    "financial_requirements": {
+      "income_multipliers": {
+        "salaried": {
+          "max_multiple": 20,
+          "min_income": 300000
+        },
+        "business": {
+          "max_multiple": 15,
+          "min_income": 500000
+        },
+        "professional": {
+          "max_multiple": 18,
+          "min_income": 400000
+        }
+      }
+    }
+  },
+  
+  "calculation_methodology": {
+    "formula": "Base Rate × Policy Term Factor × Sum Assured Factor × Occupation Factor × Health Factor × Tobacco Factor × Payment Frequency Factor - Applicable Discounts",
+    "steps": [
+      "Determine base rate from age and gender",
+      "Apply policy term factor",
+      "Apply sum assured band factor", 
+      "Apply occupation loading",
+      "Apply health condition factor",
+      "Apply tobacco usage factor",
+      "Apply payment frequency factor",
+      "Calculate applicable discounts",
+      "Apply final premium adjustments"
+    ]
+  }
+}

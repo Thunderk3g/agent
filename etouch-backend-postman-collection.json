@@ -1,0 +1,341 @@
+{
+  "info": {
+    "name": "eTouch Insurance Backend API",
+    "description": "AI-powered insurance agent backend with conversational interface for Bajaj Allianz eTouch II insurance product",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "session_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "item": [
+    {
+      "name": "Health & Status",
+      "item": [
+        {
+          "name": "Root Endpoint",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Get API information and available endpoints"
+          },
+          "response": []
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            },
+            "description": "Application health check"
+          },
+          "response": []
+        },
+        {
+          "name": "Chat Service Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/chat/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat", "health"]
+            },
+            "description": "Detailed chat service health including Ollama status"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Session Management",
+      "item": [
+        {
+          "name": "Start New Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/api/chat/session/start",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat", "session", "start"]
+            },
+            "description": "Start a new insurance application session"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Session Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/chat/session/{{session_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat", "session", "{{session_id}}"]
+            },
+            "description": "Get current session information including state and collected data"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Conversation History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/chat/session/{{session_id}}/history",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat", "session", "{{session_id}}", "history"]
+            },
+            "description": "Get full conversation history for a session"
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{base_url}}/api/chat/session/{{session_id}}/reset",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat", "session", "{{session_id}}", "reset"]
+            },
+            "description": "Reset a session to initial state"
+          },
+          "response": []
+        },
+        {
+          "name": "Manual State Transition",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"target_state\": \"onboarding\",\n  \"context\": {\n    \"reason\": \"manual_transition\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/chat/session/{{session_id}}/transition",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat", "session", "{{session_id}}", "transition"]
+            },
+            "description": "Manually transition session to a specific state (admin/testing use)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Chat Interface",
+      "item": [
+        {
+          "name": "Send Chat Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"{{session_id}}\",\n  \"message\": \"Hello, I want to buy life insurance\",\n  \"form_data\": null,\n  \"uploaded_documents\": null,\n  \"selected_action\": null,\n  \"action_data\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/chat/message",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat", "message"]
+            },
+            "description": "Main chat endpoint - processes user messages and returns structured responses"
+          },
+          "response": []
+        },
+        {
+          "name": "Send Message with Form Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"{{session_id}}\",\n  \"message\": \"Here is my information\",\n  \"form_data\": {\n    \"full_name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"+91-9876543210\",\n    \"date_of_birth\": \"1990-01-01\",\n    \"occupation\": \"Software Engineer\",\n    \"annual_income\": 800000\n  },\n  \"uploaded_documents\": null,\n  \"selected_action\": null,\n  \"action_data\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/chat/message",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat", "message"]
+            },
+            "description": "Send message with form data (customer information)"
+          },
+          "response": []
+        },
+        {
+          "name": "Send Message with Action Data",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"{{session_id}}\",\n  \"message\": \"I select this variant\",\n  \"form_data\": null,\n  \"uploaded_documents\": null,\n  \"selected_action\": \"select_variant\",\n  \"action_data\": {\n    \"variant\": \"Life Shield Plus\",\n    \"sum_assured\": 10000000,\n    \"policy_term\": 30\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/chat/message",
+              "host": ["{{base_url}}"],
+              "path": ["api", "chat", "message"]
+            },
+            "description": "Send message with action data (variant selection, etc.)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Document Upload",
+      "item": [
+        {
+          "name": "Upload Document",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "document_type",
+                  "value": "pan_card",
+                  "type": "text"
+                },
+                {
+                  "key": "session_id",
+                  "value": "{{session_id}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/documents/upload",
+              "host": ["{{base_url}}"],
+              "path": ["api", "documents", "upload"]
+            },
+            "description": "Upload KYC documents (PAN Card, Aadhar, Income documents, etc.)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "API Documentation",
+      "item": [
+        {
+          "name": "FastAPI Docs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/docs",
+              "host": ["{{base_url}}"],
+              "path": ["docs"]
+            },
+            "description": "Interactive API documentation (Swagger UI)"
+          },
+          "response": []
+        },
+        {
+          "name": "ReDoc Documentation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/redoc",
+              "host": ["{{base_url}}"],
+              "path": ["redoc"]
+            },
+            "description": "Alternative API documentation (ReDoc)"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Auto-extract session_id from responses",
+          "if (pm.response && pm.response.json) {",
+          "    try {",
+          "        const response = pm.response.json();",
+          "        if (response.session_id) {",
+          "            pm.collectionVariables.set('session_id', response.session_id);",
+          "        }",
+          "    } catch (e) {",
+          "        // Ignore parsing errors",
+          "    }",
+          "}"
+        ]
+      }
+    }
+  ]
+}
