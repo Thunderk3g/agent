@@ -39,6 +39,30 @@ class OllamaService:
                     logger.error(f"All Ollama attempts failed. Returning fallback response.")
                     return self._get_fallback_response(prompt, context)
                 await asyncio.sleep(2 ** attempt)  # Exponential backoff
+
+    async def generate_response_stream(
+        self,
+        prompt: str,
+        system_prompt: str | None = None,
+        context: Dict[str, Any] | None = None,
+    ):
+        """Async generator that yields response tokens from Ollama.
+
+        Strategy: try chat stream first; if 404, fallback to generate stream.
+        """
+        full_prompt = self._build_prompt(prompt, system_prompt, context)
+        if self.use_chat_api:
+            try:
+                async for token in self._call_ollama_chat_stream(full_prompt):
+                    yield token
+                return
+            except httpx.HTTPStatusError as e:
+                if e.response.status_code != 404:
+                    raise
+                logger.info("Chat stream API not available, falling back to generate stream")
+                self.use_chat_api = False
+        async for token in self._call_ollama_generate_stream(full_prompt):
+            yield token
     
     async def process_state_message(self, session: SessionData, user_message: str, 
                                   state_context: Dict[str, Any] = None) -> str:
@@ -154,10 +178,38 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
             "stream": False
         }
         
+        logger.info(f"[Ollama] POST {url} | chat | model={self.model}")
         response = await self.client.post(url, json=data)
         response.raise_for_status()
         result = response.json()
         return result.get("message", {}).get("content", "").strip()
+
+    async def _call_ollama_chat_stream(self, prompt: str):
+        """Stream tokens from modern chat API."""
+        url = f"{self.base_url}/api/chat"
+        data = {
+            "model": self.model,
+            "messages": [
+                {"role": "user", "content": prompt}
+            ],
+            "stream": True
+        }
+        logger.info(f"[Ollama] STREAM {url} | chat | model={self.model}")
+        async with self.client.stream("POST", url, json=data) as resp:
+            resp.raise_for_status()
+            async for line in resp.aiter_lines():
+                if not line:
+                    continue
+                try:
+                    obj = json.loads(line)
+                    if obj.get("done"):
+                        break
+                    delta = obj.get("message", {}).get("content") or obj.get("delta", {}).get("content")
+                    if delta:
+                        yield delta
+                except json.JSONDecodeError:
+                    # Some servers stream plain text
+                    yield line
     
     async def _call_ollama_generate(self, prompt: str) -> str:
         """Call legacy Ollama generate API."""
@@ -168,10 +220,35 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
             "stream": False
         }
         
+        logger.info(f"[Ollama] POST {url} | generate | model={self.model}")
         response = await self.client.post(url, json=data)
         response.raise_for_status()
         result = response.json()
         return result.get("response", "").strip()
+
+    async def _call_ollama_generate_stream(self, prompt: str):
+        """Stream tokens from legacy generate API."""
+        url = f"{self.base_url}/api/generate"
+        data = {
+            "model": self.model,
+            "prompt": prompt,
+            "stream": True
+        }
+        logger.info(f"[Ollama] STREAM {url} | generate | model={self.model}")
+        async with self.client.stream("POST", url, json=data) as resp:
+            resp.raise_for_status()
+            async for line in resp.aiter_lines():
+                if not line:
+                    continue
+                try:
+                    obj = json.loads(line)
+                    if obj.get("done"):
+                        break
+                    delta = obj.get("response")
+                    if delta:
+                        yield delta
+                except json.JSONDecodeError:
+                    yield line
     
     def _get_state_system_prompt(self, state: SessionState) -> str:
         """Get system prompt specific to current state."""
@@ -284,6 +361,7 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
         try:
             # First check if Ollama is running
             url = f"{self.base_url}/api/tags"
+            logger.info(f"[Ollama] GET {url} | tags")
             response = await self.client.get(url, timeout=5)
             if response.status_code != 200:
                 return False

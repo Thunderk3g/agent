@@ -6,6 +6,7 @@ import uvicorn
 from app.config import settings
 from app.utils.logging import setup_logging, logger
 from app.api.routes import chat
+from app.api.routes import agent
 from app.states.base_state import state_registry
 from app.states.onboarding import OnboardingState
 from app.states.eligibility_check import EligibilityCheckState
@@ -68,6 +69,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(chat.router)
+app.include_router(agent.router)
 try:
     from app.api.routes import documents
     app.include_router(documents.router)
