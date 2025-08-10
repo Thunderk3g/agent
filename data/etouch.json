@@ -1,0 +1,67 @@
+{
+  "product_info": {
+    "name": "Bajaj Allianz Life eTouch II",
+    "type": "term_insurance",
+    "variants": [
+      {
+        "id": "life_shield",
+        "name": "Life Shield",
+        "description": "Basic term insurance with death benefit and terminal illness cover",
+        "features": [
+          "Death benefit",
+          "Terminal illness cover",
+          "Tax benefits under Section 80C and 10(10D)"
+        ]
+      },
+      {
+        "id": "life_shield_plus",
+        "name": "Life Shield Plus",
+        "description": "Includes accidental death benefit (ADB)",
+        "features": [
+          "Death benefit",
+          "Terminal illness cover",
+          "Accidental death benefit",
+          "Tax benefits under Section 80C and 10(10D)"
+        ]
+      },
+      {
+        "id": "life_shield_rop",
+        "name": "Life Shield ROP",
+        "description": "Return of Premium variant",
+        "features": [
+          "Death benefit",
+          "Terminal illness cover",
+          "Return of premium at maturity",
+          "Tax benefits under Section 80C and 10(10D)"
+        ]
+      }
+    ]
+  },
+  "eligibility": {
+    "min_age": 18,
+    "max_age": 65,
+    "min_sum_assured": 5000000,
+    "max_sum_assured": 100000000,
+    "policy_terms": [10, 15, 20, 25, 30, 35, 40],
+    "premium_payment_terms": [5, 10, 15, 20, 25, 30, 35, 40]
+  },
+  "premium_calculation": {
+    "base_rate_per_lakh": {
+      "life_shield": 500,
+      "life_shield_plus": 600,
+      "life_shield_rop": 800
+    },
+    "age_factors": {
+      "18-25": 0.8,
+      "26-35": 1.0,
+      "36-45": 1.2,
+      "46-55": 1.5,
+      "56-65": 2.0
+    },
+    "occupation_factors": {
+      "low_risk": 1.0,
+      "medium_risk": 1.1,
+      "high_risk": 1.3
+    }
+  }
+}

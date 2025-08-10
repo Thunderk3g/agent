@@ -16,6 +16,7 @@ class OllamaService:
         self.timeout = settings.ollama_timeout
         self.max_retries = settings.ollama_max_retries
         self.client = httpx.AsyncClient(timeout=self.timeout)
+        self.use_chat_api = True  # Try chat API first, fallback to generate
         
     async def __aenter__(self):
         return self
@@ -71,7 +72,6 @@ Return only valid JSON with extracted fields."""
             # Try to parse as JSON
             return json.loads(response)
         except json.JSONDecodeError:
-            logger.warning(f"Failed to parse Ollama document analysis response as JSON")
             return {"error": "Failed to parse document", "raw_response": response}
         except Exception as e:
             logger.error(f"Document analysis failed: {str(e)}")
@@ -127,7 +127,40 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
         return "\n\n".join(parts)
     
     async def _call_ollama(self, prompt: str) -> str:
-        """Make HTTP call to Ollama API."""
+        """Make HTTP call to Ollama API with automatic fallback."""
+        try:
+            if self.use_chat_api:
+                # Try modern chat API first
+                return await self._call_ollama_chat(prompt)
+            else:
+                # Use legacy generate API
+                return await self._call_ollama_generate(prompt)
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code == 404 and self.use_chat_api:
+                # Fallback to generate API for older Ollama versions
+                logger.info("Chat API not available, falling back to generate API")
+                self.use_chat_api = False
+                return await self._call_ollama_generate(prompt)
+            raise
+    
+    async def _call_ollama_chat(self, prompt: str) -> str:
+        """Call modern Ollama chat API."""
+        url = f"{self.base_url}/api/chat"
+        data = {
+            "model": self.model,
+            "messages": [
+                {"role": "user", "content": prompt}
+            ],
+            "stream": False
+        }
+        
+        response = await self.client.post(url, json=data)
+        response.raise_for_status()
+        result = response.json()
+        return result.get("message", {}).get("content", "").strip()
+    
+    async def _call_ollama_generate(self, prompt: str) -> str:
+        """Call legacy Ollama generate API."""
         url = f"{self.base_url}/api/generate"
         data = {
             "model": self.model,
@@ -135,11 +168,10 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
             "stream": False
         }
         
-        async with self.client as client:
-            response = await client.post(url, json=data)
-            response.raise_for_status()
-            result = response.json()
-            return result.get("response", "").strip()
+        response = await self.client.post(url, json=data)
+        response.raise_for_status()
+        result = response.json()
+        return result.get("response", "").strip()
     
     def _get_state_system_prompt(self, state: SessionState) -> str:
         """Get system prompt specific to current state."""
@@ -238,12 +270,29 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
             return fallback_responses["error"]
     
     async def health_check(self) -> bool:
-        """Check if Ollama service is available."""
+        """Check if Ollama service is available and model exists."""
         try:
+            # First check if Ollama is running
             url = f"{self.base_url}/api/tags"
-            async with self.client as client:
-                response = await client.get(url, timeout=5)
-                return response.status_code == 200
+            response = await self.client.get(url, timeout=5)
+            if response.status_code != 200:
+                return False
+                
+            # Check if our specific model is available
+            tags_data = response.json()
+            models = [model.get("name", "") for model in tags_data.get("models", [])]
+            
+            # Check if qwen2.5:0.5b is in the list
+            model_available = any(self.model in model for model in models)
+            
+            if not model_available:
+                logger.warning(f"Model '{self.model}' not found. Available models: {models}")
+                logger.info(f"To install the model, run: ollama pull {self.model}")
+                return False
+                
+            logger.info(f"✅ Ollama service available with model '{self.model}'")
+            return True
+            
         except Exception as e:
             logger.warning(f"Ollama health check failed: {str(e)}")
             return False

@@ -4,8 +4,8 @@ import os
 
 
 class Settings(BaseSettings):
-    ollama_base_url: str = "http://localhost:11434"
-    ollama_model: str = "llama3"
+    ollama_base_url: str = "http://127.0.0.1:11434"
+    ollama_model: str = "qwen2.5:0.5b"
     session_secret_key: str = "your-secret-key-change-in-production"
     api_cors_origins: List[str] = [
         "http://localhost:3000",
