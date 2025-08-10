@@ -210,6 +210,7 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
             
             Remember: Document collection can be tedious, so keep them motivated by reminding them this brings them closer to securing their family's future."""
         }
+
         
         return prompts.get(state, "You are a helpful insurance agent assisting customers with Bajaj Allianz Life eTouch II term insurance.")
     
