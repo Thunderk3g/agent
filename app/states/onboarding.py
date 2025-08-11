@@ -29,7 +29,7 @@ class OnboardingState(BaseState):
             {"entering_onboarding": True, "first_interaction": True}
         )
         
-        # Don't show forms initially - let Rajesh ask questions naturally
+        # Don't show forms initially - let Abhinav ask questions naturally
         # Only show forms when user specifically asks for them or after conversation
         return self.create_basic_response(
             session=session,
@@ -156,7 +156,7 @@ class OnboardingState(BaseState):
             "conversation_stage": len(session.conversation_history)
         }
         
-        # Give Rajesh specific instructions about what to ask next
+        # Give Abhinav specific instructions about what to ask next
         prompt = user_message
         if next_field_to_ask:
             prompt += f"\n\nNext, naturally ask for their {next_field_to_ask.replace('_', ' ')} if you haven't already."

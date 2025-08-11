@@ -70,6 +70,52 @@ class SessionData(BaseModel):
         self.customer_data.update(new_data)
         self.updated_at = datetime.now()
     
+    def update_frontend_data(self, store_update: Dict[str, Any]):
+        """Update session data with frontend store mapping."""
+        if not store_update:
+            return
+        
+        # Map personalDetails to customer_data
+        personal = store_update.get("personalDetails", {})
+        if personal:
+            mapped_personal = {}
+            field_mapping = {
+                "fullName": "full_name",
+                "dateOfBirth": "date_of_birth", 
+                "age": "age",
+                "gender": "gender",
+                "mobileNumber": "mobile_number",
+                "email": "email",
+                "pinCode": "pin_code",
+                "tobaccoUser": "smoker"
+            }
+            for frontend_key, backend_key in field_mapping.items():
+                if frontend_key in personal and personal[frontend_key] is not None:
+                    mapped_personal[backend_key] = personal[frontend_key]
+            
+            if mapped_personal:
+                self.customer_data.update(mapped_personal)
+        
+        # Map quoteDetails to quote_data  
+        quote_details = store_update.get("quoteDetails", {})
+        if quote_details:
+            mapped_quote = {}
+            quote_mapping = {
+                "sumAssured": "coverage_amount",
+                "policyTerm_years": "policy_term",
+                "premiumPayingTerm_years": "premium_paying_term",
+                "frequency": "premium_frequency"
+            }
+            for frontend_key, backend_key in quote_mapping.items():
+                if frontend_key in quote_details and quote_details[frontend_key] is not None:
+                    mapped_quote[backend_key] = quote_details[frontend_key]
+            
+            if mapped_quote:
+                self.quote_data.update(mapped_quote)
+                self.customer_data.update(mapped_quote)  # Also update customer_data for LLM context
+        
+        self.updated_at = datetime.now()
+    
     def get_collected_fields(self) -> List[str]:
         """Get list of all collected customer data fields."""
         return list(self.customer_data.keys())

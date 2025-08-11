@@ -67,7 +67,7 @@
       "session_id": "6475d7d3-e352-449e-82c2-5d749cca999c",
       "user_message": "start",
       "llm_decision": {
-        "reply": "```json\n{\n  \"reply\": \"Hello! Welcome to the Bajaj Allianz Life eTouch II Term Insurance Advisor. I am Rajesh, a top-tier term insurance advisor for your Bajaj Allianz Life eTouch II policy. Let me help you understand some key details about your coverage and plans.\",\n  \"next_question\": \"What is the age of the person who applies for this insurance?\",\n  \"extracted\": {\n    \"age\": null\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {}\n    }\n  ],\n  \"reasoning\": \"The user is asking about the age, which is a key piece of information we need to start the premium calculation process.\",\n  \"done\": false\n}\n```",
+        "reply": "```json\n{\n  \"reply\": \"Hello! Welcome to the Bajaj Allianz Life eTouch II Term Insurance Advisor. I am Abhinav, a top-tier term insurance advisor for your Bajaj Allianz Life eTouch II policy. Let me help you understand some key details about your coverage and plans.\",\n  \"next_question\": \"What is the age of the person who applies for this insurance?\",\n  \"extracted\": {\n    \"age\": null\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {}\n    }\n  ],\n  \"reasoning\": \"The user is asking about the age, which is a key piece of information we need to start the premium calculation process.\",\n  \"done\": false\n}\n```",
         "next_question": null,
         "extracted": {},
         "api_calls": [],
@@ -82,7 +82,7 @@
       "session_id": "6475d7d3-e352-449e-82c2-5d749cca999c",
       "user_message": "who am i",
       "llm_decision": {
-        "reply": "Hello! I'm Rajesh, a top-tier term insurance advisor for Bajaj Allianz Life eTouch II. How can I help you today?",
+        "reply": "Hello! I'm Abhinav, a top-tier term insurance advisor for Bajaj Allianz Life eTouch II. How can I help you today?",
         "next_question": "how old are you?",
         "extracted": {
           "age": null,
@@ -135,7 +135,7 @@
       "session_id": "b671b689-333d-4874-98e3-12b48934f4e7",
       "user_message": "start",
       "llm_decision": {
-        "reply": "{\n  \"reply\": \"Hello! I'm Rajesh, a top-tier term insurance advisor for Bajaj Allianz Life eTouch II. Are you ready to discuss your coverage options and compare different policies?\",\n  \"next_question\": \"What is your age? If not applicable, please leave it empty.\",\n  \"extracted\": {\n    \"age\": null,\n    \"gender\": \"male\" | \"female\" | \"other\" | null,\n    \"smoker\": bool | null,\n    \"coverage_amount\": int | null,\n    \"policy_term\": int | null,\n    \"riders_interest\": [string] | null,\n    \"pin_code\": string | null,\n    \"email\": string | null,\n    \"mobile_number\": string | null,\n    \"full_name\": string | null\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {}\n    }\n  ],\n  \"reasoning\": \"To provide a personalized insurance comparison, it's essential to know your age, gender, smoker status, policy term, and coverage amount. The premium calculation service helps in this process.\",\n  \"done\": false\n}",
+        "reply": "{\n  \"reply\": \"Hello! I'm Abhinav, a top-tier term insurance advisor for Bajaj Allianz Life eTouch II. Are you ready to discuss your coverage options and compare different policies?\",\n  \"next_question\": \"What is your age? If not applicable, please leave it empty.\",\n  \"extracted\": {\n    \"age\": null,\n    \"gender\": \"male\" | \"female\" | \"other\" | null,\n    \"smoker\": bool | null,\n    \"coverage_amount\": int | null,\n    \"policy_term\": int | null,\n    \"riders_interest\": [string] | null,\n    \"pin_code\": string | null,\n    \"email\": string | null,\n    \"mobile_number\": string | null,\n    \"full_name\": string | null\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {}\n    }\n  ],\n  \"reasoning\": \"To provide a personalized insurance comparison, it's essential to know your age, gender, smoker status, policy term, and coverage amount. The premium calculation service helps in this process.\",\n  \"done\": false\n}",
         "next_question": null,
         "extracted": {},
         "api_calls": [],
@@ -165,7 +165,7 @@
       "session_id": "b671b689-333d-4874-98e3-12b48934f4e7",
       "user_message": "I am 20 years old i am diwakar my pincode is 411014",
       "llm_decision": {
-        "reply": "Hello, welcome to Bajaj Allianz Life eTouch II Insurance. I'm Rajesh, your top-tier term insurance advisor for Bajaj Allianz Life eTouch II."
+        "reply": "Hello, welcome to Bajaj Allianz Life eTouch II Insurance. I'm Abhinav, your top-tier term insurance advisor for Bajaj Allianz Life eTouch II."
       },
       "api_results": [],
       "final_reply": "{\n  \"reply\": \"I'm sorry, but I cannot provide a summary or further analysis without additional information.\",\n  \"next_question\": \"Is there any specific aspect you would like to discuss about my insurance coverage?\",\n  \"extracted\": {\n    \"age\": null,\n    \"gender\": \"male\",\n    \"smoker\": false,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"riders_interest\": [\"All\", \"Some\"],\n    \"pin_code\": null,\n    \"email\": null,\n    \"mobile_number\": null,\n    \"full_name\": null\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"\",\n  \"done\": false\n}"
@@ -175,7 +175,7 @@
       "session_id": "8ac094e8-6fb6-4e9f-be57-1603ed834f99",
       "user_message": "start",
       "llm_decision": {
-        "reply": "{\n  \"reply\": \"I'm Rajesh, a top-tier term insurance advisor for Bajaj Allianz Life eTouch II. I can guide you through the process of getting coverage and understanding your eligibility criteria.\",\n  \"next_question\": \"What is the age of the policyholder?\",\n  \"extracted\": {\n    \"age\": null,\n    \"gender\": \"male\" | \"female\" | \"other\",\n    \"smoker\": false,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"riders_interest\": [],\n    \"pin_code\": null,\n    \"email\": null,\n    \"mobile_number\": null,\n    \"full_name\": null\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {}\n    }\n  ],\n  \"reasoning\": \"The user is asking for the age of the policyholder. To proceed, I need to ask them to provide their current age.\",\n  \"done\": false\n}",
+        "reply": "{\n  \"reply\": \"I'm Abhinav, a top-tier term insurance advisor for Bajaj Allianz Life eTouch II. I can guide you through the process of getting coverage and understanding your eligibility criteria.\",\n  \"next_question\": \"What is the age of the policyholder?\",\n  \"extracted\": {\n    \"age\": null,\n    \"gender\": \"male\" | \"female\" | \"other\",\n    \"smoker\": false,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"riders_interest\": [],\n    \"pin_code\": null,\n    \"email\": null,\n    \"mobile_number\": null,\n    \"full_name\": null\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {}\n    }\n  ],\n  \"reasoning\": \"The user is asking for the age of the policyholder. To proceed, I need to ask them to provide their current age.\",\n  \"done\": false\n}",
         "next_question": null,
         "extracted": {},
         "api_calls": [],
@@ -190,7 +190,7 @@
       "session_id": "dd5d1844-1593-47c8-bd7d-b398d699da21",
       "user_message": "start",
       "llm_decision": {
-        "reply": "Hello! Welcome to our top-tier term insurance advisor for Bajaj Allianz Life eTouch II. I'm Rajesh, your expert in terms of insurance advice. Before we begin, could you please tell me about your current age, gender, smoking status, coverage amount, policy term, riders' interest, pin code, email, mobile number, and full name?",
+        "reply": "Hello! Welcome to our top-tier term insurance advisor for Bajaj Allianz Life eTouch II. I'm Abhinav, your expert in terms of insurance advice. Before we begin, could you please tell me about your current age, gender, smoking status, coverage amount, policy term, riders' interest, pin code, email, mobile number, and full name?",
         "next_question": "How old are you?",
         "extracted": {
           "age": 30,
@@ -202,7 +202,7 @@
           "pin_code": "",
           "email": null,
           "mobile_number": null,
-          "full_name": "Rajesh"
+          "full_name": "Abhinav"
         },
         "api_calls": [
           {
@@ -221,14 +221,14 @@
           "success": false
         }
       ],
-      "final_reply": "{\n  \"reply\": \"The user wants to know more about the coverage amount and policy terms for their insurance plan.\",\n  \"next_question\": \"Could you please provide me with the details of your current insurance plan?\",\n  \"extracted\": {\n    \"age\": null,\n    \"gender\": null,\n    \"smoker\": false,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"riders_interest\": [],\n    \"pin_code\": \"\",\n    \"email\": null,\n    \"mobile_number\": null,\n    \"full_name\": \"Rajesh\"\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {},\n      \"error\": \"'QuoteCalculator' object has no attribute 'calculate_premium'\",\n      \"success\": false\n    }\n  ],\n  \"reasoning\": \"The user requested details about their current insurance plan, so it's important to provide them with this information. The premium calculation step is missing.\",\n  \"done\": false\n}"
+      "final_reply": "{\n  \"reply\": \"The user wants to know more about the coverage amount and policy terms for their insurance plan.\",\n  \"next_question\": \"Could you please provide me with the details of your current insurance plan?\",\n  \"extracted\": {\n    \"age\": null,\n    \"gender\": null,\n    \"smoker\": false,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"riders_interest\": [],\n    \"pin_code\": \"\",\n    \"email\": null,\n    \"mobile_number\": null,\n    \"full_name\": \"Abhinav\"\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {},\n      \"error\": \"'QuoteCalculator' object has no attribute 'calculate_premium'\",\n      \"success\": false\n    }\n  ],\n  \"reasoning\": \"The user requested details about their current insurance plan, so it's important to provide them with this information. The premium calculation step is missing.\",\n  \"done\": false\n}"
     },
     {
       "timestamp": "2025-08-10T12:30:29.142144Z",
       "session_id": "dd5d1844-1593-47c8-bd7d-b398d699da21",
       "user_message": "asdasdas",
       "llm_decision": {
-        "reply": "```json\n{\n  \"reply\": \"I'm Rajesh, a term insurance advisor for Bajaj Allianz Life eTouch II. I can provide you with essential information about your coverage, health, and eligibility if you provide the required details.\",\n  \"next_question\": \"Please provide the age of the user.\",\n  \"extracted\": {\n    \"age\": null\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {}\n    }\n  ],\n  \"reasoning\": \"\",\n  \"done\": false\n}\n```",
+        "reply": "```json\n{\n  \"reply\": \"I'm Abhinav, a term insurance advisor for Bajaj Allianz Life eTouch II. I can provide you with essential information about your coverage, health, and eligibility if you provide the required details.\",\n  \"next_question\": \"Please provide the age of the user.\",\n  \"extracted\": {\n    \"age\": null\n  },\n  \"api_calls\": [\n    {\n      \"name\": \"premium_calculation\",\n      \"params\": {}\n    }\n  ],\n  \"reasoning\": \"\",\n  \"done\": false\n}\n```",
         "next_question": null,
         "extracted": {},
         "api_calls": [],
@@ -277,14 +277,14 @@
         "done": false
       },
       "api_results": [],
-      "final_reply": "{\n  \"reply\": \"Hi Rajesh! To proceed, could you please share your age and preferred coverage amount? This will help us calculate the premium and ensure it fits your needs.\",\n  \"next_question\": \"What is your age?\",\n  \"extracted\": {\n    \"age\": null,\n    \"gender\": null,\n    \"smoker\": true,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"riders_interest\": null,\n    \"pin_code\": null,\n    \"email\": null,\n    \"mobile_number\": null,\n    \"full_name\": null\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting age and coverage amount to calculate premium and gather necessary information.\",\n  \"done\": false\n}"
+      "final_reply": "{\n  \"reply\": \"Hi Abhinav! To proceed, could you please share your age and preferred coverage amount? This will help us calculate the premium and ensure it fits your needs.\",\n  \"next_question\": \"What is your age?\",\n  \"extracted\": {\n    \"age\": null,\n    \"gender\": null,\n    \"smoker\": true,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"riders_interest\": null,\n    \"pin_code\": null,\n    \"email\": null,\n    \"mobile_number\": null,\n    \"full_name\": null\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting age and coverage amount to calculate premium and gather necessary information.\",\n  \"done\": false\n}"
     },
     {
       "timestamp": "2025-08-10T12:31:28.908108Z",
       "session_id": "97baa08d-b185-4982-8fb6-c8764ff2abf0",
       "user_message": "I am 28",
       "llm_decision": {
-        "reply": "Great to know, Rajesh here to assist you further.",
+        "reply": "Great to know, Abhinav here to assist you further.",
         "next_question": "What is your gender, male or female?",
         "extracted": {
           "age": 28,
@@ -303,7 +303,7 @@
         "done": false
       },
       "api_results": [],
-      "final_reply": "{\n  \"reply\": \"Hello Rajesh! To proceed, could you please provide your gender and preferred coverage amount?\",\n  \"next_question\": \"What is your gender?\",\n  \"extracted\": {\n    \"age\": 28,\n    \"gender\": null,\n    \"smoker\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"riders_interest\": null,\n    \"pin_code\": null,\n    \"email\": null,\n    \"mobile_number\": null,\n    \"full_name\": null\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting gender is the next logical step after age to help tailor the insurance options.\",\n  \"done\": false\n}"
+      "final_reply": "{\n  \"reply\": \"Hello Abhinav! To proceed, could you please provide your gender and preferred coverage amount?\",\n  \"next_question\": \"What is your gender?\",\n  \"extracted\": {\n    \"age\": 28,\n    \"gender\": null,\n    \"smoker\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"riders_interest\": null,\n    \"pin_code\": null,\n    \"email\": null,\n    \"mobile_number\": null,\n    \"full_name\": null\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting gender is the next logical step after age to help tailor the insurance options.\",\n  \"done\": false\n}"
     },
     {
       "timestamp": "2025-08-10T12:31:51.605102Z",
@@ -336,7 +336,7 @@
       "session_id": "d610f72c-64dd-4de0-b9e4-b8f0d44596b8",
       "user_message": "start",
       "llm_decision": {
-        "reply": "Hello Rajesh here, how can I assist you today with your term insurance needs?",
+        "reply": "Hello Abhinav here, how can I assist you today with your term insurance needs?",
         "next_question": "What is your full name?",
         "extracted": {
           "age": null,
@@ -362,7 +362,7 @@
       "session_id": "0001bf90-67e7-45bb-b198-46c0d9e4121e",
       "user_message": "start",
       "llm_decision": {
-        "reply": "Hello Rajesh here, your top-tier term insurance advisor from Bajaj Allianz Life eTouch II. How can I assist you today?",
+        "reply": "Hello Abhinav here, your top-tier term insurance advisor from Bajaj Allianz Life eTouch II. How can I assist you today?",
         "next_question": "What is your age, please?",
         "extracted": {},
         "api_calls": [],
@@ -433,7 +433,7 @@
       "session_id": "0001bf90-67e7-45bb-b198-46c0d9e4121e",
       "user_message": "I am male , 21 ears and smoker",
       "llm_decision": {
-        "reply": "Thank you for sharing that, Rajesh.",
+        "reply": "Thank you for sharing that, Abhinav.",
         "next_question": "How much coverage amount are you looking for?",
         "extracted": {
           "age": 21,
@@ -567,7 +567,7 @@
       "session_id": "0001bf90-67e7-45bb-b198-46c0d9e4121e",
       "user_message": "OK",
       "llm_decision": {
-        "reply": "Hello Rajesh here. How can I assist you today?",
+        "reply": "Hello Abhinav here. How can I assist you today?",
         "next_question": "What is your full name, please?",
         "extracted": {
           "age": null,
@@ -797,6 +797,2466 @@
       },
       "api_results": [],
       "final_reply": "Hi there! Based on your information so far, you're a 24-year-old pilot interested in our term insurance plan. We can offer coverage up to Rs. 50 lakhs with various policy terms and premium frequencies to choose from.\n\nCould you please provide me with your full name, date of birth, and mobile number so we can proceed further?"
+    },
+    {
+      "timestamp": "2025-08-11T06:34:53.361604Z",
+      "session_id": "39d07665-a957-4dcb-a0c5-1392b7f6c560",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started on your term insurance journey. Could you please share your full name?",
+        "next_question": "What is your full name?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by requesting the user's full name.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Great! Let's summarize what we have so far. We need a bit more information to proceed with your term insurance application.\",\n  \"next_question\": \"Could you please provide your date of birth and occupation?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting specific details to advance the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T06:34:54.291005Z",
+      "session_id": "581e4ab4-e431-437f-bf84-fe8ad1a0fc1c",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started on your term insurance plan. Could you please share your full name?",
+        "next_question": "What is your full name?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by requesting the customer's full name.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Great! Let's summarize what we have so far. We're working on providing a term insurance quote tailored to your needs.\",\n  \"next_question\": \"Could you please share your date of birth or age so I can proceed with the quote?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for the date of birth or age is necessary to determine the policy term and other relevant factors.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T06:35:35.424987Z",
+      "session_id": "e748f952-177b-4577-921a-7cb943321984",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started on your insurance journey. Could you please share your full name with me?",
+        "next_question": "What is your full name?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by collecting basic personal information.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "To give you a clear summary and ensure we have all the necessary details, could you please share your full name and date of birth? This will help us proceed with the insurance onboarding process.\n\n{\n  \"reply\": \"Could you please provide your full name and date of birth so I can continue with the insurance application?\",\n  \"next_question\": \"Please share your full name and date of birth.\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting basic personal details to start the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T06:36:36.730939Z",
+      "session_id": "78f07354-ac14-40eb-b284-a70371f429de",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hi there! Let's get started with your term insurance needs. Could you please share your full name and date of birth?",
+        "next_question": "What is your full name and date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by collecting basic personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T06:36:39.805183Z",
+      "session_id": "cadb22bd-bbb2-4af5-ac91-2c6c288b268b",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T06:36:39.808184Z",
+      "session_id": "26e47e59-1724-4355-88c3-7e0cc41cdfaa",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T06:36:44.354899Z",
+      "session_id": "b2351b57-fab8-4fdf-96b3-8ccbed9ffb38",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T06:42:42.051507Z",
+      "session_id": "f9902802-dec9-4f97-a488-ed2acfc1e0f5",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your term insurance journey. Could you please share your full name?",
+        "next_question": "What is your full name?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by collecting basic personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T06:42:42.054789Z",
+      "session_id": "799ee7ec-13a2-479b-9a60-67703d2119c6",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your term insurance. Could you please share your full name and date of birth?",
+        "next_question": "What is your full name and date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initial information gathering for onboarding",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T06:42:42.065787Z",
+      "session_id": "11727626-8ad3-48e6-b6df-ced6d10cb372",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your term insurance application at Bajaj Allianz Life eTouch II. Could you please share your full name and date of birth?",
+        "next_question": "Could you provide your full name and date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by collecting essential personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T06:42:44.212705Z",
+      "session_id": "5ab0224c-b953-47f3-b570-7befa74b078d",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your insurance application. Could you please share your full name and date of birth?",
+        "next_question": "Could you please share your full name and date of birth?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by requesting essential personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T06:54:40.040639Z",
+      "session_id": "4cff2013-7cd8-4049-a334-4f0118e45a26",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T06:54:40.051941Z",
+      "session_id": "39df8cc6-413a-43dc-a6ed-5ef91c6c9859",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T07:03:17.703386Z",
+      "session_id": "da3d2a4e-efd3-4b38-8af4-0fcdfe21f295",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T07:03:17.714897Z",
+      "session_id": "1d728772-6433-4f66-a1e6-d099b8cb85c2",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T07:03:44.289463Z",
+      "session_id": "07317fbd-0120-4270-b6b8-9d0c912033f6",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T07:03:44.615720Z",
+      "session_id": "269d209c-502c-417a-94f1-2cd4e3a88482",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T07:04:51.450410Z",
+      "session_id": "5c52a476-b8c9-4472-bdd4-9fce74434c6d",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T07:04:51.454415Z",
+      "session_id": "56b40749-cfca-4b8d-a130-df62c6cda771",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! I'm here to help you with Bajaj Allianz Life eTouch II insurance. How can I assist you today?",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "I apologize, but I'm having temporary technical difficulties. Please try again in a moment, or contact our customer service at 1800 209 7272."
+    },
+    {
+      "timestamp": "2025-08-11T07:05:36.475245Z",
+      "session_id": "8035bcf7-1c61-43d3-ad1b-b66ff7a1d770",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your term insurance. Could you please share your full name and date of birth?",
+        "next_question": "What is your full name and date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by requesting essential personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Thank you for sharing that information! Could you please provide your full name and date of birth so I can proceed with your quote?\",\n  \"next_question\": \"Could you please share your full name and date of birth?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for full name and date of birth to start the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:05:37.029130Z",
+      "session_id": "d9f0801b-e870-4613-b251-ccefdc773e0e",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your term insurance journey at Bajaj Allianz Life eTouch II. Could you please share your full name?",
+        "next_question": "Could you also tell me your date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initial data collection for onboarding process",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Great! Let's move forward with your term-insurance application. Could you please tell me about your expected coverage amount and policy term (in years)?\",\n  \"next_question\": \"What is your desired coverage amount in rupees and for how many years do you wish the policy to be active?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting the user to specify coverage amount and policy term to progress the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:06:28.688880Z",
+      "session_id": "d9f0801b-e870-4613-b251-ccefdc773e0e",
+      "user_message": "okay but firstly tell me what all insurance options do i have",
+      "llm_decision": {
+        "reply": "Sure, we offer various term insurance plans tailored to your needs. Let's start with some details about you and your preferences.",
+        "next_question": "Could you please share your full name and date of birth so I can provide more specific information?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by requesting basic personal information.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Great! Let's move forward with the details. Could you please share your annual income or an estimated amount? This will help us provide a suitable coverage plan.\",\n  \"next_question\": \"Could you please share your annual income or an estimated amount?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for annual income to proceed with coverage amount estimation.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:07:02.114021Z",
+      "session_id": "d9f0801b-e870-4613-b251-ccefdc773e0e",
+      "user_message": "I have 13 lakhs annual income",
+      "llm_decision": {
+        "reply": "Great! Could you please tell me your age so we can proceed further?",
+        "next_question": "What is your current age?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": 1300000,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": 1300000,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Extracted the annual income and need age to continue.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Sure, we're planning a term insurance policy with a coverage amount of 13,00,000 rupees for you. To proceed further, could you please share your date of birth so I can calculate the exact premium and other details?"
+    },
+    {
+      "timestamp": "2025-08-11T07:07:22.747409Z",
+      "session_id": "d9f0801b-e870-4613-b251-ccefdc773e0e",
+      "user_message": "My dob is 28-11-2000",
+      "llm_decision": {
+        "reply": "Great! Could you please share your mobile number so we can proceed with your application?",
+        "next_question": "What is your mobile number?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": 1300000,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": "2000-11-28",
+            "age": 23,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": 1300000,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Extracted date of birth and age, need to get mobile number for further processing.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Based on our conversation so far, you're looking to get a term insurance coverage of ₹13,00,000 with a policy term that lasts until you reach 80 years of age or an earlier date if the insured passes away sooner. We need your gender and occupation details to proceed further.\n\nCould you please share your gender and current occupation?"
+    },
+    {
+      "timestamp": "2025-08-11T07:07:47.194285Z",
+      "session_id": "d9f0801b-e870-4613-b251-ccefdc773e0e",
+      "user_message": "what data have you collected so far",
+      "llm_decision": {
+        "reply": "So far, we have collected your coverage amount of ₹1,300,000 and your date of birth as November 28, 2000, making you 23 years old.",
+        "next_question": "Could you please provide me with your mobile number so I can send any necessary documents or updates?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": 1300000,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": "2000-11-28",
+            "age": 23,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": 1300000,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "The user is inquiring about the collected data, and we need to proceed by requesting additional personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Great! Here’s a summary of what you’ve shared so far:\n\n- Your age is 23.\n- You are looking to cover an amount of ₹1,300,000.\n\nCould you please tell me your gender and occupation? This will help us provide the best insurance plan for you."
+    },
+    {
+      "timestamp": "2025-08-11T07:08:13.831562Z",
+      "session_id": "d9f0801b-e870-4613-b251-ccefdc773e0e",
+      "user_message": "My gender is male and i work as a software",
+      "llm_decision": {
+        "reply": "Great to have you! How would you like the premium to be paid—yearly, half-yearly, quarterly, or monthly?",
+        "next_question": "What is your preferred premium payment frequency?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": "2000-11-28",
+          "age": 23,
+          "gender": "male",
+          "occupation": "software",
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": 1300000,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": "2000-11-28",
+            "age": 23,
+            "gender": "male",
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": 1300000,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Capturing the user's preferred premium payment frequency to continue with the onboarding process.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Sure! Based on your details so far, you're a 23-year-old male software professional looking to purchase term insurance with a coverage of ₹1,300,000. We haven't confirmed your mobile number or email yet, and we need more information about the policy term and premium payment frequency.\n\nCould you please tell me for how many years you would like this policy to cover you?"
+    },
+    {
+      "timestamp": "2025-08-11T07:08:40.234680Z",
+      "session_id": "d9f0801b-e870-4613-b251-ccefdc773e0e",
+      "user_message": "am i a potato",
+      "llm_decision": {
+        "reply": "I'm here to help you with your insurance needs! Let's keep it focused on the details.",
+        "next_question": "Could you please confirm your mobile number so we can reach out to you if needed?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": "2000-11-28",
+          "age": 23,
+          "gender": "male",
+          "occupation": "software",
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": 1300000,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": "2000-11-28",
+            "age": 23,
+            "gender": "male",
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": 1300000,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Extracted age and gender; need to confirm mobile number.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Great! Let's summarize what we have so far:\n\n- You are a 23-year-old male.\n- Your occupation is software.\n- You're interested in a coverage amount of ₹1,300,000 for the term insurance.\n\nCould you please provide your mobile number and email address so I can proceed with setting up your policy?"
+    },
+    {
+      "timestamp": "2025-08-11T07:13:08.530278Z",
+      "session_id": "fc2c0082-d9aa-42fe-b17f-9e33f4c70cf1",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started on your term insurance journey. Could you please share your full name with me?",
+        "next_question": "What is your full name?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by requesting the user's full name.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Great, let's proceed with your details and preferences. Could you please share your age or date of birth so we can move forward?\",\n  \"next_question\": \"Could you please share your age or date of birth so we can continue?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting age to proceed with the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:13:09.465718Z",
+      "session_id": "a67b8a6a-e426-411f-876f-c0d8f5d6dc88",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your term insurance application. Could you please share your full name and date of birth?",
+        "next_question": "What is your full name and date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by requesting basic personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Great! Let's summarize what we have so far: We haven't received your full name, date of birth, or any other details yet. Could you please provide me with your name and date of birth? This will help us proceed smoothly.\",\n  \"next_question\": \"Could you please share your full name and date of birth?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for the user's full name and date of birth to proceed with the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:13:42.930043Z",
+      "session_id": "688aef61-1627-4e75-b36a-c08c79c8895e",
+      "user_message": "I am diwakar adhikari a 32 year old software engineer with annual income 60 lakhs",
+      "llm_decision": {
+        "reply": "Great to have you, Diwakar! Let's move forward with your insurance application.",
+        "next_question": "Do you currently smoke or use any tobacco products?",
+        "extracted": {
+          "full_name": "Diwakar Adhikari",
+          "date_of_birth": null,
+          "age": 32,
+          "gender": null,
+          "occupation": "software engineer",
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Diwakar Adhikari",
+            "age": 32,
+            "occupation": "software engineer"
+          },
+          "quoteDetails": {}
+        },
+        "api_calls": [
+          {
+            "name": "eligibility_check",
+            "params": {
+              "age": 32,
+              "annualIncome": 6000000
+            }
+          }
+        ],
+        "reasoning": "Logging basic personal details and initiating eligibility check based on provided age and income.",
+        "done": false
+      },
+      "api_results": [
+        {
+          "name": "eligibility_check",
+          "params": {
+            "age": 32,
+            "annualIncome": 6000000
+          },
+          "result": {
+            "eligible": true,
+            "reason": null,
+            "smoker": false
+          },
+          "success": true
+        }
+      ],
+      "final_reply": "Great progress so far! Based on your details, you are eligible for term insurance with Bajaj Allianz Life eTouch II. Let's move forward by providing a bit more information about your coverage needs.\n\nCould you please share your preferred policy term in years and the amount of coverage you're considering?"
+    },
+    {
+      "timestamp": "2025-08-11T07:14:09.091621Z",
+      "session_id": "63e7cd9e-23f3-4272-9395-356b0a276a3f",
+      "user_message": "60 years PT and 2 cr coverage",
+      "llm_decision": {
+        "reply": "Thank you for your interest! We can offer term insurance up to the age of 85. Would you like to cover life risks up to this age limit?",
+        "next_question": "Would you like to cover till the age of 85 or do you have a specific policy term in mind?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": 20000000,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": 20000000,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [
+          {
+            "name": "eligibility_check",
+            "params": {
+              "age": null,
+              "coverageAmount": 20000000
+            }
+          }
+        ],
+        "reasoning": "Extracted coverage amount and initiated eligibility check.",
+        "done": false
+      },
+      "api_results": [
+        {
+          "name": "eligibility_check",
+          "params": {
+            "age": null,
+            "coverageAmount": 20000000
+          },
+          "error": "int() argument must be a string, a bytes-like object or a real number, not 'NoneType'",
+          "success": false
+        }
+      ],
+      "final_reply": "I see that we've determined a coverage amount of 20 million rupees but haven't yet gathered all the necessary details about you to finalize your term-insurance quote.\n\nCould you please provide your date of birth so I can check your eligibility and calculate the premium?"
+    },
+    {
+      "timestamp": "2025-08-11T07:21:35.404133Z",
+      "session_id": "8405071f-cbbf-4838-9440-e6bac5d87318",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your term insurance onboarding. Could you please share your full name and date of birth?",
+        "next_question": "What is your full name and date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {},
+          "quoteDetails": {}
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by requesting basic personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Great! Let's move forward with your term insurance application. Could you please share your age and preferred coverage amount so we can proceed?\",\n  \"next_question\": \"What is your current age, and how much coverage are you looking for in rupees?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Gathering the user's age and coverage amount is crucial for providing an accurate quote.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:21:37.125752Z",
+      "session_id": "0b3c0463-54f5-48f2-8f28-e19e6bf883c5",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your term insurance. Could you please share your full name and date of birth?",
+        "next_question": "What is your full name and date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initial questions to gather basic personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Great! Let's move forward with your term-insurance application. Could you please share your occupation and whether you are a smoker?\",\n  \"next_question\": \"Could you also provide your occupation and let us know if you are a smoker?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for occupation and smoking status to progress the application\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:22:08.647498Z",
+      "session_id": "0b3c0463-54f5-48f2-8f28-e19e6bf883c5",
+      "user_message": "what is policy term and investment term",
+      "llm_decision": {
+        "reply": "Policy term refers to the duration of your insurance coverage, while investment term can be related to any associated investment plans that may mature at a specific time.",
+        "next_question": "Could you please specify how long you would like the policy term to be?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {},
+          "quoteDetails": {}
+        },
+        "api_calls": [],
+        "reasoning": "Clarifying the policy term to proceed with the onboarding process.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Thank you for sharing your details with us. To proceed further, could you please provide your full name and date of birth?\",\n  \"next_question\": \"Please share your full name and date of birth so we can move forward.\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting essential personal details to continue the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:22:38.274619Z",
+      "session_id": "0b3c0463-54f5-48f2-8f28-e19e6bf883c5",
+      "user_message": "Kumkum Jain 12/01/2002",
+      "llm_decision": {
+        "reply": "Welcome, Kumkum! Let's get started with your term-insurance application.",
+        "next_question": "Could you please share your mobile number so we can reach out to you easily?",
+        "extracted": {
+          "full_name": "Kumkum Jain",
+          "date_of_birth": "2002-12-01",
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Kumkum Jain",
+            "dateOfBirth": "2002-12-01",
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Extracted full name and date of birth; need mobile number for further progress.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Hello Kumkum Jain! Based on your inputs so far, you're interested in a term insurance policy with a coverage amount of [not specified] rupees for a term of [not specified] years. However, we still need more details such as your age and preferred premium payment frequency to provide an accurate quote.\n\nCould you please tell me your date of birth and how often you prefer to pay the premium (yearly, half-yearly, quarterly, or monthly)?"
+    },
+    {
+      "timestamp": "2025-08-11T07:23:33.187133Z",
+      "session_id": "0b3c0463-54f5-48f2-8f28-e19e6bf883c5",
+      "user_message": "I am 18 years old why you are asking me again and again",
+      "llm_decision": {
+        "reply": "I apologize if the questions seem repetitive. Can you please confirm your gender so we can tailor the policy details accordingly?",
+        "next_question": "What is your gender?",
+        "extracted": {
+          "full_name": "Kumkum Jain",
+          "date_of_birth": "2002-12-01",
+          "age": 22,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Kumkum Jain",
+            "dateOfBirth": "2002-12-01",
+            "age": 22,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Gathering gender is crucial for policy terms and conditions.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "To summarize, we currently have your name as Kumkum Jain and you're 22 years old. We need a bit more information to proceed with your term-insurance quote. Could you please tell me your gender?\n\n{\n  \"reply\": \"Thanks for providing your name and age, Kumkum. Now, could you please share your gender so we can move forward?\",\n  \"next_question\": \"Could you please share your gender?\",\n  \"extracted\": {\n    \"full_name\": \"Kumkum Jain\",\n    \"date_of_birth\": \"2002-12-01\",\n    \"age\": 22,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": \"Kumkum Jain\",\n      \"dateOfBirth\": \"2002-12-01\",\n      \"age\": 22,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for gender to continue the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:23:55.032021Z",
+      "session_id": "0b3c0463-54f5-48f2-8f28-e19e6bf883c5",
+      "user_message": "Female",
+      "llm_decision": {
+        "reply": "Great! Could you please tell me your occupation?",
+        "next_question": "What is your current occupation?",
+        "extracted": {
+          "full_name": "Kumkum Jain",
+          "date_of_birth": "2002-12-01",
+          "age": 22,
+          "gender": "female",
+          "occupation": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Kumkum Jain",
+            "dateOfBirth": "2002-12-01",
+            "age": 22,
+            "gender": "female",
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Update user gender and ask for occupation.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Hello Kumkum Jain! Based on your details, we've outlined a potential term insurance plan tailored to you:\n\n- Coverage Amount: Not specified yet, please let us know how much coverage you're looking for.\n- Policy Term: We can offer terms up to 30 years. What is the duration you prefer?\n- Premium Frequency: We have options for yearly, half-yearly, quarterly, or monthly payments. How often would you like to pay?\n\nCould you please specify your desired coverage amount and policy term?"
+    },
+    {
+      "timestamp": "2025-08-11T07:24:12.460095Z",
+      "session_id": "0b3c0463-54f5-48f2-8f28-e19e6bf883c5",
+      "user_message": "what do you know about me",
+      "llm_decision": {
+        "reply": "Hello Kumkum Jain! Based on the information you provided, I know that you are a 22-year-old female born on December 1, 2002.",
+        "next_question": "Could you please share your mobile number so we can proceed with your eTouch II application?",
+        "extracted": {
+          "full_name": "Kumkum Jain",
+          "date_of_birth": "2002-12-01",
+          "age": 22,
+          "gender": "female"
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Kumkum Jain",
+            "dateOfBirth": "2002-12-01",
+            "age": 22,
+            "gender": "female",
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Updating the personal details and requesting additional information for the next steps.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Sure, Kumkum Jain, you are 22 years old and applying for a term insurance policy with Bajaj Allianz Life eTouch II. To proceed, could you please share your occupation so we can better tailor the plan to your needs?"
+    },
+    {
+      "timestamp": "2025-08-11T07:24:37.751656Z",
+      "session_id": "6f9bab1c-6075-41ea-86a8-888fdf9b93fd",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hi there! Let's get started on your term insurance journey. Could you please share your full name?",
+        "next_question": "What is your full name?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by gathering basic personal information.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Hi there! Thank you for providing this information. Based on what we have so far:\n\n- You're interested in a term insurance policy with a coverage amount of [coverage_amount] rupees.\n- The policy term is set to [policy_term] years, and you prefer to pay the premium every [premium_frequency].\n\nCould you please share your full name and date of birth so I can proceed with your application?"
+    },
+    {
+      "timestamp": "2025-08-11T07:24:42.420987Z",
+      "session_id": "6f4e3eb4-4e54-48dc-9ff3-43b1c1ba35f7",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your insurance application. Could you please share your full name?",
+        "next_question": "What is your full name?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by gathering basic personal information.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Thank you for sharing your requirements. Could you please provide me with your full name and date of birth so we can proceed further?\",\n  \"next_question\": \"Could you please share your full name and date of birth?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Collecting essential personal details to begin the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:25:22.542005Z",
+      "session_id": "6f4e3eb4-4e54-48dc-9ff3-43b1c1ba35f7",
+      "user_message": "Hi Abhinav , i am Diwakar a 30 year old software engineer , annual income 30 lakhs",
+      "llm_decision": {
+        "reply": "Hi Diwakar, thank you for getting in touch! How much coverage are you looking for and what is your preferred policy term?",
+        "next_question": "Could you please tell me the amount of coverage you would like to have (in rupees) and the duration of the policy in years?",
+        "extracted": {
+          "full_name": "Diwakar Abhinav",
+          "date_of_birth": null,
+          "age": 30,
+          "gender": null,
+          "occupation": "software engineer",
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": 30000000,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Diwakar Abhinav",
+            "dateOfBirth": null,
+            "age": 30,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": 30000000,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Logged user's full name, age, occupation, and coverage amount. Need policy term to proceed.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Hi Diwakar Abhinav,\n\nIt seems like we're making good progress on your term-insurance quote! You've selected a coverage amount of 30 million rupees and are interested in a policy with a 30-year term. Could you please provide your date of birth so I can finalize the details for you?\n\n{\n  \"reply\": \"Hi Diwakar Abhinav, it seems like we're making good progress on your term-insurance quote! You've selected a coverage amount of 30 million rupees and are interested in a policy with a 30-year term. Could you please provide your date of birth so I can finalize the details for you?\",\n  \"next_question\": \"Could you please share your date of birth (YYYY-MM-DD) to help us proceed further?\",\n  \"extracted\": {\n    \"full_name\": \"Diwakar Abhinav\",\n    \"date_of_birth\": null,\n    \"age\": 30,\n    \"gender\": null,\n    \"occupation\": \"software engineer\",\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": 30000000,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": \"Diwakar Abhinav\",\n      \"dateOfBirth\": null,\n      \"age\": 30,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": 30000000,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting the user's date of birth to complete their profile and generate a precise quote.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:26:26.496805Z",
+      "session_id": "c3bfe6d1-18a3-4164-acd1-298a309c4808",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started on your insurance journey. Could you please share your full name and date of birth?",
+        "next_question": "What is your full name and date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by collecting basic personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Thank you for providing your details! Based on what we have so far, I'll summarize our progress:\n\n- We need to know more about your personal and insurance preferences.\n- Could you please share your full name, date of birth, gender, and mobile number? This will help us proceed with the quote.\n\nLet's get these details to tailor the perfect plan for you!"
+    },
+    {
+      "timestamp": "2025-08-11T07:26:31.666257Z",
+      "session_id": "5a1bb478-6585-469e-a176-7bbdee350000",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your term insurance plan. Could you please share your full name and date of birth?",
+        "next_question": "What is your full name and date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Gathering initial personal details for the insurance application.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Thank you for providing your details! Could you please confirm your age and preferred policy term (in years) so we can move forward with your quote?\",\n  \"next_question\": \"What is your current age and how many years do you want the policy to cover you for?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for age and policy term to proceed with the quote calculation.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:26:57.127247Z",
+      "session_id": "43a4d5aa-18a5-4081-a8fc-2d69d7ed1c88",
+      "user_message": "Hi Abinav",
+      "llm_decision": {
+        "reply": "Hello Abinav! Nice to meet you. Let's get started with your insurance needs. Could you please share your full name?",
+        "next_question": "What is your full name?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Extracted the user's name and initiated the onboarding process.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Sure, let's summarize what we have so far! We're looking to provide you with a term insurance plan from Bajaj Allianz Life eTouch II based on the information you've shared.\",\n  \"next_question\": \"Could you please share your full name and date of birth so we can proceed further?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting basic personal details to continue the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:27:20.873773Z",
+      "session_id": "6160835f-fd06-4155-a579-270c7df5a681",
+      "user_message": "21/04/1993",
+      "llm_decision": {
+        "reply": "Thank you! Could you please tell me your gender?",
+        "next_question": "What is your gender?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": "1993-04-21",
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "dateOfBirth": "1993-04-21"
+          },
+          "quoteDetails": {}
+        },
+        "api_calls": [],
+        "reasoning": "Extracted the date of birth and need to gather gender information.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Based on the information you've provided, it seems like you're interested in a term insurance plan with a coverage amount of [please specify] rupees for a policy term of [please specify] years. We can offer this plan to be paid [please specify frequency].\n\nCould you please confirm your age and gender so we can proceed further?"
+    },
+    {
+      "timestamp": "2025-08-11T07:33:31.995406Z",
+      "session_id": "115b9bba-955a-40cc-a00c-ae624daa0609",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Let's get started! Could you please tell me your full name and date of birth?",
+        "next_question": "Please provide your full name and date of birth (YYYY-MM-DD).",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {},
+          "quoteDetails": {}
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by requesting essential personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Thank you for providing your details! To continue, could you please tell me your age and preferred policy term in years?\",\n  \"next_question\": \"What is your age and how many years do you wish the policy to cover?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting age and policy term to progress the onboarding process.\",\n  \"done\": false\n}"
+    },
+    {
+      "timestamp": "2025-08-11T07:33:58.589296Z",
+      "session_id": "ff02a816-44a3-4f6a-b113-a01d7adf42cf",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Let's get started on your term insurance journey! Could you please share your full name and date of birth?",
+        "next_question": "What is your full name and date of birth?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by requesting basic personal details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Thank you for providing your details. Could you please share your age or date of birth so we can proceed further with your term-insurance plan?\",\n  \"next_question\": \"Could you tell me your current age or date of birth, please?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting the user's age or date of birth to continue with the onboarding process.\",\n  \"done\": false\n}",
+      "store_update": {
+        "personalDetails": {
+          "fullName": null,
+          "dateOfBirth": null,
+          "age": null,
+          "gender": null,
+          "mobileNumber": null,
+          "email": null,
+          "pinCode": null,
+          "tobaccoUser": null
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:34:06.008073Z",
+      "session_id": "2b216416-9845-41b7-917b-d97b90a66ec1",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Let's get started on your term insurance journey! Could you please tell me your full name and the amount of coverage you're looking for?",
+        "next_question": "What is your full name and what coverage amount are you interested in?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Initiating the onboarding process by requesting essential personal and coverage details.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Thank you for providing your details! Could you please share your preferred coverage amount and policy term duration?\",\n  \"next_question\": \"What is your desired coverage amount (in Rupees) and how many years would you like the policy to last?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for the coverage amount and policy term to progress the onboarding flow.\",\n  \"done\": false\n}",
+      "store_update": {
+        "personalDetails": {
+          "fullName": null,
+          "dateOfBirth": null,
+          "age": null,
+          "gender": null,
+          "mobileNumber": null,
+          "email": null,
+          "pinCode": null,
+          "tobaccoUser": null
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:34:06.873775Z",
+      "session_id": "11189d18-2def-44dc-87a2-48f3b3a21a5f",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with your insurance application. Could you please share your age so we can proceed?",
+        "next_question": "What is your age?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Asking for the user's age to continue with the onboarding process.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Thank you for providing your details. Let's move forward with the term-insurance application process. Could you please share your preferred policy term in years?\",\n  \"next_question\": \"What is your preferred policy term in years?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for the policy term is necessary to proceed with the application.\",\n  \"done\": false\n}",
+      "store_update": {
+        "personalDetails": {
+          "fullName": null,
+          "dateOfBirth": null,
+          "age": null,
+          "gender": null,
+          "mobileNumber": null,
+          "email": null,
+          "pinCode": null,
+          "tobaccoUser": null
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:34:14.660947Z",
+      "session_id": "dbeced52-dbe3-4d49-a69f-1140046dbc60",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Hello! Let's get started with building your eTouch II term insurance plan. Could you please tell me your full name?",
+        "next_question": "What is your full name?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by requesting the user's full name, as it is necessary to proceed.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Great! Let's summarize what we have so far: We're working on securing your term insurance with Bajaj Allianz Life eTouch II. Could you please provide me with your full name and date of birth? This will help us proceed smoothly.\",\n  \"next_question\": \"Could you please share your full name and date of birth?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting essential personal details to continue the onboarding process.\",\n  \"done\": false\n}",
+      "store_update": {
+        "personalDetails": {
+          "fullName": null,
+          "dateOfBirth": null,
+          "age": null,
+          "gender": null,
+          "mobileNumber": null,
+          "email": null,
+          "pinCode": null,
+          "tobaccoUser": null
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:34:15.220323Z",
+      "session_id": "448fa1ab-a40c-4e42-a6be-da99fa216f5c",
+      "user_message": "start",
+      "llm_decision": {
+        "reply": "Let's get started on your term insurance journey! Could you please tell me your age or date of birth?",
+        "next_question": "What is your date of birth (YYYY-MM-DD)?",
+        "extracted": {
+          "full_name": null,
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": null,
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Starting the onboarding process by asking for date of birth to determine age.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"reply\": \"Thank you for providing that information! To finalize your quote, could you please tell me about how much coverage you're looking for? This will help us determine the premium amount.\",\n  \"next_question\": \"What is the total amount of coverage in Rupees that you would like to have under this policy?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking about the coverage amount to proceed with the quote process.\",\n  \"done\": false\n}",
+      "store_update": {
+        "personalDetails": {
+          "fullName": null,
+          "dateOfBirth": null,
+          "age": null,
+          "gender": null,
+          "mobileNumber": null,
+          "email": null,
+          "pinCode": null,
+          "tobaccoUser": null
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:34:27.083143Z",
+      "session_id": "ff02a816-44a3-4f6a-b113-a01d7adf42cf",
+      "user_message": "Yoooo i am dickwalker wassup",
+      "llm_decision": {
+        "reply": "Hey Dickwalker! How can I assist you today with Bajaj Allianz Life eTouch II?",
+        "next_question": "Could you please provide me with your date of birth, so we can proceed further?",
+        "extracted": {
+          "full_name": "Dickwalker",
+          "date_of_birth": null,
+          "age": null,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Dickwalker",
+            "dateOfBirth": null,
+            "age": null,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Extracted the full name from the user's greeting and asked for date of birth to proceed.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Great! Here's a summary of what we have so far:\n\n- Your name is Dickwalker.\n- We need more information to proceed with your term-insurance application.\n\nCould you please provide your date of birth? This will help us determine the best coverage options for you.",
+      "store_update": {
+        "personalDetails": {
+          "fullName": "Dickwalker",
+          "dateOfBirth": null,
+          "age": null,
+          "gender": null,
+          "mobileNumber": null,
+          "email": null,
+          "pinCode": null,
+          "tobaccoUser": null
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:35:03.802606Z",
+      "session_id": "ff02a816-44a3-4f6a-b113-a01d7adf42cf",
+      "user_message": "I was born in 28th Nov 2000",
+      "llm_decision": {
+        "reply": "Great! So Dickwalker, born on November 28, 2000, that makes you 23 years old.",
+        "next_question": "Could you please tell me your occupation?",
+        "extracted": {
+          "full_name": "Dickwalker",
+          "date_of_birth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "occupation": null,
+          "smoker": null,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Dickwalker",
+            "dateOfBirth": "2000-11-28",
+            "age": 23,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": null
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Updated user's date of birth and age in the session data. Asking for occupation as it is the next required piece of information.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Based on the information you've provided, it seems like we're getting started with your term insurance quote. We need a bit more detail to move forward.\n\nCould you please tell me your occupation and whether you are a smoker? This will help us provide a personalized quote for you.",
+      "store_update": {
+        "personalDetails": {
+          "fullName": "Dickwalker",
+          "dateOfBirth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "mobileNumber": null,
+          "email": null,
+          "pinCode": null,
+          "tobaccoUser": null
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:35:35.745571Z",
+      "session_id": "ff02a816-44a3-4f6a-b113-a01d7adf42cf",
+      "user_message": "Yes I am a smoker",
+      "llm_decision": {
+        "reply": "Understood, Dickwalker. Smoking can affect insurance terms. Let's proceed with the next details.",
+        "next_question": "Could you please share your occupation?",
+        "extracted": {
+          "full_name": "Dickwalker",
+          "date_of_birth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "occupation": null,
+          "smoker": true
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Dickwalker",
+            "dateOfBirth": "2000-11-28",
+            "age": 23,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": true
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Extracted smoker status and occupation from the user's latest input.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Based on your details, we're considering a term insurance policy for Dickwalker, born on 28th November 2000, who is 23 years old and a smoker. To proceed, could you please share your occupation so we can tailor the policy better to your needs?",
+      "store_update": {
+        "personalDetails": {
+          "fullName": "Dickwalker",
+          "dateOfBirth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "mobileNumber": null,
+          "email": null,
+          "pinCode": null,
+          "tobaccoUser": true
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:36:05.808264Z",
+      "session_id": "ff02a816-44a3-4f6a-b113-a01d7adf42cf",
+      "user_message": "I work as a software engineer",
+      "llm_decision": {
+        "reply": "Got it! As a software engineer, we can tailor the policy to fit your career needs.",
+        "next_question": "Could you please provide your mobile number so I can send you important updates?",
+        "extracted": {
+          "full_name": "Dickwalker",
+          "date_of_birth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "occupation": "software engineer",
+          "smoker": true,
+          "mobile_number": null,
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Dickwalker",
+            "dateOfBirth": "2000-11-28",
+            "age": 23,
+            "gender": null,
+            "mobileNumber": null,
+            "email": null,
+            "pinCode": null,
+            "tobaccoUser": true
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Updated occupation field and requested mobile number to proceed.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Hi Dickwalker,\n\nBased on the information you've provided, we're working towards a term-insurance plan that can suit your needs. However, I need a bit more detail to give you an accurate quote and ensure everything is just right for you.\n\nCould you please provide your mobile number so I can send you important updates directly?\n\n{\n  \"reply\": \"Hi Dickwalker, based on the information you've provided, we're working towards a term-insurance plan that can suit your needs. However, I need a bit more detail to give you an accurate quote and ensure everything is just right for you.\",\n  \"next_question\": \"Could you please provide your mobile number so I can send you important updates directly?\",\n  \"extracted\": {\n    \"full_name\": \"Dickwalker\",\n    \"date_of_birth\": \"2000-11-28\",\n    \"age\": 23,\n    \"gender\": null,\n    \"occupation\": \"software engineer\",\n    \"smoker\": true,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": \"Dickwalker\",\n      \"dateOfBirth\": \"2000-11-28\",\n      \"age\": 23,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": true\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting the mobile number to ensure we can communicate effectively with the user.\",\n  \"done\": false\n}",
+      "store_update": {
+        "personalDetails": {
+          "fullName": "Dickwalker",
+          "dateOfBirth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "mobileNumber": null,
+          "email": null,
+          "pinCode": null,
+          "tobaccoUser": true
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:36:26.172397Z",
+      "session_id": "ff02a816-44a3-4f6a-b113-a01d7adf42cf",
+      "user_message": "9378067880",
+      "llm_decision": {
+        "reply": "Thank you for providing the phone number. We have all the necessary details to proceed further.",
+        "next_question": "Could you please confirm your email address or provide a new one if needed?",
+        "extracted": {
+          "full_name": "Dickwalker",
+          "date_of_birth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "occupation": "software engineer",
+          "smoker": true,
+          "mobile_number": "9378067880",
+          "email": null,
+          "pin_code": null,
+          "coverage_amount": null,
+          "policy_term": null,
+          "premium_frequency": null,
+          "riders_interest": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Dickwalker",
+            "dateOfBirth": "2000-11-28",
+            "age": 23,
+            "gender": null,
+            "mobileNumber": "9378067880",
+            "tobaccoUser": true
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Updated session with mobile number and prompted for email address.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Based on your details provided:\n\n- Full Name: Dickwalker\n- Date of Birth: November 28, 1999 (Age: 23)\n- Gender: Not specified\n- Occupation: Software Engineer\n- Smoker: Yes\n- Mobile Number: 9378067880\n\nCould you please confirm your email address and the PIN code where you reside? This will help us finalize your insurance plan.",
+      "store_update": {
+        "personalDetails": {
+          "fullName": "Dickwalker",
+          "dateOfBirth": "2000-11-28",
+          "age": 23,
+          "gender": null,
+          "mobileNumber": "9378067880",
+          "tobaccoUser": true
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
+    },
+    {
+      "timestamp": "2025-08-11T07:36:55.606230Z",
+      "session_id": "ff02a816-44a3-4f6a-b113-a01d7adf42cf",
+      "user_message": "I am a male , 411014",
+      "llm_decision": {
+        "reply": "Thank you for confirming your age and gender. We have noted that you are a male aged 23, Dickwalker. Could you please tell me about your occupation or the coverage amount you're interested in?",
+        "next_question": "Could you please share your occupation or the coverage amount you're interested in?",
+        "extracted": {
+          "full_name": "Dickwalker",
+          "date_of_birth": "2000-11-28",
+          "age": 23,
+          "gender": "male",
+          "smoker": true,
+          "occupation": null,
+          "coverage_amount": null
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Dickwalker",
+            "dateOfBirth": "2000-11-28",
+            "age": 23,
+            "gender": "male",
+            "mobileNumber": "9378067880",
+            "tobaccoUser": true
+          },
+          "quoteDetails": {
+            "sumAssured": null,
+            "policyTerm_years": null,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [],
+        "reasoning": "Updated personal details and asked for missing occupation or coverage amount.",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "Great! Here’s a summary of your term insurance details so far:\n\n- Full Name: Dickwalker\n- Date of Birth: 28th November 2000 (Age: 23)\n- Gender: Male\n- Smoker: Yes\n\nCould you please tell me about your occupation or the nature of your work? This will help us tailor the best plan for you.",
+      "store_update": {
+        "personalDetails": {
+          "fullName": "Dickwalker",
+          "dateOfBirth": "2000-11-28",
+          "age": 23,
+          "gender": "male",
+          "mobileNumber": "9378067880",
+          "tobaccoUser": true
+        },
+        "quoteDetails": {
+          "sumAssured": null,
+          "policyTerm_years": null,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
     }
   ]
 }

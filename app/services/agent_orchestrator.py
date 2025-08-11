@@ -128,7 +128,13 @@ class AgentOrchestrator:
         # 3) Compose final answer via LLM with results
         final_reply = await self._compose_final_reply(session, user_message, llm_json, api_results)
 
-        # 4) Persist turn
+        # 4) Update session with store mapping for frontend
+        store_update = llm_json.get("store_update", {})
+        if store_update:
+            # Update session with frontend data structure
+            session.update_frontend_data(store_update)
+        
+        # 5) Persist turn
         # Persist both conversation and store update mapping
         await self._persist_turn(
             session.session_id,
@@ -136,6 +142,7 @@ class AgentOrchestrator:
             llm_json,
             api_results,
             final_reply,
+            store_update,
         )
 
         return {
@@ -151,10 +158,26 @@ class AgentOrchestrator:
         }
 
     async def _ask_llm_decide(self, session: SessionData, user_message: str) -> Dict[str, Any]:
+        # Build comprehensive context with conversation history and extracted data
+        conversation_context = []
+        recent_turns = getattr(session, 'conversation_history', [])[-5:]  # Last 5 turns
+        for turn in recent_turns:
+            if hasattr(turn, 'user_message') and hasattr(turn, 'bot_response'):
+                conversation_context.append({
+                    "user": turn.user_message,
+                    "agent": turn.bot_response
+                })
+        
         prompt = (
             f"ROLE: Insurance conversation orchestrator. Return JSON only.\n\n"
-            f"User message: {user_message}\n\n"
-            f"Session known data: {json.dumps(session.customer_data, ensure_ascii=False)}\n"
+            f"IMPORTANT: DO NOT ask for information we already have. Check session data first!\n\n"
+            f"Current user message: {user_message}\n\n"
+            f"ALREADY KNOWN DATA (do NOT re-ask for these): {json.dumps(session.customer_data, ensure_ascii=False)}\n\n"
+            f"Recent conversation history: {json.dumps(conversation_context, ensure_ascii=False)}\n\n"
+            f"RULES:\n"
+            f"1. If data is already in session, use it instead of asking again\n"
+            f"2. Ask only for missing information needed for next step\n"
+            f"3. Reference known data in your reply to show you remember\n"
         )
         logger.info(f"[Agent] Asking LLM for decisions | session={session.session_id}")
         raw = await ollama_service.generate_response(prompt, MASTER_SYSTEM_PROMPT)
@@ -297,6 +320,7 @@ class AgentOrchestrator:
         llm_json: Dict[str, Any],
         api_results: List[Dict[str, Any]],
         final_reply: str,
+        store_update: Dict[str, Any],
     ) -> None:
         """Append conversation turn to data.json persistently."""
         record = {
@@ -306,6 +330,7 @@ class AgentOrchestrator:
             "llm_decision": llm_json,
             "api_results": api_results,
             "final_reply": final_reply,
+            "store_update": store_update,  # Include frontend data mapping
         }
 
         path = "data.json"
