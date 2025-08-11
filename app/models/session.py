@@ -8,9 +8,12 @@ import uuid
 class SessionState(str, Enum):
     ONBOARDING = "onboarding"
     ELIGIBILITY_CHECK = "eligibility_check"
-    QUOTE_GENERATION = "quote_generation" 
-    PAYMENT_REDIRECT = "payment_redirect"
+    PRODUCT_SELECTION = "product_selection"
+    QUOTE_GENERATION = "quote_generation"
+    ADDON_RIDERS = "addon_riders" 
+    PAYMENT_INITIATED = "payment_initiated"
     DOCUMENT_COLLECTION = "document_collection"
+    POLICY_ISSUED = "policy_issued"
 
 
 class ConversationTurn(BaseModel):
@@ -47,6 +50,23 @@ class SessionData(BaseModel):
     
     # Payment and transaction data
     payment_data: Dict[str, Any] = {}
+    
+    # Form completion tracking
+    form_completion: Dict[str, Any] = {
+        "personal_details": {"completed": False, "completion_percentage": 0},
+        "insurance_requirements": {"completed": False, "completion_percentage": 0},
+        "rider_selection": {"completed": False, "completion_percentage": 0},
+        "payment_details": {"completed": False, "completion_percentage": 0}
+    }
+    
+    # State transition history
+    state_transitions: List[Dict[str, Any]] = []
+    
+    # Selected insurance product details
+    selected_product: Dict[str, Any] = {}
+    
+    # Rider selections
+    selected_riders: List[Dict[str, Any]] = []
     
     # System metadata
     metadata: Dict[str, Any] = {}
@@ -128,14 +148,56 @@ class SessionData(BaseModel):
         collected = len([field for field in required_fields 
                         if field in self.customer_data and self.customer_data[field] is not None])
         return int((collected / len(required_fields)) * 100)
+    
+    def transition_state(self, new_state: SessionState, context: Dict[str, Any] = None):
+        """Transition to a new state with validation and logging."""
+        old_state = self.current_state
+        
+        # Log state transition
+        transition = {
+            "timestamp": datetime.now().isoformat(),
+            "from_state": old_state.value,
+            "to_state": new_state.value,
+            "context": context or {}
+        }
+        self.state_transitions.append(transition)
+        
+        # Update current state
+        self.current_state = new_state
+        self.updated_at = datetime.now()
+    
+    def update_form_completion(self, form_type: str, completion_data: Dict[str, Any]):
+        """Update form completion tracking."""
+        if form_type in self.form_completion:
+            self.form_completion[form_type].update(completion_data)
+            self.updated_at = datetime.now()
+    
+    def can_transition_to(self, target_state: SessionState) -> bool:
+        """Check if transition to target state is allowed."""
+        state_flow = {
+            SessionState.ONBOARDING: [SessionState.ELIGIBILITY_CHECK],
+            SessionState.ELIGIBILITY_CHECK: [SessionState.PRODUCT_SELECTION],
+            SessionState.PRODUCT_SELECTION: [SessionState.QUOTE_GENERATION],
+            SessionState.QUOTE_GENERATION: [SessionState.ADDON_RIDERS],
+            SessionState.ADDON_RIDERS: [SessionState.PAYMENT_INITIATED],
+            SessionState.PAYMENT_INITIATED: [SessionState.DOCUMENT_COLLECTION],
+            SessionState.DOCUMENT_COLLECTION: [SessionState.POLICY_ISSUED]
+        }
+        
+        allowed_transitions = state_flow.get(self.current_state, [])
+        return target_state in allowed_transitions or target_state == self.current_state
 
 
 class SessionManager:
-    """In-memory session manager. In production, use Redis or database."""
+    """JSON file-based session manager for persistent storage."""
     
     def __init__(self):
         self.sessions: Dict[str, SessionData] = {}
         self.max_sessions = 1000
+        self.sessions_dir = "sessions"
+        # Ensure sessions directory exists
+        import os
+        os.makedirs(self.sessions_dir, exist_ok=True)
     
     def create_session(self) -> SessionData:
         """Create a new session."""
@@ -145,22 +207,39 @@ class SessionManager:
         if len(self.sessions) >= self.max_sessions:
             self._cleanup_old_sessions()
         
+        # Store in memory and persist to file
         self.sessions[session.session_id] = session
+        self._persist_session(session)
         return session
     
     def get_session(self, session_id: str) -> Optional[SessionData]:
-        """Get an existing session."""
-        return self.sessions.get(session_id)
+        """Get an existing session from memory or load from file."""
+        # Try memory first
+        if session_id in self.sessions:
+            return self.sessions[session_id]
+        
+        # Try loading from file
+        session = self._load_session(session_id)
+        if session:
+            self.sessions[session_id] = session
+        return session
     
     def update_session(self, session: SessionData):
         """Update an existing session."""
         session.updated_at = datetime.now()
         self.sessions[session.session_id] = session
+        self._persist_session(session)
     
     def delete_session(self, session_id: str):
         """Delete a session."""
         if session_id in self.sessions:
             del self.sessions[session_id]
+        
+        # Also delete the file
+        import os
+        file_path = os.path.join(self.sessions_dir, f"{session_id}.json")
+        if os.path.exists(file_path):
+            os.remove(file_path)
     
     def _cleanup_old_sessions(self):
         """Remove oldest sessions when limit is reached."""
@@ -177,7 +256,58 @@ class SessionManager:
         num_to_remove = max(1, len(sorted_sessions) // 10)
         for i in range(num_to_remove):
             session_id, _ = sorted_sessions[i]
-            del self.sessions[session_id]
+            self.delete_session(session_id)
+    
+    def _persist_session(self, session: SessionData):
+        """Persist session to JSON file."""
+        import json
+        import os
+        
+        file_path = os.path.join(self.sessions_dir, f"{session.session_id}.json")
+        session_dict = session.model_dump()
+        
+        # Convert datetime objects to ISO strings for JSON serialization
+        session_dict["created_at"] = session.created_at.isoformat()
+        session_dict["updated_at"] = session.updated_at.isoformat()
+        
+        # Convert conversation history timestamps
+        for turn in session_dict.get("conversation_history", []):
+            if "timestamp" in turn:
+                turn["timestamp"] = turn["timestamp"].isoformat() if hasattr(turn["timestamp"], 'isoformat') else turn["timestamp"]
+        
+        try:
+            with open(file_path, "w", encoding="utf-8") as f:
+                json.dump(session_dict, f, indent=2, ensure_ascii=False)
+        except Exception as e:
+            print(f"Error persisting session {session.session_id}: {e}")
+    
+    def _load_session(self, session_id: str) -> Optional[SessionData]:
+        """Load session from JSON file."""
+        import json
+        import os
+        from datetime import datetime
+        
+        file_path = os.path.join(self.sessions_dir, f"{session_id}.json")
+        if not os.path.exists(file_path):
+            return None
+        
+        try:
+            with open(file_path, "r", encoding="utf-8") as f:
+                session_dict = json.load(f)
+            
+            # Convert ISO strings back to datetime objects
+            session_dict["created_at"] = datetime.fromisoformat(session_dict["created_at"])
+            session_dict["updated_at"] = datetime.fromisoformat(session_dict["updated_at"])
+            
+            # Convert conversation history timestamps
+            for turn in session_dict.get("conversation_history", []):
+                if "timestamp" in turn and isinstance(turn["timestamp"], str):
+                    turn["timestamp"] = datetime.fromisoformat(turn["timestamp"])
+            
+            return SessionData(**session_dict)
+        except Exception as e:
+            print(f"Error loading session {session_id}: {e}")
+            return None
 
 
 # Global session manager instance

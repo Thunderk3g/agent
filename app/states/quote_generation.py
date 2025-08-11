@@ -15,7 +15,8 @@ class QuoteGenerationState(BaseState):
     def __init__(self):
         super().__init__(SessionState.QUOTE_GENERATION)
         self.allowed_transitions = [
-            SessionState.PAYMENT_REDIRECT,
+            SessionState.PAYMENT_INITIATED,
+            SessionState.ADDON_RIDERS,
             SessionState.ELIGIBILITY_CHECK  # Back if parameters need adjustment
         ]
         self.required_fields = [

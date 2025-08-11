@@ -7,11 +7,6 @@ from app.config import settings
 from app.utils.logging import setup_logging, logger
 from app.api.routes import chat
 from app.api.routes import agent
-from app.states.base_state import state_registry
-from app.states.onboarding import OnboardingState
-from app.states.eligibility_check import EligibilityCheckState
-from app.states.quote_generation import QuoteGenerationState
-from app.states.payment_redirect import PaymentRedirectState
 
 
 @asynccontextmanager
@@ -23,14 +18,6 @@ async def lifespan(app: FastAPI):
     # Setup logging
     setup_logging()
     
-    # Register all states
-    logger.info("Registering application states...")
-    state_registry.register_state(OnboardingState())
-    state_registry.register_state(EligibilityCheckState())
-    state_registry.register_state(QuoteGenerationState())
-    state_registry.register_state(PaymentRedirectState())
-    
-    logger.info(f"Registered {len(state_registry.get_all_states())} states")
     
     # Check Ollama connection
     from app.services.ollama_service import ollama_service
@@ -75,6 +62,13 @@ try:
     app.include_router(documents.router)
 except Exception:
     # Documents router is optional; ignore if unavailable
+    pass
+
+try:
+    from app.api import payment
+    app.include_router(payment.router, prefix="/api")
+except Exception as e:
+    logger.warning(f"Payment router not available: {e}")
     pass
 
 # Root endpoint

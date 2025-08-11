@@ -6,7 +6,8 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from app.services.ollama_service import ollama_service
 from app.services.quote_calculator import QuoteCalculator
-from app.models.session import SessionData, session_manager
+from app.services.payment_service import payment_service, PaymentRequest, PaymentMethod
+from app.models.session import SessionData, SessionState, session_manager
 from app.utils.logging import logger
 
 
@@ -113,6 +114,9 @@ class AgentOrchestrator:
         # Merge extracted into session store for memory
         self._apply_extracted(session, llm_json.get("extracted") or {})
 
+        # Check for state transitions based on form completion
+        self._check_state_transitions(session, llm_json.get("extracted", {}))
+        
         # 2) Execute decided API calls
         api_results: List[Dict[str, Any]] = []
         for call in llm_json.get("api_calls", []) or []:
@@ -128,11 +132,22 @@ class AgentOrchestrator:
         # 3) Compose final answer via LLM with results
         final_reply = await self._compose_final_reply(session, user_message, llm_json, api_results)
 
-        # 4) Update session with store mapping for frontend
+        # 4) Update session with store mapping for frontend and persist conversation
         store_update = llm_json.get("store_update", {})
         if store_update:
             # Update session with frontend data structure
             session.update_frontend_data(store_update)
+        
+        # Add conversation turn to session history
+        session.add_conversation_turn(
+            user_message=user_message,
+            bot_response=final_reply,
+            actions_taken=[call.get("name") for call in llm_json.get("api_calls", [])],
+            data_collected=llm_json.get("extracted", {})
+        )
+        
+        # Update session in manager
+        session_manager.update_session(session)
         
         # 5) Persist turn
         # Persist both conversation and store update mapping
@@ -268,8 +283,87 @@ class AgentOrchestrator:
         reply = await ollama_service.generate_response(prompt, MASTER_SYSTEM_PROMPT, followup_context)
         return reply
 
+    def _check_state_transitions(self, session: SessionData, extracted_data: Dict[str, Any]):
+        """Check if session should transition to next state based on data completeness."""
+        current_state = session.current_state
+        
+        # Define required fields for each state transition
+        state_requirements = {
+            SessionState.ONBOARDING: ["full_name", "age", "gender", "mobile_number", "email"],
+            SessionState.ELIGIBILITY_CHECK: ["pin_code", "smoker"],
+            SessionState.PRODUCT_SELECTION: ["coverage_amount", "policy_term"],
+            SessionState.QUOTE_GENERATION: ["premium_frequency"],
+            SessionState.ADDON_RIDERS: [],  # Optional state
+            SessionState.PAYMENT_INITIATED: ["payment_method"],
+        }
+        
+        required_fields = state_requirements.get(current_state, [])
+        if not required_fields:
+            return
+        
+        # Check if all required fields are present
+        completion_percentage = session.get_completion_percentage(required_fields)
+        
+        # Update form completion tracking
+        form_type_map = {
+            SessionState.ONBOARDING: "personal_details",
+            SessionState.ELIGIBILITY_CHECK: "personal_details", 
+            SessionState.PRODUCT_SELECTION: "insurance_requirements",
+            SessionState.QUOTE_GENERATION: "insurance_requirements",
+            SessionState.ADDON_RIDERS: "rider_selection",
+            SessionState.PAYMENT_INITIATED: "payment_details"
+        }
+        
+        form_type = form_type_map.get(current_state)
+        if form_type:
+            session.update_form_completion(form_type, {
+                "completion_percentage": completion_percentage,
+                "completed": completion_percentage >= 80
+            })
+        
+        # Auto-transition if requirements are met
+        if completion_percentage >= 80:
+            next_state_map = {
+                SessionState.ONBOARDING: SessionState.ELIGIBILITY_CHECK,
+                SessionState.ELIGIBILITY_CHECK: SessionState.PRODUCT_SELECTION,
+                SessionState.PRODUCT_SELECTION: SessionState.QUOTE_GENERATION,
+                SessionState.QUOTE_GENERATION: SessionState.ADDON_RIDERS,
+                SessionState.ADDON_RIDERS: SessionState.PAYMENT_INITIATED
+            }
+            
+            next_state = next_state_map.get(current_state)
+            if next_state and session.can_transition_to(next_state):
+                session.transition_state(next_state, {
+                    "trigger": "auto_transition",
+                    "completion_percentage": completion_percentage,
+                    "extracted_fields": list(extracted_data.keys())
+                })
+                logger.info(f"Session {session.session_id} transitioned from {current_state} to {next_state}")
+
     async def _execute_api(self, name: str, params: Dict[str, Any]) -> Dict[str, Any]:
-        if name == "premium_calculation":
+        if name == "payment_initiation":
+            # Handle payment initiation
+            session_id = params.get("session_id")
+            amount = float(params.get("amount", 0))
+            payment_method = PaymentMethod(params.get("payment_method", "credit_card"))
+            
+            payment_request = PaymentRequest(
+                session_id=session_id,
+                amount=amount,
+                payment_method=payment_method,
+                customer_details=params.get("customer_details", {}),
+                policy_details=params.get("policy_details", {}),
+                return_url=params.get("return_url", "http://localhost:3000/payment/callback")
+            )
+            
+            payment_response = await payment_service.initiate_payment(payment_request)
+            return {
+                "payment_id": payment_response.payment_id,
+                "payment_url": payment_response.payment_url,
+                "transaction_id": payment_response.transaction_id,
+                "status": payment_response.status.value
+            }
+        elif name == "premium_calculation":
             # Minimal bridge to existing calculator
             age = int(params.get("age", 30))
             coverage = int(params.get("coverage_amount", 5000000))
@@ -310,6 +404,22 @@ class AgentOrchestrator:
             }
         elif name == "policy_documents":
             return {"docs": ["Key Features Document", "Policy Wording", "Brochure"]}
+        elif name == "state_transition":
+            # Manual state transition
+            session_id = params.get("session_id")
+            target_state = params.get("target_state")
+            context = params.get("context", {})
+            
+            session = session_manager.get_session(session_id)
+            if session and hasattr(SessionState, target_state.upper()):
+                new_state = SessionState(target_state)
+                if session.can_transition_to(new_state):
+                    session.transition_state(new_state, context)
+                    session_manager.update_session(session)
+                    return {"success": True, "new_state": new_state.value}
+                else:
+                    return {"success": False, "error": f"Cannot transition from {session.current_state} to {new_state}"}
+            return {"success": False, "error": "Invalid session or state"}
         else:
             raise ValueError(f"Unknown API: {name}")
 
