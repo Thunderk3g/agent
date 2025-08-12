@@ -200,27 +200,42 @@ class AgentOrchestrator:
     async def _ask_llm_decide(self, session: SessionData, user_message: str) -> Dict[str, Any]:
         # Build comprehensive context with conversation history and extracted data
         conversation_context = []
-        recent_turns = getattr(session, 'conversation_history', [])[-5:]  # Last 5 turns
+        recent_turns = getattr(session, 'conversation_history', [])[-7:]  # Last 7 turns for better context
         for turn in recent_turns:
             if hasattr(turn, 'user_message') and hasattr(turn, 'bot_response'):
                 conversation_context.append({
                     "user": turn.user_message,
-                    "agent": turn.bot_response
+                    "bot": turn.bot_response
                 })
+        
+        # Build comprehensive context for Ollama
+        context = {
+            "conversation_history": conversation_context,
+            "customer_data": session.customer_data,
+            "session_state": session.current_state.value,
+            "state_context": {
+                "form_completion": session.form_completion,
+                "selected_variant": session.selected_variant,
+                "quote_data": session.quote_data,
+                "policy_data": session.policy_data,
+                "session_id": session.session_id,
+                "conversation_turns": len(session.conversation_history)
+            }
+        }
         
         prompt = (
             f"Current user message: \"{user_message}\"\n\n"
-            f"CONTEXT - ALREADY KNOWN DATA: {json.dumps(session.customer_data, ensure_ascii=False)}\n\n"
-            f"CONVERSATION HISTORY: {json.dumps(conversation_context, ensure_ascii=False)}\n\n"
             f"INSTRUCTIONS:\n"
-            f"1. **DETECT INTENT**: Is this informational, conversational, or purchase-focused?\n"
-            f"2. **BE NATURAL**: Don't force data collection for casual questions\n"
-            f"3. **USE CONTEXT**: Reference known data appropriately\n"
-            f"4. **CHOOSE MODE**: informational/conversational/onboarding based on user intent\n\n"
+            f"1. **CONTEXT AWARENESS**: Use the conversation history and customer data provided in the context\n"
+            f"2. **DETECT INTENT**: Is this informational, conversational, or purchase-focused?\n"
+            f"3. **BE NATURAL**: Don't force data collection for casual questions\n"
+            f"4. **USE MEMORY**: Reference previously collected information when appropriate\n"
+            f"5. **CHOOSE MODE**: informational/conversational/onboarding based on user intent\n\n"
             f"Return JSON response following the schema in your system prompt."
         )
-        logger.info(f"[Agent] Asking LLM for decisions | session={session.session_id}")
-        raw = await ollama_service.generate_response(prompt, MASTER_SYSTEM_PROMPT)
+        
+        logger.info(f"[Agent] Asking LLM for decisions | session={session.session_id} | history_turns={len(conversation_context)}")
+        raw = await ollama_service.generate_response(prompt, MASTER_SYSTEM_PROMPT, context)
         logger.info(f"[Agent] LLM raw: {raw[:200]}...")
         parsed = self._safe_parse_json(raw)
         if parsed is None:
@@ -300,19 +315,45 @@ class AgentOrchestrator:
         llm_json: Dict[str, Any],
         api_results: List[Dict[str, Any]],
     ) -> str:
+        # Build conversation context for final reply composition
+        conversation_context = []
+        recent_turns = getattr(session, 'conversation_history', [])[-3:]  # Last 3 turns for context
+        for turn in recent_turns:
+            if hasattr(turn, 'user_message') and hasattr(turn, 'bot_response'):
+                conversation_context.append({
+                    "user": turn.user_message,
+                    "bot": turn.bot_response
+                })
+
         followup_context = {
+            "conversation_history": conversation_context,
+            "customer_data": session.customer_data,
+            "session_state": session.current_state.value,
             "extracted": llm_json.get("extracted"),
             "api_results": api_results,
+            "user_message": user_message,
+            "state_context": {
+                "mode": llm_json.get("mode", "conversational"),
+                "reasoning": llm_json.get("reasoning", ""),
+                "next_question": llm_json.get("next_question"),
+                "session_id": session.session_id
+            },
             "guidance": {
-                "one_question": True,
-                "tone": "friendly, professional, concise",
+                "use_context": True,
+                "be_natural": True,
+                "tone": "friendly, professional, conversational",
+                "remember_previous": True
             },
         }
 
         prompt = (
-            "Summarize results for the user in plain language, then ask exactly ONE relevant next question."
+            f"User just said: \"{user_message}\"\n\n"
+            f"Based on the conversation context, provide a natural response. "
+            f"Use the conversation history to maintain continuity and reference previous information when relevant. "
+            f"Be conversational and helpful."
         )
-        logger.info("[Agent] Composing final reply via LLM")
+        
+        logger.info(f"[Agent] Composing final reply via LLM | mode={llm_json.get('mode')} | history_turns={len(conversation_context)}")
         reply = await ollama_service.generate_response(prompt, MASTER_SYSTEM_PROMPT, followup_context)
         return reply
 

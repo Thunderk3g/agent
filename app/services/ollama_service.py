@@ -26,11 +26,17 @@ class OllamaService:
     
     async def generate_response(self, prompt: str, system_prompt: str = None, 
                               context: Dict[str, Any] = None) -> str:
-        """Generate response from Ollama with retry mechanism."""
+        """Generate response from Ollama with retry mechanism and context awareness."""
         for attempt in range(self.max_retries):
             try:
-                full_prompt = self._build_prompt(prompt, system_prompt, context)
-                response = await self._call_ollama(full_prompt)
+                if self.use_chat_api:
+                    # Use chat API with conversation history
+                    messages = self._build_chat_messages(prompt, system_prompt, context)
+                    response = await self._call_ollama_chat_with_messages(messages)
+                else:
+                    # Fallback to generate API with full prompt
+                    full_prompt = self._build_prompt(prompt, system_prompt, context)
+                    response = await self._call_ollama(full_prompt)
                 return response
                 
             except Exception as e:
@@ -46,14 +52,14 @@ class OllamaService:
         system_prompt: str | None = None,
         context: Dict[str, Any] | None = None,
     ):
-        """Async generator that yields response tokens from Ollama.
+        """Async generator that yields response tokens from Ollama with context awareness.
 
         Strategy: try chat stream first; if 404, fallback to generate stream.
         """
-        full_prompt = self._build_prompt(prompt, system_prompt, context)
         if self.use_chat_api:
             try:
-                async for token in self._call_ollama_chat_stream(full_prompt):
+                messages = self._build_chat_messages(prompt, system_prompt, context)
+                async for token in self._call_ollama_chat_stream_with_messages(messages):
                     yield token
                 return
             except httpx.HTTPStatusError as e:
@@ -61,6 +67,9 @@ class OllamaService:
                     raise
                 logger.info("Chat stream API not available, falling back to generate stream")
                 self.use_chat_api = False
+        
+        # Fallback to generate API
+        full_prompt = self._build_prompt(prompt, system_prompt, context)
         async for token in self._call_ollama_generate_stream(full_prompt):
             yield token
     
@@ -137,18 +146,89 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
     
     def _build_prompt(self, user_prompt: str, system_prompt: str = None, 
                      context: Dict[str, Any] = None) -> str:
-        """Build complete prompt with system instructions and context."""
+        """Build complete prompt with system instructions, conversation history, and context."""
         parts = []
         
         if system_prompt:
             parts.append(f"System: {system_prompt}")
         
-        if context:
-            parts.append(f"Context: {json.dumps(context)}")
+        # Add conversation history for context if available
+        if context and "conversation_history" in context:
+            history = context["conversation_history"]
+            if history:
+                parts.append("CONVERSATION HISTORY:")
+                for turn in history:
+                    if isinstance(turn, dict):
+                        user_msg = turn.get("user", "")
+                        bot_msg = turn.get("bot", "") or turn.get("agent", "")
+                        if user_msg and bot_msg:
+                            parts.append(f"User: {user_msg}")
+                            parts.append(f"Assistant: {bot_msg}")
+                parts.append("--- END CONVERSATION HISTORY ---")
+        
+        # Add customer data context
+        if context and "customer_data" in context:
+            customer_data = context["customer_data"]
+            if customer_data:
+                parts.append(f"CUSTOMER DATA: {json.dumps(customer_data, ensure_ascii=False)}")
+        
+        # Add session state context
+        if context and "session_state" in context:
+            parts.append(f"CURRENT SESSION STATE: {context['session_state']}")
+        
+        # Add any additional context
+        if context and "state_context" in context:
+            state_context = context["state_context"]
+            if state_context:
+                parts.append(f"STATE CONTEXT: {json.dumps(state_context, ensure_ascii=False)}")
         
         parts.append(f"User: {user_prompt}")
         
         return "\n\n".join(parts)
+    
+    def _build_chat_messages(self, user_prompt: str, system_prompt: str = None, 
+                           context: Dict[str, Any] = None) -> List[Dict[str, str]]:
+        """Build messages array for Ollama chat API with conversation history."""
+        messages = []
+        
+        # Add system message if provided
+        if system_prompt:
+            messages.append({"role": "system", "content": system_prompt})
+        
+        # Add conversation history
+        if context and "conversation_history" in context:
+            history = context["conversation_history"]
+            for turn in history:
+                if isinstance(turn, dict):
+                    user_msg = turn.get("user", "")
+                    bot_msg = turn.get("bot", "") or turn.get("agent", "")
+                    if user_msg and bot_msg:
+                        messages.append({"role": "user", "content": user_msg})
+                        messages.append({"role": "assistant", "content": bot_msg})
+        
+        # Add context information as a system message if we have relevant data
+        context_parts = []
+        if context and "customer_data" in context:
+            customer_data = context["customer_data"]
+            if customer_data:
+                context_parts.append(f"Customer Data: {json.dumps(customer_data, ensure_ascii=False)}")
+        
+        if context and "session_state" in context:
+            context_parts.append(f"Current State: {context['session_state']}")
+        
+        if context and "state_context" in context:
+            state_context = context["state_context"]
+            if state_context:
+                context_parts.append(f"State Context: {json.dumps(state_context, ensure_ascii=False)}")
+        
+        if context_parts:
+            context_message = "\n".join(context_parts)
+            messages.append({"role": "system", "content": context_message})
+        
+        # Add current user message
+        messages.append({"role": "user", "content": user_prompt})
+        
+        return messages
     
     async def _call_ollama(self, prompt: str) -> str:
         """Make HTTP call to Ollama API with automatic fallback."""
@@ -166,6 +246,21 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
                 self.use_chat_api = False
                 return await self._call_ollama_generate(prompt)
             raise
+    
+    async def _call_ollama_chat_with_messages(self, messages: List[Dict[str, str]]) -> str:
+        """Call modern Ollama chat API with messages array."""
+        url = f"{self.base_url}/api/chat"
+        data = {
+            "model": self.model,
+            "messages": messages,
+            "stream": False
+        }
+        
+        logger.info(f"[Ollama] POST {url} | chat (with history) | model={self.model} | messages={len(messages)}")
+        response = await self.client.post(url, json=data)
+        response.raise_for_status()
+        result = response.json()
+        return result.get("message", {}).get("content", "").strip()
     
     async def _call_ollama_chat(self, prompt: str) -> str:
         """Call modern Ollama chat API."""
@@ -195,6 +290,31 @@ Consider customer's age, income, family situation, and risk profile. Provide rec
             "stream": True
         }
         logger.info(f"[Ollama] STREAM {url} | chat | model={self.model}")
+        async with self.client.stream("POST", url, json=data) as resp:
+            resp.raise_for_status()
+            async for line in resp.aiter_lines():
+                if not line:
+                    continue
+                try:
+                    obj = json.loads(line)
+                    if obj.get("done"):
+                        break
+                    delta = obj.get("message", {}).get("content") or obj.get("delta", {}).get("content")
+                    if delta:
+                        yield delta
+                except json.JSONDecodeError:
+                    # Some servers stream plain text
+                    yield line
+
+    async def _call_ollama_chat_stream_with_messages(self, messages: List[Dict[str, str]]):
+        """Stream tokens from modern chat API with messages array."""
+        url = f"{self.base_url}/api/chat"
+        data = {
+            "model": self.model,
+            "messages": messages,
+            "stream": True
+        }
+        logger.info(f"[Ollama] STREAM {url} | chat (with history) | model={self.model} | messages={len(messages)}")
         async with self.client.stream("POST", url, json=data) as resp:
             resp.raise_for_status()
             async for line in resp.aiter_lines():

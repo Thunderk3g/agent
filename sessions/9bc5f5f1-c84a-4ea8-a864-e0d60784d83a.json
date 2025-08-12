@@ -1,0 +1,113 @@
+{
+  "session_id": "9bc5f5f1-c84a-4ea8-a864-e0d60784d83a",
+  "created_at": "2025-08-12T10:35:59.403787",
+  "updated_at": "2025-08-12T10:45:00.056260",
+  "current_state": "onboarding",
+  "customer_data": {},
+  "selected_variant": null,
+  "quote_data": {},
+  "policy_data": {},
+  "conversation_history": [
+    {
+      "timestamp": "2025-08-12T10:36:10.644968",
+      "user_message": "Hello who am i",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! Based on our conversation so far, we haven't collected any specific details yet. If you're interested in buying term insurance with Bajaj Allianz Life eTouch II, could you please share your full name and date of birth?\",\n  \"next_question\": \"Could you please share your full name and date of birth?\",\n  \"extracted\": null,\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"As the user hasn't shown a clear purchase intent yet, we're requesting basic personal details to better understand their needs.\",\n  \"done\": false\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T10:36:35.466932",
+      "user_message": "I am Diwakar Adhikari",
+      "bot_response": "{\n  \"mode\": \"conversational\",\n  \"reply\": \"Sure! Based on our conversation, I haven't collected any specific details yet. Are you ready to start by sharing your full name and date of birth so we can proceed with finding the right term insurance plan for you?\",\n  \"next_question\": \"Can you please share your full name and date of birth?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"As the user hasn't shown clear purchase intent yet, I'm keeping it conversational and guiding them to share basic personal details for further discussion.\",\n  \"done\": false\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T10:37:13.587979",
+      "user_message": "Diwakar Adhikari 28-Nov-2000",
+      "bot_response": "Hello Diwakar,\n\nBased on our conversation so far, here’s what we have:\n\n- **Name:** Diwakar Adhikari\n- **Date of Birth:** November 28, 2000 (Age: 23)\n- **Gender and Occupation:** Not provided yet\n\nWould you like to share your gender and occupation so I can help you better with your insurance options? This will allow us to tailor the plan specifically for you.",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {
+        "full_name": "Diwakar Adhikari",
+        "date_of_birth": "2000-11-28",
+        "age": 23,
+        "gender": null,
+        "occupation": null,
+        "smoker": null,
+        "mobile_number": null,
+        "email": null,
+        "pin_code": null
+      }
+    },
+    {
+      "timestamp": "2025-08-12T10:37:52.852302",
+      "user_message": "I am Male and I work as a software engineer",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Hello Diwakar! Based on the information you've provided, we have a term insurance quote for you. Here’s a quick summary: \n\n- **Full Name:** Diwakar Adhikari\n- **Date of Birth:** 28 November 2000\n- **Age:** 23 years old\n- **Occupation:** Software Engineer\n\nWe haven't collected your mobile number, email, or other details yet. Would you like to proceed with this information and add more details later, or do you want to provide all the necessary information now?\",\n  \"next_question\": \"Would you like to provide your contact details and complete the application now?\",\n  \"extracted\": {\n    \"full_name\": \"Diwakar Adhikari\",\n    \"date_of_birth\": \"2000-11-28\",\n    \"age\": 23,\n    \"gender\": null,\n    \"occupation\": \"software engineer\",\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": \"Diwakar Adhikari\",\n      \"dateOfBirth\": \"2000-11-28\",\n      \"age\": 23,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,  // Not provided yet\n      \"policyTerm_years\": null,  // Not provided yet\n      \"premiumPayingTerm_years\": null,  // Not provided yet\n      \"frequency\": null  // Not provided yet\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"The user has expressed interest in proceeding with the application. We need to gather more details to finalize the quote and proceed further.\",\n  \"done\": false\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {
+        "full_name": "Diwakar Adhikari",
+        "date_of_birth": "2000-11-28",
+        "age": 23,
+        "gender": null,
+        "occupation": "software engineer",
+        "smoker": null,
+        "mobile_number": null,
+        "email": null,
+        "pin_code": null
+      }
+    },
+    {
+      "timestamp": "2025-08-12T10:44:16.942704",
+      "user_message": "Hi",
+      "bot_response": "{\n  \"mode\": \"conversational\",\n  \"reply\": \"Sure! Based on our conversation so far, it seems like you're interested in term insurance. Do you want to proceed with getting a quote and learn more about the options available?\",\n  \"next_question\": \"What's your preferred policy term (in years)?\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T10:44:37.930643",
+      "user_message": "25 years",
+      "bot_response": "Great choice, Diwakar! A 25-year policy term is a good fit for many people.\n\nNext, could you please share your preferred coverage amount? This will help us tailor the plan to meet your needs effectively. \n\nFor example, if you're looking for Rs. 10 Lakhs in coverage, we can see how much that would cost per year based on your age and occupation as a software engineer.",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T10:45:00.056260",
+      "user_message": "What is coverage value",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Hi Diwakar! The **coverage value** is essentially the amount of money your beneficiaries would receive if something happens to you during the policy term. For example, if you choose a coverage value of Rs. 20 Lakhs and an unfortunate event occurs, your beneficiaries would get Rs. 20 Lakhs.\n\nSince you're interested in a 25-year policy with this coverage, we can calculate the premium based on that. Do you have a specific amount in mind, or should I suggest some options for you?\",\n  \"next_question\": null,\n  \"extracted\": {\n    \"coverage_amount\": null\n  },\n  \"store_update\": {},\n  \"api_calls\": [],\n  \"reasoning\": \"The user asked about the coverage value, so we provide a clear explanation. Since no specific amount was mentioned, we can ask if they have any preferences or suggest some options.\",\n  \"done\": false\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    }
+  ],
+  "state_context": {},
+  "uploaded_documents": [],
+  "payment_data": {},
+  "form_completion": {
+    "personal_details": {
+      "completed": false,
+      "completion_percentage": 0
+    },
+    "insurance_requirements": {
+      "completed": false,
+      "completion_percentage": 0
+    },
+    "rider_selection": {
+      "completed": false,
+      "completion_percentage": 0
+    },
+    "payment_details": {
+      "completed": false,
+      "completion_percentage": 0
+    }
+  },
+  "state_transitions": [],
+  "selected_product": {},
+  "selected_riders": [],
+  "metadata": {}
+}

@@ -346,16 +346,23 @@ class SessionManager:
             # Create new session with the provided session_id
             session = SessionData(session_id=session_id)
             
-            # Restore customer data from the latest store updates
+            # Restore customer data from multiple sources for comprehensive context
             latest_personal_details = {}
             latest_quote_details = {}
+            all_extracted_data = {}
             
             for conv in session_conversations:
+                # Collect from store updates
                 store_update = conv.get("store_update", {})
                 if store_update.get("personalDetails"):
                     latest_personal_details.update(store_update["personalDetails"])
                 if store_update.get("quoteDetails"):
                     latest_quote_details.update(store_update["quoteDetails"])
+                
+                # Also collect from extracted data in LLM decisions
+                llm_extracted = conv.get("llm_decision", {}).get("extracted", {})
+                if llm_extracted:
+                    all_extracted_data.update(llm_extracted)
             
             # Map frontend data to session data
             if latest_personal_details or latest_quote_details:
@@ -365,14 +372,41 @@ class SessionManager:
                 }
                 session.update_frontend_data(combined_store_update)
             
-            # Restore conversation history as simple conversation turns
+            # Also apply any additional extracted data that wasn't in store format
+            if all_extracted_data:
+                session.update_customer_data(all_extracted_data)
+            
+            # Restore conversation history with better context preservation
             for conv in session_conversations:
                 if conv.get("user_message") and conv.get("final_reply"):
+                    # Extract actions from API calls
+                    api_calls = conv.get("llm_decision", {}).get("api_calls", [])
+                    actions_taken = [call.get("name", "") for call in api_calls if isinstance(call, dict)]
+                    
+                    # Extract collected data more comprehensively
+                    extracted_data = conv.get("llm_decision", {}).get("extracted", {})
+                    if not extracted_data:
+                        # Try to get data from store_update as fallback
+                        store_update = conv.get("store_update", {})
+                        personal_details = store_update.get("personalDetails", {})
+                        quote_details = store_update.get("quoteDetails", {})
+                        
+                        # Build extracted data from store updates
+                        extracted_data = {}
+                        if personal_details:
+                            for key, value in personal_details.items():
+                                if value is not None:
+                                    extracted_data[key] = value
+                        if quote_details:
+                            for key, value in quote_details.items():
+                                if value is not None:
+                                    extracted_data[key] = value
+                    
                     session.add_conversation_turn(
                         user_message=conv["user_message"],
                         bot_response=conv["final_reply"],
-                        actions_taken=conv.get("llm_decision", {}).get("api_calls", []),
-                        data_collected=conv.get("llm_decision", {}).get("extracted", {})
+                        actions_taken=actions_taken,
+                        data_collected=extracted_data
                     )
             
             # Set timestamps from first and last conversation
@@ -385,6 +419,22 @@ class SessionManager:
                     session.updated_at = datetime.fromisoformat(last_conv["timestamp"].replace("Z", "+00:00"))
                 except Exception:
                     pass
+                
+                # Try to determine appropriate session state based on collected data
+                if session.customer_data:
+                    # Basic fields collected - could be onboarding or beyond
+                    required_basic = ["full_name", "date_of_birth", "age"]
+                    required_eligibility = ["pin_code", "smoker"]
+                    required_quote = ["coverage_amount", "policy_term"]
+                    
+                    if any(field in session.customer_data for field in required_quote):
+                        session.current_state = SessionState.QUOTE_GENERATION
+                    elif any(field in session.customer_data for field in required_eligibility):
+                        session.current_state = SessionState.ELIGIBILITY_CHECK
+                    elif any(field in session.customer_data for field in required_basic):
+                        session.current_state = SessionState.ONBOARDING
+                    else:
+                        session.current_state = SessionState.ONBOARDING
             
             return session
             
