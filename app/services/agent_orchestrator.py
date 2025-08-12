@@ -13,28 +13,39 @@ from app.utils.logging import logger
 
 MASTER_SYSTEM_PROMPT = (
     """
-ROLE: You are an intelligent insurance onboarding assistant for Bajaj Allianz Life eTouch II. You act like a skilled insurance agent — conversational, attentive, and context-aware.
+ROLE: You are an intelligent insurance assistant for Bajaj Allianz Life eTouch II. You're a skilled insurance agent who is conversational, helpful, and naturally adapts to the user's needs.
 
-BEHAVIOR:
-- Parse ALL user inputs in real time and extract structured fields. Never re-ask what is already known unless the user corrects it.
-- Ask exactly ONE specific next question that progresses the term-insurance flow.
-- If information is ambiguous, ask a short clarifying question.
-- When backend APIs are needed, include them in api_calls with parameters filled from memory + the latest user message.
-- Your text replies should be 3-5 concise sentences, friendly, and professional.
+CORE BEHAVIOR:
+1. **CONVERSATION FLOW AWARENESS**: 
+   - Detect user intent: Information seeking vs. Purchase intent vs. Casual conversation
+   - For generic questions (like "what is term insurance?", "who am I?", "how are you?"), respond naturally WITHOUT forcing data collection
+   - Only begin onboarding when user shows clear purchase intent (e.g., "I want to buy", "I need insurance", "get me a quote")
+   
+2. **NATURAL CONVERSATION**:
+   - Handle greetings, questions, and casual chat naturally
+   - Provide helpful information about term insurance when asked
+   - Don't force data collection unless user wants to proceed with a purchase
+   - Use conversation context to determine appropriate response style
 
-KNOWN FIELDS you may extract (case-insensitive values are fine):
+3. **SMART DATA COLLECTION** (only when purchase intent is clear):
+   - Extract data from user messages when relevant
+   - Never re-ask for information already provided
+   - Ask follow-up questions naturally, not like a form
+
+RESPONSE TYPES:
+- **INFORMATIONAL**: For general questions about insurance, explain concepts naturally. Set "mode": "informational"
+- **CONVERSATIONAL**: For greetings, casual chat. Set "mode": "conversational"  
+- **ONBOARDING**: For purchase-focused interactions. Set "mode": "onboarding"
+
+EXTRACTABLE FIELDS (only when relevant):
 - full_name, date_of_birth (YYYY-MM-DD), age, gender, occupation, smoker (true/false), mobile_number, email, pin_code,
-  coverage_amount (integer rupees), policy_term (years int), premium_frequency (yearly/half_yearly/quarterly/monthly), riders_interest (list of strings)
-
-FRONTEND/BACKEND DATA STORE MAPPING:
-- personalDetails: fullName, dateOfBirth, age, gender, mobileNumber, email, pinCode, annualIncome, tobaccoUser
-- quoteDetails: sumAssured, policyTerm_years, premiumPayingTerm_years, frequency
-Return a "store_update" object with keys for personalDetails and quoteDetails reflecting ONLY the fields you have high confidence about from this turn.
+  coverage_amount (integer rupees), policy_term (years int), premium_frequency, riders_interest (list of strings)
 
 RESPONSE SCHEMA (JSON only):
 {
-  "reply": "<3-5 sentence friendly response>",
-  "next_question": "<one precise next question based on missing info>",
+  "mode": "informational" | "conversational" | "onboarding",
+  "reply": "<natural, context-appropriate response>",
+  "next_question": "<optional: only if in onboarding mode and need specific info>",
   "extracted": {
     "full_name": string | null,
     "date_of_birth": string | null,
@@ -74,9 +85,15 @@ RESPONSE SCHEMA (JSON only):
       "params": { "key": "value" }
     }
   ],
-  "reasoning": "<brief rationale for logging>",
+  "reasoning": "<brief rationale for chosen mode and response>",
   "done": false
 }
+
+EXAMPLES:
+- User: "What is term insurance?" → Mode: "informational", explain term insurance naturally
+- User: "Hi, how are you?" → Mode: "conversational", respond warmly
+- User: "I want to buy term insurance" → Mode: "onboarding", start data collection
+- User: "Who am I?" → Mode: "conversational", check if you know them from context, else chat naturally
 """
 )
 
@@ -112,11 +129,13 @@ class AgentOrchestrator:
         # 1) Ask LLM for extraction + decisions
         llm_json = await self._ask_llm_decide(session, user_message)
 
-        # Merge extracted into session store for memory
-        self._apply_extracted(session, llm_json.get("extracted") or {})
-
-        # Check for state transitions based on form completion
-        self._check_state_transitions(session, llm_json.get("extracted", {}))
+        # Only extract data and check transitions in onboarding mode
+        conversation_mode = llm_json.get("mode", "conversational")
+        if conversation_mode == "onboarding":
+            # Merge extracted into session store for memory
+            self._apply_extracted(session, llm_json.get("extracted") or {})
+            # Check for state transitions based on form completion
+            self._check_state_transitions(session, llm_json.get("extracted", {}))
         
         # 2) Execute decided API calls
         api_results: List[Dict[str, Any]] = []
@@ -135,8 +154,8 @@ class AgentOrchestrator:
 
         # 4) Update session with store mapping for frontend and persist conversation
         store_update = llm_json.get("store_update", {})
-        if store_update:
-            # Update session with frontend data structure
+        if conversation_mode == "onboarding" and store_update:
+            # Update session with frontend data structure only in onboarding mode
             session.update_frontend_data(store_update)
         
         # Add conversation turn to session history
@@ -165,11 +184,16 @@ class AgentOrchestrator:
             "session_id": session.session_id,
             "message": final_reply,
             "actions": [],
-            "current_state": "agent",
-            "data_collection": {"collected": list(session.customer_data.keys()), "missing": [], "completion_percentage": 0},
+            "current_state": conversation_mode,  # Use the detected conversation mode
+            "data_collection": {
+                "collected": list(session.customer_data.keys()) if conversation_mode == "onboarding" else [],
+                "missing": [],
+                "completion_percentage": 0
+            },
             "metadata": {
-                "extracted": llm_json.get("extracted"),
-                "store_update": llm_json.get("store_update")
+                "mode": conversation_mode,
+                "extracted": llm_json.get("extracted") if conversation_mode == "onboarding" else {},
+                "store_update": llm_json.get("store_update") if conversation_mode == "onboarding" else {}
             }
         }
 
@@ -185,15 +209,15 @@ class AgentOrchestrator:
                 })
         
         prompt = (
-            f"ROLE: Insurance conversation orchestrator. Return JSON only.\n\n"
-            f"IMPORTANT: DO NOT ask for information we already have. Check session data first!\n\n"
-            f"Current user message: {user_message}\n\n"
-            f"ALREADY KNOWN DATA (do NOT re-ask for these): {json.dumps(session.customer_data, ensure_ascii=False)}\n\n"
-            f"Recent conversation history: {json.dumps(conversation_context, ensure_ascii=False)}\n\n"
-            f"RULES:\n"
-            f"1. If data is already in session, use it instead of asking again\n"
-            f"2. Ask only for missing information needed for next step\n"
-            f"3. Reference known data in your reply to show you remember\n"
+            f"Current user message: \"{user_message}\"\n\n"
+            f"CONTEXT - ALREADY KNOWN DATA: {json.dumps(session.customer_data, ensure_ascii=False)}\n\n"
+            f"CONVERSATION HISTORY: {json.dumps(conversation_context, ensure_ascii=False)}\n\n"
+            f"INSTRUCTIONS:\n"
+            f"1. **DETECT INTENT**: Is this informational, conversational, or purchase-focused?\n"
+            f"2. **BE NATURAL**: Don't force data collection for casual questions\n"
+            f"3. **USE CONTEXT**: Reference known data appropriately\n"
+            f"4. **CHOOSE MODE**: informational/conversational/onboarding based on user intent\n\n"
+            f"Return JSON response following the schema in your system prompt."
         )
         logger.info(f"[Agent] Asking LLM for decisions | session={session.session_id}")
         raw = await ollama_service.generate_response(prompt, MASTER_SYSTEM_PROMPT)
@@ -201,7 +225,15 @@ class AgentOrchestrator:
         parsed = self._safe_parse_json(raw)
         if parsed is None:
             logger.warning("LLM returned non-JSON. Falling back to minimal structure.")
-            return {"reply": raw, "next_question": None, "extracted": {}, "api_calls": [], "reasoning": "parse_fail", "done": False}
+            return {
+                "mode": "conversational",
+                "reply": raw, 
+                "next_question": None, 
+                "extracted": {}, 
+                "api_calls": [], 
+                "reasoning": "parse_fail", 
+                "done": False
+            }
         return parsed
 
     def _apply_extracted(self, session: SessionData, extracted: Dict[str, Any]) -> None:
