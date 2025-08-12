@@ -137,6 +137,18 @@ class AgentOrchestrator:
         conversation_mode = llm_json.get("mode", "conversational")
         extracted_data = llm_json.get("extracted") or {}
         
+        # Check if user is selecting payment method
+        payment_method_selection = self._detect_payment_method_selection(user_message)
+        if payment_method_selection:
+            extracted_data["payment_method"] = payment_method_selection
+            # Transition to payment state if not already there
+            if session.current_state.value != "payment_initiated":
+                session.transition_state(SessionState.PAYMENT_INITIATED, {
+                    "trigger": "payment_method_selection",
+                    "payment_method": payment_method_selection
+                })
+                logger.info(f"Session {session.session_id} transitioned to payment_initiated with method: {payment_method_selection}")
+        
         if conversation_mode == "onboarding" or extracted_data:
             # Merge extracted into session store for memory
             self._apply_extracted(session, extracted_data)
@@ -239,6 +251,68 @@ class AgentOrchestrator:
                 "quote_count": len(quote_data.get("quotes", []))
             }
             logger.info(f"[Agent] Added quote metadata to response")
+        
+        # Add payment options to metadata if user wants to proceed and quotes are available
+        user_wants_to_proceed = any(word in user_message.lower() for word in 
+            ['yes', 'proceed', 'confirm', 'buy', 'purchase', 'go ahead', 'receipt', 'payment'])
+        
+        if (user_wants_to_proceed and quote_results and 
+            session.current_state.value in ['eligibility_check', 'product_selection', 'quote_generation']):
+            
+            best_quote = quote_results[0].get("result", {}).get("best", {})
+            metadata["payment_options"] = {
+                "show_payment_buttons": True,
+                "selected_quote": {
+                    "name": best_quote.get("name"),
+                    "annual_premium": best_quote.get("annual_premium"),
+                    "sum_assured": best_quote.get("sum_assured"),
+                    "policy_term": best_quote.get("policy_term")
+                },
+                "buttons": [
+                    {
+                        "id": "proceed_payment",
+                        "label": "Proceed to Payment",
+                        "type": "primary",
+                        "description": "Continue with secure payment processing"
+                    },
+                    {
+                        "id": "simulate_success", 
+                        "label": "Simulate Payment Success",
+                        "type": "success",
+                        "description": "For testing purposes"
+                    },
+                    {
+                        "id": "simulate_failure",
+                        "label": "Simulate Payment Failure", 
+                        "type": "danger",
+                        "description": "For testing purposes"
+                    }
+                ]
+            }
+            logger.info(f"[Agent] Added payment options to metadata")
+        
+        # Handle payment method selection response
+        payment_method = self._detect_payment_method_selection(user_message)
+        if payment_method:
+            metadata["payment_response"] = {
+                "method_selected": payment_method,
+                "status": "processing" if payment_method == "proceed_payment" else payment_method,
+                "message": self._get_payment_response_message(payment_method)
+            }
+            
+            # Generate receipt and human agent handoff for successful payment simulation
+            if payment_method == "simulate_success" and quote_results:
+                best_quote = quote_results[0].get("result", {}).get("best", {})
+                receipt_data = self._generate_receipt_data(session, best_quote, payment_method)
+                metadata["receipt"] = receipt_data
+                metadata["human_agent_handoff"] = {
+                    "show": True,
+                    "message": "Congratulations! Your policy has been successfully activated. A human agent will connect with you shortly to assist with any additional questions.",
+                    "estimated_wait_time": "5-10 minutes"
+                }
+                logger.info(f"[Agent] Generated receipt and human agent handoff for session {session.session_id}")
+            
+            logger.info(f"[Agent] Added payment response metadata: {payment_method}")
 
         return {
             "session_id": session.session_id,
@@ -497,6 +571,106 @@ class AgentOrchestrator:
             "premium_frequency": customer_data.get("premium_frequency", "yearly")
         }
 
+    def _detect_payment_method_selection(self, user_message: str) -> Optional[str]:
+        """Detect if user is selecting a payment method from their message."""
+        message_lower = user_message.lower()
+        
+        # Check for payment option selections (matches frontend labels)
+        if "selected payment method: proceed to payment" in message_lower:
+            return "proceed_payment"
+        elif "selected payment method: simulate payment success" in message_lower:
+            return "simulate_success"
+        elif "selected payment method: simulate payment failure" in message_lower:
+            return "simulate_failure"
+        elif any(phrase in message_lower for phrase in ["proceed to payment", "option 1", "1"]) and "payment" in message_lower:
+            return "proceed_payment"
+        elif any(phrase in message_lower for phrase in ["simulate payment success", "payment success", "option 2", "2"]) and "success" in message_lower:
+            return "simulate_success"
+        elif any(phrase in message_lower for phrase in ["simulate payment failure", "payment failure", "option 3", "3"]) and "failure" in message_lower:
+            return "simulate_failure"
+        
+        return None
+
+    def _get_payment_response_message(self, payment_method: str) -> str:
+        """Get appropriate response message for payment method selection."""
+        if payment_method == "proceed_payment":
+            return "Redirecting to secure payment gateway..."
+        elif payment_method == "simulate_success":
+            return "Payment simulation successful! Your policy has been activated."
+        elif payment_method == "simulate_failure":
+            return "Payment simulation failed. Please try again or contact support."
+        else:
+            return "Processing your payment selection..."
+
+    def _generate_receipt_data(self, session: SessionData, best_quote: Dict[str, Any], payment_method: str) -> Dict[str, Any]:
+        """Generate receipt data for successful payment."""
+        from datetime import datetime, timedelta
+        import uuid
+        
+        # Generate policy number and transaction ID
+        policy_number = f"BAL-LI-{datetime.utcnow().strftime('%Y%m%d')}-{str(uuid.uuid4())[:8].upper()}"
+        transaction_id = f"TXN-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}-{str(uuid.uuid4())[:6].upper()}"
+        
+        # Calculate policy dates
+        policy_start_date = datetime.utcnow().date()
+        policy_end_date = policy_start_date + timedelta(days=365 * best_quote.get('policy_term', 20))
+        
+        receipt_data = {
+            "show_receipt": True,
+            "policy_details": {
+                "policy_number": policy_number,
+                "policy_holder_name": session.customer_data.get("full_name", ""),
+                "plan_name": best_quote.get("name", "Life Shield"),
+                "sum_assured": best_quote.get("sum_assured", 5000000),
+                "annual_premium": best_quote.get("annual_premium", 0),
+                "policy_term": best_quote.get("policy_term", 20),
+                "premium_paying_term": best_quote.get("premium_paying_term", 20),
+                "policy_start_date": policy_start_date.strftime("%d-%m-%Y"),
+                "policy_end_date": policy_end_date.strftime("%d-%m-%Y"),
+                "payment_frequency": session.customer_data.get("premium_frequency", "yearly").title(),
+                "features": best_quote.get("features", [])
+            },
+            "customer_details": {
+                "name": session.customer_data.get("full_name", ""),
+                "age": session.customer_data.get("age", ""),
+                "gender": session.customer_data.get("gender", "").title(),
+                "mobile": session.customer_data.get("mobile_number", ""),
+                "email": session.customer_data.get("email", ""),
+                "pin_code": session.customer_data.get("pin_code", ""),
+                "smoker": "Yes" if session.customer_data.get("smoker") else "No"
+            },
+            "payment_details": {
+                "transaction_id": transaction_id,
+                "payment_method": "Simulated Payment",
+                "amount_paid": best_quote.get("annual_premium", 0),
+                "payment_date": datetime.utcnow().strftime("%d-%m-%Y %H:%M:%S"),
+                "payment_status": "SUCCESS",
+                "next_due_date": (policy_start_date + timedelta(days=365)).strftime("%d-%m-%Y")
+            },
+            "company_details": {
+                "company_name": "Bajaj Allianz General Insurance Company Limited",
+                "policy_type": "eTouch II Term Life Insurance",
+                "irdai_reg_no": "IRDAI Reg. No. 113",
+                "toll_free": "1800-103-2529",
+                "website": "www.bajajallianz.com"
+            },
+            "benefit_illustration_pdf": {
+                "available": True,
+                "filename": f"Benefit_Illustration_{policy_number}.pdf",
+                "description": "Download your detailed benefit illustration document"
+            }
+        }
+        
+        # Store receipt data in session for future reference
+        session.policy_data.update({
+            "policy_number": policy_number,
+            "transaction_id": transaction_id,
+            "receipt_generated": True,
+            "receipt_timestamp": datetime.utcnow().isoformat()
+        })
+        
+        return receipt_data
+
     async def _compose_final_reply(
         self,
         session: SessionData,
@@ -573,17 +747,37 @@ class AgentOrchestrator:
             
             logger.info(f"[Agent] Including quote in response - best_quote: {best_quote}")
             
-            prompt += (
-                f"\n\nIMPORTANT: You have successfully generated quotes! Include these details naturally in your response:\n"
-                f"**Best Recommended Quote:**\n"
-                f"- Plan: {best_quote.get('name', 'N/A')}\n"
-                f"- Premium: ₹{best_quote.get('annual_premium', 'N/A'):,} per year\n"
-                f"- Coverage: ₹{best_quote.get('sum_assured', 'N/A'):,}\n"
-                f"- Policy Term: {best_quote.get('policy_term', 'N/A')} years\n"
-                f"- Features: {', '.join(best_quote.get('features', []))}\n\n"
-                f"You can also mention that {len(all_quotes)} variants are available.\n"
-                f"Present this as a personalized quote result and ask if they'd like to see other options or proceed.\n"
-            )
+            # Check if user has confirmed to proceed (looking for confirmation keywords)
+            user_wants_to_proceed = any(word in user_message.lower() for word in 
+                ['yes', 'proceed', 'confirm', 'buy', 'purchase', 'go ahead', 'receipt', 'payment'])
+            
+            if user_wants_to_proceed and session.current_state.value in ['eligibility_check', 'product_selection', 'quote_generation']:
+                prompt += (
+                    f"\n\nIMPORTANT: The user wants to proceed with the purchase! Present the quote and payment options:\n"
+                    f"**Selected Quote:**\n"
+                    f"- Plan: {best_quote.get('name', 'N/A')}\n"
+                    f"- Premium: ₹{best_quote.get('annual_premium', 'N/A'):,} per year\n"
+                    f"- Coverage: ₹{best_quote.get('sum_assured', 'N/A'):,}\n"
+                    f"- Policy Term: {best_quote.get('policy_term', 'N/A')} years\n\n"
+                    f"Then ask the user to choose a payment method:\n"
+                    f"**Payment Options:**\n"
+                    f"1. **Proceed to Payment** - Continue with secure payment processing\n"
+                    f"2. **Simulate Payment Success** - For testing purposes\n"
+                    f"3. **Simulate Payment Failure** - For testing purposes\n\n"
+                    f"Please select your preferred option to proceed.\n"
+                )
+            else:
+                prompt += (
+                    f"\n\nIMPORTANT: You have successfully generated quotes! Include these details naturally in your response:\n"
+                    f"**Best Recommended Quote:**\n"
+                    f"- Plan: {best_quote.get('name', 'N/A')}\n"
+                    f"- Premium: ₹{best_quote.get('annual_premium', 'N/A'):,} per year\n"
+                    f"- Coverage: ₹{best_quote.get('sum_assured', 'N/A'):,}\n"
+                    f"- Policy Term: {best_quote.get('policy_term', 'N/A')} years\n"
+                    f"- Features: {', '.join(best_quote.get('features', []))}\n\n"
+                    f"You can also mention that {len(all_quotes)} variants are available.\n"
+                    f"Present this as a personalized quote result and ask if they'd like to see other options or proceed.\n"
+                )
         
         prompt += "\n\nRespond with ONLY the message text that should be shown to the user - no JSON structure."
         
@@ -605,7 +799,7 @@ class AgentOrchestrator:
             SessionState.PRODUCT_SELECTION: ["coverage_amount", "policy_term"],
             SessionState.QUOTE_GENERATION: ["premium_frequency"],
             SessionState.ADDON_RIDERS: [],  # Optional state
-            SessionState.PAYMENT_INITIATED: ["payment_method"],
+            SessionState.PAYMENT_INITIATED: [],  # Payment method will be collected during payment flow
         }
         
         required_fields = state_requirements.get(current_state, [])
