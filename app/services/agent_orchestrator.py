@@ -378,15 +378,35 @@ class AgentOrchestrator:
         """Extract reply text from JSON response."""
         if not text:
             return text
-            
+        
+        # First, handle cases where the text is already escaped JSON string
+        cleaned_text = text.strip()
+        
+        # If the text starts and ends with quotes, it might be an escaped JSON string
+        if cleaned_text.startswith('"') and cleaned_text.endswith('"'):
+            try:
+                # Try to decode the escaped JSON string
+                unescaped = json.loads(cleaned_text)
+                if isinstance(unescaped, str):
+                    cleaned_text = unescaped
+            except json.JSONDecodeError:
+                # If that fails, manually unescape
+                cleaned_text = cleaned_text[1:-1]  # Remove outer quotes
+                cleaned_text = cleaned_text.replace('\\"', '"')  # Unescape quotes
+                cleaned_text = cleaned_text.replace('\\n', '\n')  # Unescape newlines
+                cleaned_text = cleaned_text.replace('\\t', '\t')  # Unescape tabs
+                cleaned_text = cleaned_text.replace('\\r', '\r')  # Unescape carriage returns
+                cleaned_text = cleaned_text.replace('\\\\', '\\')  # Unescape backslashes
+        
         try:
-            # If it's clearly JSON, try to parse and extract reply
-            if self._is_json_string(text):
-                parsed = json.loads(text)
+            # Try to parse as JSON
+            if self._is_json_string(cleaned_text):
+                parsed = json.loads(cleaned_text)
                 if isinstance(parsed, dict):
                     # Check for reply field first (most common)
                     if 'reply' in parsed and isinstance(parsed['reply'], str):
                         reply = parsed['reply']
+                        
                         # Also check for next_question and combine if present
                         if 'next_question' in parsed and isinstance(parsed['next_question'], str) and parsed['next_question'].strip():
                             return f"{reply}\n\n{parsed['next_question']}"
@@ -404,34 +424,31 @@ class AgentOrchestrator:
         except json.JSONDecodeError:
             pass
         
-        # If parsing fails, try to clean common JSON artifacts
-        cleaned = text
+        # If JSON parsing fails, try regex patterns to extract reply
+        import re
         
-        # Remove complete JSON wrapper patterns
-        json_patterns = [
-            (r'^\{\s*"reply"\s*:\s*"(.+?)"\s*,.*\}$', r'\1'),
-            (r'^\{\s*"reply"\s*:\s*"(.+?)"\s*\}$', r'\1'),
-            (r'^\{\s*"message"\s*:\s*"(.+?)"\s*,.*\}$', r'\1'),
-            (r'^\{\s*"message"\s*:\s*"(.+?)"\s*\}$', r'\1'),
+        # Pattern to match JSON with reply field, handling escaped quotes and multiline
+        reply_patterns = [
+            r'{\s*"reply"\s*:\s*"([^"]*(?:\\.[^"]*)*)"',  # Handles escaped quotes within reply
+            r'{\s*"reply"\s*:\s*"([^"]+)"',  # Simple case
+            r'"reply"\s*:\s*"([^"]*(?:\\.[^"]*)*)"',  # Just the reply field
+            r'"message"\s*:\s*"([^"]*(?:\\.[^"]*)*)"',  # Alternative field name
         ]
         
-        import re
-        for pattern, replacement in json_patterns:
-            match = re.match(pattern, cleaned, re.DOTALL)
+        for pattern in reply_patterns:
+            match = re.search(pattern, cleaned_text, re.DOTALL)
             if match:
-                cleaned = match.group(1)
-                break
+                reply = match.group(1)
+                # Unescape the extracted text
+                reply = reply.replace('\\"', '"')
+                reply = reply.replace('\\n', '\n')
+                reply = reply.replace('\\t', '\t')
+                reply = reply.replace('\\r', '\r')
+                reply = reply.replace('\\\\', '\\')
+                return reply.strip()
         
-        # Basic cleanup
-        cleaned = cleaned.replace('\\"', '"')  # Unescape quotes
-        cleaned = cleaned.replace('\\n', '\n')  # Unescape newlines
-        cleaned = cleaned.strip()
-        
-        # Remove outer quotes if the entire string is wrapped
-        if cleaned.startswith('"') and cleaned.endswith('"') and len(cleaned) > 2:
-            cleaned = cleaned[1:-1]
-            
-        return cleaned if cleaned != text and len(cleaned) > 0 else text
+        # If all parsing attempts fail, return the cleaned text
+        return cleaned_text if cleaned_text != text else text
 
     def _should_generate_quote(self, session: SessionData) -> bool:
         """Check if we have enough data to generate a quote."""
@@ -494,14 +511,13 @@ class AgentOrchestrator:
         # Otherwise, use the initial LLM reply if it's clean
         if not quote_results:
             initial_reply = llm_json.get("reply", "")
-            if initial_reply and not self._is_json_string(initial_reply):
-                return initial_reply
-            
-            # If the initial reply looks like JSON, extract the reply field
-            if initial_reply and self._is_json_string(initial_reply):
+            if initial_reply:
+                # Always try to extract reply from JSON, whether it looks like JSON or not
                 cleaned = self._extract_reply_from_json(initial_reply)
-                if cleaned:
+                if cleaned and cleaned != initial_reply:
                     return cleaned
+                elif not self._is_json_string(initial_reply):
+                    return initial_reply
         
         # Build conversation context for final reply composition
         conversation_context = []

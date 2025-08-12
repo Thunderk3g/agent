@@ -1,11 +1,211 @@
 {
   "session_id": "17896202-97e2-4fdb-9620-fc0689da7867",
   "created_at": "2025-08-12T15:37:11.964743",
-  "updated_at": "2025-08-12T16:33:54.080204",
+  "updated_at": "2025-08-12T18:19:08.433987",
   "current_state": "onboarding",
-  "customer_data": {},
+  "customer_data": {
+    "age": 32,
+    "gender": "male",
+    "coverage_amount": 2000000,
+    "policy_term": 35
+  },
   "selected_variant": null,
-  "quote_data": {},
+  "quote_data": {
+    "quotes_generated": [
+      {
+        "name": "Life Shield",
+        "variant": "Life Shield",
+        "annual_premium": 6615.0,
+        "modal_premiums": {
+          "yearly": 6615.0,
+          "half_yearly": 6747.3,
+          "quarterly": 6879.6,
+          "monthly": 7144.2
+        },
+        "sum_assured": 5000000,
+        "policy_term": 20,
+        "premium_paying_term": 20,
+        "total_premium_payable": 132300.0,
+        "features": [
+          "Death Benefit",
+          "Terminal Illness Cover",
+          "Waiver of Premium (ATPD/TI)",
+          "Life Stage Upgrade Option"
+        ],
+        "benefits": {
+          "death_benefit": 5000000,
+          "terminal_illness": 5000000
+        },
+        "discounts_applied": {
+          "non_tobacco": {
+            "name": "Non-tobacco preferred rates",
+            "percentage": 10,
+            "amount": 0
+          }
+        },
+        "discount_amount": 0,
+        "recommended": true,
+        "base_premium": 6750.0,
+        "adjusted_premium": 6615.0,
+        "calculation_breakdown": {
+          "variant": "Life Shield",
+          "age_band": "26-30",
+          "gender": "male",
+          "tobacco_user": false,
+          "occupation_category": "class_1",
+          "health_condition": "good",
+          "policy_term": 20,
+          "sum_assured_band": "25_to_50_lakh",
+          "payment_frequency": "yearly"
+        }
+      },
+      {
+        "name": "Life Shield Plus",
+        "variant": "Life Shield Plus",
+        "annual_premium": 8085.0,
+        "modal_premiums": {
+          "yearly": 8085.0,
+          "half_yearly": 8246.7,
+          "quarterly": 8408.4,
+          "monthly": 8731.8
+        },
+        "sum_assured": 5000000,
+        "policy_term": 20,
+        "premium_paying_term": 20,
+        "total_premium_payable": 161700.0,
+        "features": [
+          "Death Benefit",
+          "Terminal Illness Cover",
+          "Accidental Death Benefit",
+          "Waiver of Premium (ATPD/TI)",
+          "Life Stage Upgrade Option"
+        ],
+        "benefits": {
+          "death_benefit": 5000000,
+          "terminal_illness": 5000000,
+          "accidental_death": 5000000
+        },
+        "discounts_applied": {
+          "non_tobacco": {
+            "name": "Non-tobacco preferred rates",
+            "percentage": 10,
+            "amount": 0
+          }
+        },
+        "discount_amount": 0,
+        "recommended": false,
+        "base_premium": 8250.0,
+        "adjusted_premium": 8085.0,
+        "calculation_breakdown": {
+          "variant": "Life Shield Plus",
+          "age_band": "26-30",
+          "gender": "male",
+          "tobacco_user": false,
+          "occupation_category": "class_1",
+          "health_condition": "good",
+          "policy_term": 20,
+          "sum_assured_band": "25_to_50_lakh",
+          "payment_frequency": "yearly"
+        }
+      },
+      {
+        "name": "Life Shield ROP",
+        "variant": "Life Shield ROP",
+        "annual_premium": 107065.0,
+        "modal_premiums": {
+          "yearly": 107065.0,
+          "half_yearly": 109206.3,
+          "quarterly": 111347.6,
+          "monthly": 115630.2
+        },
+        "sum_assured": 5000000,
+        "policy_term": 20,
+        "premium_paying_term": 20,
+        "total_premium_payable": 2141300.0,
+        "features": [
+          "Death Benefit",
+          "Terminal Illness Cover",
+          "Return of Premium at Maturity",
+          "Waiver of Premium (ATPD/TI)"
+        ],
+        "benefits": {
+          "death_benefit": 5000000,
+          "terminal_illness": 5000000,
+          "maturity_benefit": "Total Premiums Paid"
+        },
+        "discounts_applied": {
+          "non_tobacco": {
+            "name": "Non-tobacco preferred rates",
+            "percentage": 10,
+            "amount": 0
+          }
+        },
+        "discount_amount": 0,
+        "recommended": false,
+        "base_premium": 109250.0,
+        "adjusted_premium": 107065.0,
+        "calculation_breakdown": {
+          "variant": "Life Shield ROP",
+          "age_band": "26-30",
+          "gender": "male",
+          "tobacco_user": false,
+          "occupation_category": "class_1",
+          "health_condition": "good",
+          "policy_term": 20,
+          "sum_assured_band": "25_to_50_lakh",
+          "payment_frequency": "yearly"
+        }
+      }
+    ],
+    "best_quote": {
+      "name": "Life Shield",
+      "variant": "Life Shield",
+      "annual_premium": 6615.0,
+      "modal_premiums": {
+        "yearly": 6615.0,
+        "half_yearly": 6747.3,
+        "quarterly": 6879.6,
+        "monthly": 7144.2
+      },
+      "sum_assured": 5000000,
+      "policy_term": 20,
+      "premium_paying_term": 20,
+      "total_premium_payable": 132300.0,
+      "features": [
+        "Death Benefit",
+        "Terminal Illness Cover",
+        "Waiver of Premium (ATPD/TI)",
+        "Life Stage Upgrade Option"
+      ],
+      "benefits": {
+        "death_benefit": 5000000,
+        "terminal_illness": 5000000
+      },
+      "discounts_applied": {
+        "non_tobacco": {
+          "name": "Non-tobacco preferred rates",
+          "percentage": 10,
+          "amount": 0
+        }
+      },
+      "discount_amount": 0,
+      "recommended": true,
+      "base_premium": 6750.0,
+      "adjusted_premium": 6615.0,
+      "calculation_breakdown": {
+        "variant": "Life Shield",
+        "age_band": "26-30",
+        "gender": "male",
+        "tobacco_user": false,
+        "occupation_category": "class_1",
+        "health_condition": "good",
+        "policy_term": 20,
+        "sum_assured_band": "25_to_50_lakh",
+        "payment_frequency": "yearly"
+      }
+    },
+    "last_generated": "2025-08-12T12:48:45.759536"
+  },
   "policy_data": {},
   "conversation_history": [
     {
@@ -57,6 +257,149 @@
       "state": "onboarding",
       "actions_taken": [],
       "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T17:20:10.834317",
+      "user_message": "What is term insurance",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Term insurance is a type of life insurance that provides coverage for a specified period, usually ranging from one to 30 years. If the policyholder dies during this term, the beneficiaries receive a lump sum payment known as the sum assured.\n\nWould you like to know more about it or explore some options? If so, I can definitely help with that!\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T17:21:01.268549",
+      "user_message": "What are different types of term insurances",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"There are a few different types of term insurances available:\n\n1. **Standard Term Insurance**: Offers coverage to non-smokers who do not have any pre-existing medical conditions.\n2. **Guaranteed Renewable Term Insurance**: Guarantees that the policy can be renewed without a medical examination, which is useful for those with pre-existing conditions or poor health.\n3. **Convertibility Term Insurance**: Allows you to convert your term insurance into whole life coverage at any time without undergoing a medical exam.\n\nWould you like more details on any of these types? Or if you're ready, we can start exploring options based on your specific needs.\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T17:22:00.419780",
+      "user_message": "My name is Diwakar Adhikari and I want to buy an insurance",
+      "bot_response": "Hello Diwakar Adhikari! It's great to have you interested in our term insurance options. Let's get started with collecting some details about you and your needs. Could you please share your date of birth so we can proceed?",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T17:22:12.678437",
+      "user_message": "What is term insurance",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! Term insurance is a type of life insurance that provides coverage for a specified period, usually ranging from one to 30 years. If the policyholder dies during this term, the beneficiaries receive a lump sum payment known as the sum assured.\n\nWould you like more details or help with anything specific? If you're ready to proceed, we can gather some information about you.\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T17:23:09.167326",
+      "user_message": "soooo tell me more",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Absolutely! Term insurance is a type of life insurance that offers coverage for a specific period, typically ranging from one to 30 years. If you pass away during this term, your beneficiaries receive a predetermined sum assured payment.\n\nWould you like more details about the benefits or would you like to start the process of buying an insurance policy? If so, I can gather some information from you now.\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T17:23:39.298866",
+      "user_message": "Benifits please",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Certainly! Term insurance offers several key benefits:\n\n1. **Financial Protection**: Provides a lump sum payment to your beneficiaries if you pass away during the term of the policy.\n2. **Tax Benefits**: The sum assured and premiums paid are usually tax-free under Section 80C of the Income Tax Act, India.\n3. **Flexibility**: Allows you to choose the coverage amount, term length, and premium frequency according to your needs.\n4. **Guaranteed Renewability**: Many policies offer the option to renew without a medical exam.\n5. **Convertible Option**: Some policies allow you to convert the term insurance into whole life insurance at any time.\n\nWould you like to proceed with gathering more details about yourself so we can provide a quote? If so, could you please share your age, gender, preferred coverage amount, and policy term length?\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T17:52:32.808483",
+      "user_message": "Certainly! Term insurance offers several key benefits !",
+      "bot_response": "Great to hear that! To provide you with more detailed information or start the process of getting a quote, could you please share some details about yourself such as your age, gender, preferred coverage amount, and policy term length? This will help us tailor the benefits and options to your specific needs.",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T17:59:07.916430",
+      "user_message": "I am male 32 years old and i want a 2 cr coverage and a policy lenght of 35 years",
+      "bot_response": "Great! Based on your details, here’s the best recommended quote for you:\n\n- **Plan**: Life Shield\n- **Premium**: ₹2,970.0 per year\n- **Coverage**: ₹2,000,000\n- **Policy Term**: 35 years\n- **Features**: Death Benefit, Terminal Illness Cover, Waiver of Premium (ATPD/TI), Life Stage Upgrade Option\n\nWe also have two other variants available if you’d like to explore those. Would you like to see them or proceed with this plan?",
+      "state": "onboarding",
+      "actions_taken": [
+        "premium_calculation"
+      ],
+      "data_collected": {
+        "gender": "male",
+        "age": 32,
+        "coverage_amount": 2000000,
+        "policy_term": 35
+      }
+    },
+    {
+      "timestamp": "2025-08-12T17:59:53.083043",
+      "user_message": "What are the other available variants ? Also can you please explain what a coverage term is?",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! In addition to the Life Shield plan, we also have two other variants available:\n\n1. **Life Shield Plus**: With an annual premium of ₹3,731.0, it offers more features like Accidental Death Benefit.\n2. **Life Shield ROP (Return of Premium)**: This variant has a higher annual premium of ₹41,730.0 and includes the feature of returning the total premiums paid at maturity.\n\nNow, let's clarify what 'coverage term' means:\n\n- **Coverage Term**: This is the duration for which your insurance policy provides coverage. In this case, it is 35 years, meaning that if you pass away during these 35 years and have a valid policy in place, your beneficiaries will receive the agreed-upon sum assured.\n\nWould you like to proceed with one of these plans or gather more information? If you're ready, we can process your quote now.\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T18:03:05.212067",
+      "user_message": "What are the plausible discount options",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Currently, based on your details, the primary discount available is the Non-tobacco preferred rates, which offers a 10% reduction in the premium. This means if you are not a tobacco user, you can get a better deal.\n\nWould you like to proceed with this plan or gather more information? If you're ready, we can process your quote now.\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T18:03:22.733916",
+      "user_message": "Yeah I mean please proceed",
+      "bot_response": "{\n  \"mode\": \"onboarding\",\n  \"reply\": \"Great! Let's proceed with your quote. Based on your details, here is the recommended plan:\n\n- **Plan**: Life Shield\n- **Annual Premium**: ₹2,970.0\n- **Coverage Amount**: ₹2,000,000\n- **Policy Term**: 35 years\n\nWould you like to review any more details or start the process of purchasing this insurance policy? If so, we can finalize everything now.\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T18:04:07.443233",
+      "user_message": "Yes please confirm this purchase",
+      "bot_response": "{\n  \"mode\": \"onboarding\",\n  \"reply\": \"Sure, I can confirm this purchase for you. Based on the details provided, here is your quote:\n\n- **Plan**: Life Shield\n- **Annual Premium**: ₹2,970.0\n- **Coverage Amount**: ₹2,000,000\n- **Policy Term**: 35 years\n\nWould you like to proceed with this plan? We can now finalize the purchase and get your policy started.\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T18:04:18.805644",
+      "user_message": "yes go ahead",
+      "bot_response": "{\n  \"mode\": \"onboarding\",\n  \"reply\": \"Great! I will finalize your purchase now. Here is your confirmed plan:\n\n- **Plan**: Life Shield\n- **Annual Premium**: ₹2,970.0\n- **Coverage Amount**: ₹2,000,000\n- **Policy Term**: 35 years\n\nWould you like to proceed with this plan? If so, we can finalize the purchase and get your policy started.\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T18:18:49.318531",
+      "user_message": "Hi",
+      "bot_response": "Hi! It's great to hear from you again. Based on your previous details, here is your best recommended insurance quote:\n\n- **Plan**: Life Shield\n- **Premium**: ₹6,615.0 per year\n- **Coverage**: ₹5,000,000\n- **Policy Term**: 20 years\n- **Features**: Death Benefit, Terminal Illness Cover, Waiver of Premium (ATPD/TI), Life Stage Upgrade Option\n\nWe also have two other variants available if you'd like to explore those. Would you like to see them or proceed with this plan?",
+      "state": "onboarding",
+      "actions_taken": [
+        "premium_calculation"
+      ],
+      "data_collected": {
+        "full_name": null,
+        "date_of_birth": null,
+        "age": 32,
+        "gender": "male",
+        "occupation": null,
+        "smoker": null,
+        "mobile_number": null,
+        "email": null,
+        "pin_code": null,
+        "coverage_amount": 2000000,
+        "policy_term": 35,
+        "premium_frequency": null,
+        "riders_interest": null
+      }
+    },
+    {
+      "timestamp": "2025-08-12T18:19:08.433987",
+      "user_message": "Lets proceed ahead with this",
+      "bot_response": "Great! I will proceed with this plan for you. Here is your confirmed quote:\n\n- **Plan**: Life Shield\n- **Annual Premium**: ₹2,970.0\n- **Coverage Amount**: ₹2,000,000\n- **Policy Term**: 35 years\n\nWould you like to review any more details before we finalize the purchase? If so, let me know and I can provide them for you.",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
     }
   ],
   "state_context": {},
@@ -65,7 +408,7 @@
   "form_completion": {
     "personal_details": {
       "completed": false,
-      "completion_percentage": 0
+      "completion_percentage": 40
     },
     "insurance_requirements": {
       "completed": false,
