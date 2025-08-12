@@ -199,9 +199,23 @@ class SessionManager:
         import os
         os.makedirs(self.sessions_dir, exist_ok=True)
     
-    def create_session(self) -> SessionData:
-        """Create a new session."""
-        session = SessionData()
+    def create_session(self, session_id: Optional[str] = None) -> SessionData:
+        """Create a new session with optional predefined session_id."""
+        if session_id:
+            # Check if session already exists
+            existing_session = self.get_session(session_id)
+            if existing_session:
+                return existing_session
+            # Try to restore session from data.json if it exists
+            restored_session = self._restore_session_from_data_json(session_id)
+            if restored_session:
+                self.sessions[session_id] = restored_session
+                self._persist_session(restored_session)
+                return restored_session
+            # Create session with provided ID
+            session = SessionData(session_id=session_id)
+        else:
+            session = SessionData()
         
         # Clean up old sessions if we're at the limit
         if len(self.sessions) >= self.max_sessions:
@@ -307,6 +321,75 @@ class SessionManager:
             return SessionData(**session_dict)
         except Exception as e:
             print(f"Error loading session {session_id}: {e}")
+            return None
+
+    def _restore_session_from_data_json(self, session_id: str) -> Optional[SessionData]:
+        """Restore session data from data.json conversation history."""
+        import json
+        import os
+        from datetime import datetime
+        
+        data_path = "data.json"
+        if not os.path.exists(data_path):
+            return None
+        
+        try:
+            with open(data_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            
+            conversations = data.get("conversations", [])
+            session_conversations = [conv for conv in conversations if conv.get("session_id") == session_id]
+            
+            if not session_conversations:
+                return None
+            
+            # Create new session with the provided session_id
+            session = SessionData(session_id=session_id)
+            
+            # Restore customer data from the latest store updates
+            latest_personal_details = {}
+            latest_quote_details = {}
+            
+            for conv in session_conversations:
+                store_update = conv.get("store_update", {})
+                if store_update.get("personalDetails"):
+                    latest_personal_details.update(store_update["personalDetails"])
+                if store_update.get("quoteDetails"):
+                    latest_quote_details.update(store_update["quoteDetails"])
+            
+            # Map frontend data to session data
+            if latest_personal_details or latest_quote_details:
+                combined_store_update = {
+                    "personalDetails": latest_personal_details,
+                    "quoteDetails": latest_quote_details
+                }
+                session.update_frontend_data(combined_store_update)
+            
+            # Restore conversation history as simple conversation turns
+            for conv in session_conversations:
+                if conv.get("user_message") and conv.get("final_reply"):
+                    session.add_conversation_turn(
+                        user_message=conv["user_message"],
+                        bot_response=conv["final_reply"],
+                        actions_taken=conv.get("llm_decision", {}).get("api_calls", []),
+                        data_collected=conv.get("llm_decision", {}).get("extracted", {})
+                    )
+            
+            # Set timestamps from first and last conversation
+            if session_conversations:
+                first_conv = session_conversations[0]
+                last_conv = session_conversations[-1]
+                
+                try:
+                    session.created_at = datetime.fromisoformat(first_conv["timestamp"].replace("Z", "+00:00"))
+                    session.updated_at = datetime.fromisoformat(last_conv["timestamp"].replace("Z", "+00:00"))
+                except Exception:
+                    pass
+            
+            return session
+            
+        except Exception as e:
+            print(f"Error restoring session {session_id} from data.json: {e}")
             return None
 
 

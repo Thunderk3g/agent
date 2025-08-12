@@ -104,7 +104,8 @@ class AgentOrchestrator:
         if session_id:
             session = session_manager.get_session(session_id)  # type: ignore
             if not session:
-                session = session_manager.create_session()  # type: ignore
+                # Create session with the provided session_id to maintain consistency
+                session = session_manager.create_session(session_id)  # type: ignore
         else:
             session = session_manager.create_session()  # type: ignore
 
