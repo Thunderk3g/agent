@@ -63,521 +63,73 @@
   },
   "conversations": [
     {
-      "timestamp": "2025-08-12T08:34:08.829944Z",
-      "session_id": "727a2b69-3223-42ae-8170-c9535438ffc0",
-      "user_message": "What is Term Plan",
+      "timestamp": "2025-08-12T10:25:46.850957Z",
+      "session_id": "17896202-97e2-4fdb-9620-fc0689da7867",
+      "user_message": "Hi!",
       "llm_decision": {
-        "mode": "informational",
-        "reply": "Sure! Term Plan is a type of life insurance that provides coverage for a specific period, as the name suggests. If you pass away during this term, your beneficiaries will receive the agreed sum assured amount. The policy typically comes with flexible terms like 1 to 30 years and can be customized based on your needs.",
+        "mode": "conversational",
+        "reply": "Hi there! Glad to chat with you. How can I assist you today?",
         "next_question": null,
         "extracted": {},
         "store_update": {},
         "api_calls": [],
-        "reasoning": "The user asked for a definition of Term Plan, which is an informational request. No purchase intent was shown, so we will not proceed with data collection or auto-quote.",
+        "reasoning": "User greeted us, no need for data collection at this stage.",
         "done": false
       },
       "api_results": [],
-      "final_reply": "Sure! Term Plan is a type of life insurance that provides coverage for a specific period, as the name suggests. If you pass away during this term, your beneficiaries will receive the agreed sum assured amount. The policy typically comes with flexible terms like 1 to 30 years and can be customized based on your needs.",
+      "final_reply": "Hi there! Glad to chat with you. How can I assist you today?",
       "store_update": {}
     },
     {
-      "timestamp": "2025-08-12T08:34:41.001793Z",
-      "session_id": "727a2b69-3223-42ae-8170-c9535438ffc0",
-      "user_message": "I want a 2 cr pt policy with 20 year ppt and my name is rajesh hamal and i am 24 non smoker male",
+      "timestamp": "2025-08-12T10:26:08.518385Z",
+      "session_id": "17896202-97e2-4fdb-9620-fc0689da7867",
+      "user_message": "I want to know what term insurance is and what are the different available options",
       "llm_decision": {
-        "mode": "onboarding",
-        "reply": "Great choice, Rajesh! I can help you with that. Let's get started on your term insurance plan.",
-        "next_question": "Could you please provide your mobile number and email so we can keep in touch during the process?",
-        "extracted": {
-          "full_name": "Rajesh Hamal",
-          "age": 24,
-          "gender": "male",
-          "coverage_amount": 2000000,
-          "policy_term": 20,
-          "smoker": false
-        },
-        "api_calls": [
-          {
-            "name": "premium_calculation",
-            "params": {
-              "age": 24,
-              "gender": "male",
-              "coverage_amount": 2000000,
-              "policy_term": 20,
-              "smoker": false,
-              "premium_frequency": "yearly"
-            }
-          }
-        ]
-      },
-      "api_results": [
-        {
-          "name": "premium_calculation",
-          "params": {
-            "age": 24,
-            "gender": "male",
-            "coverage_amount": 2000000,
-            "policy_term": 20,
-            "smoker": false,
-            "premium_frequency": "yearly"
-          },
-          "result": {
-            "quotes": [
-              {
-                "name": "Life Shield",
-                "variant": "Life Shield",
-                "annual_premium": 2400.0,
-                "modal_premiums": {
-                  "yearly": 2400.0,
-                  "half_yearly": 2448.0,
-                  "quarterly": 2496.0,
-                  "monthly": 2592.0
-                },
-                "sum_assured": 2000000,
-                "policy_term": 20,
-                "premium_paying_term": 20,
-                "total_premium_payable": 48000.0,
-                "features": [
-                  "Death Benefit",
-                  "Terminal Illness Cover",
-                  "Waiver of Premium (ATPD/TI)",
-                  "Life Stage Upgrade Option"
-                ],
-                "benefits": {
-                  "death_benefit": 2000000,
-                  "terminal_illness": 2000000
-                },
-                "discounts_applied": {
-                  "non_tobacco": {
-                    "name": "Non-tobacco preferred rates",
-                    "percentage": 10,
-                    "amount": 0
-                  }
-                },
-                "discount_amount": 0,
-                "recommended": true,
-                "base_premium": 2400.0,
-                "adjusted_premium": 2400.0,
-                "calculation_breakdown": {
-                  "variant": "Life Shield",
-                  "age_band": "18-25",
-                  "gender": "male",
-                  "tobacco_user": false,
-                  "occupation_category": "class_1",
-                  "health_condition": "good",
-                  "policy_term": 20,
-                  "sum_assured_band": "up_to_25_lakh",
-                  "payment_frequency": "yearly"
-                }
-              },
-              {
-                "name": "Life Shield Plus",
-                "variant": "Life Shield Plus",
-                "annual_premium": 2900.0,
-                "modal_premiums": {
-                  "yearly": 2900.0,
-                  "half_yearly": 2958.0,
-                  "quarterly": 3016.0,
-                  "monthly": 3132.0
-                },
-                "sum_assured": 2000000,
-                "policy_term": 20,
-                "premium_paying_term": 20,
-                "total_premium_payable": 58000.0,
-                "features": [
-                  "Death Benefit",
-                  "Terminal Illness Cover",
-                  "Accidental Death Benefit",
-                  "Waiver of Premium (ATPD/TI)",
-                  "Life Stage Upgrade Option"
-                ],
-                "benefits": {
-                  "death_benefit": 2000000,
-                  "terminal_illness": 2000000,
-                  "accidental_death": 2000000
-                },
-                "discounts_applied": {
-                  "non_tobacco": {
-                    "name": "Non-tobacco preferred rates",
-                    "percentage": 10,
-                    "amount": 0
-                  }
-                },
-                "discount_amount": 0,
-                "recommended": false,
-                "base_premium": 2900.0,
-                "adjusted_premium": 2900.0,
-                "calculation_breakdown": {
-                  "variant": "Life Shield Plus",
-                  "age_band": "18-25",
-                  "gender": "male",
-                  "tobacco_user": false,
-                  "occupation_category": "class_1",
-                  "health_condition": "good",
-                  "policy_term": 20,
-                  "sum_assured_band": "up_to_25_lakh",
-                  "payment_frequency": "yearly"
-                }
-              },
-              {
-                "name": "Life Shield ROP",
-                "variant": "Life Shield ROP",
-                "annual_premium": 37000.0,
-                "modal_premiums": {
-                  "yearly": 37000.0,
-                  "half_yearly": 37740.0,
-                  "quarterly": 38480.0,
-                  "monthly": 39960.0
-                },
-                "sum_assured": 2000000,
-                "policy_term": 20,
-                "premium_paying_term": 20,
-                "total_premium_payable": 740000.0,
-                "features": [
-                  "Death Benefit",
-                  "Terminal Illness Cover",
-                  "Return of Premium at Maturity",
-                  "Waiver of Premium (ATPD/TI)"
-                ],
-                "benefits": {
-                  "death_benefit": 2000000,
-                  "terminal_illness": 2000000,
-                  "maturity_benefit": "Total Premiums Paid"
-                },
-                "discounts_applied": {
-                  "non_tobacco": {
-                    "name": "Non-tobacco preferred rates",
-                    "percentage": 10,
-                    "amount": 0
-                  }
-                },
-                "discount_amount": 0,
-                "recommended": false,
-                "base_premium": 37000.0,
-                "adjusted_premium": 37000.0,
-                "calculation_breakdown": {
-                  "variant": "Life Shield ROP",
-                  "age_band": "18-25",
-                  "gender": "male",
-                  "tobacco_user": false,
-                  "occupation_category": "class_1",
-                  "health_condition": "good",
-                  "policy_term": 20,
-                  "sum_assured_band": "up_to_25_lakh",
-                  "payment_frequency": "yearly"
-                }
-              }
-            ],
-            "best": {
-              "name": "Life Shield",
-              "variant": "Life Shield",
-              "annual_premium": 2400.0,
-              "modal_premiums": {
-                "yearly": 2400.0,
-                "half_yearly": 2448.0,
-                "quarterly": 2496.0,
-                "monthly": 2592.0
-              },
-              "sum_assured": 2000000,
-              "policy_term": 20,
-              "premium_paying_term": 20,
-              "total_premium_payable": 48000.0,
-              "features": [
-                "Death Benefit",
-                "Terminal Illness Cover",
-                "Waiver of Premium (ATPD/TI)",
-                "Life Stage Upgrade Option"
-              ],
-              "benefits": {
-                "death_benefit": 2000000,
-                "terminal_illness": 2000000
-              },
-              "discounts_applied": {
-                "non_tobacco": {
-                  "name": "Non-tobacco preferred rates",
-                  "percentage": 10,
-                  "amount": 0
-                }
-              },
-              "discount_amount": 0,
-              "recommended": true,
-              "base_premium": 2400.0,
-              "adjusted_premium": 2400.0,
-              "calculation_breakdown": {
-                "variant": "Life Shield",
-                "age_band": "18-25",
-                "gender": "male",
-                "tobacco_user": false,
-                "occupation_category": "class_1",
-                "health_condition": "good",
-                "policy_term": 20,
-                "sum_assured_band": "up_to_25_lakh",
-                "payment_frequency": "yearly"
-              }
-            }
-          },
-          "success": true
-        }
-      ],
-      "final_reply": "Great choice, Rajesh! I can help you with that. Let's get started on your term insurance plan.",
-      "store_update": {}
-    },
-    {
-      "timestamp": "2025-08-12T08:34:59.698680Z",
-      "session_id": "727a2b69-3223-42ae-8170-c9535438ffc0",
-      "user_message": "Okay!",
-      "llm_decision": {
-        "mode": "onboarding",
-        "reply": "Alright, Rajesh! Let's proceed with your term insurance plan. Based on the details you've provided, we can generate a quote for you.",
+        "mode": "conversational",
+        "reply": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! Term insurance is a type of life insurance that provides coverage for a specified period, usually ranging from one to 30 years. If the policyholder dies during this term, the beneficiaries receive a lump sum payment known as the sum assured. It's like buying a 'term' of protection.\n\nWould you like to know more about it or explore some options? If so, I can definitely help with that!\"\n}",
         "next_question": null,
-        "extracted": {
-          "full_name": "Rajesh Hamal",
-          "age": 24,
-          "gender": "male",
-          "smoker": false,
-          "coverage_amount": 2000000,
-          "policy_term": 20
-        },
-        "store_update": {
-          "personalDetails": {
-            "fullName": "Rajesh Hamal",
-            "age": 24,
-            "gender": "male",
-            "smoker": false
-          },
-          "quoteDetails": {
-            "sumAssured": 2000000,
-            "policyTerm_years": 20,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [
-          {
-            "name": "premium_calculation",
-            "params": {}
-          }
-        ],
-        "reasoning": "User has provided all necessary details to generate a quote, so we will proceed with the premium calculation API call.",
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
         "done": false
       },
-      "api_results": [
-        {
-          "name": "premium_calculation",
-          "params": {},
-          "result": {
-            "quotes": [
-              {
-                "name": "Life Shield",
-                "variant": "Life Shield",
-                "annual_premium": 6615.0,
-                "modal_premiums": {
-                  "yearly": 6615.0,
-                  "half_yearly": 6747.3,
-                  "quarterly": 6879.6,
-                  "monthly": 7144.2
-                },
-                "sum_assured": 5000000,
-                "policy_term": 20,
-                "premium_paying_term": 20,
-                "total_premium_payable": 132300.0,
-                "features": [
-                  "Death Benefit",
-                  "Terminal Illness Cover",
-                  "Waiver of Premium (ATPD/TI)",
-                  "Life Stage Upgrade Option"
-                ],
-                "benefits": {
-                  "death_benefit": 5000000,
-                  "terminal_illness": 5000000
-                },
-                "discounts_applied": {
-                  "non_tobacco": {
-                    "name": "Non-tobacco preferred rates",
-                    "percentage": 10,
-                    "amount": 0
-                  }
-                },
-                "discount_amount": 0,
-                "recommended": true,
-                "base_premium": 6750.0,
-                "adjusted_premium": 6615.0,
-                "calculation_breakdown": {
-                  "variant": "Life Shield",
-                  "age_band": "26-30",
-                  "gender": "male",
-                  "tobacco_user": false,
-                  "occupation_category": "class_1",
-                  "health_condition": "good",
-                  "policy_term": 20,
-                  "sum_assured_band": "25_to_50_lakh",
-                  "payment_frequency": "yearly"
-                }
-              },
-              {
-                "name": "Life Shield Plus",
-                "variant": "Life Shield Plus",
-                "annual_premium": 8085.0,
-                "modal_premiums": {
-                  "yearly": 8085.0,
-                  "half_yearly": 8246.7,
-                  "quarterly": 8408.4,
-                  "monthly": 8731.8
-                },
-                "sum_assured": 5000000,
-                "policy_term": 20,
-                "premium_paying_term": 20,
-                "total_premium_payable": 161700.0,
-                "features": [
-                  "Death Benefit",
-                  "Terminal Illness Cover",
-                  "Accidental Death Benefit",
-                  "Waiver of Premium (ATPD/TI)",
-                  "Life Stage Upgrade Option"
-                ],
-                "benefits": {
-                  "death_benefit": 5000000,
-                  "terminal_illness": 5000000,
-                  "accidental_death": 5000000
-                },
-                "discounts_applied": {
-                  "non_tobacco": {
-                    "name": "Non-tobacco preferred rates",
-                    "percentage": 10,
-                    "amount": 0
-                  }
-                },
-                "discount_amount": 0,
-                "recommended": false,
-                "base_premium": 8250.0,
-                "adjusted_premium": 8085.0,
-                "calculation_breakdown": {
-                  "variant": "Life Shield Plus",
-                  "age_band": "26-30",
-                  "gender": "male",
-                  "tobacco_user": false,
-                  "occupation_category": "class_1",
-                  "health_condition": "good",
-                  "policy_term": 20,
-                  "sum_assured_band": "25_to_50_lakh",
-                  "payment_frequency": "yearly"
-                }
-              },
-              {
-                "name": "Life Shield ROP",
-                "variant": "Life Shield ROP",
-                "annual_premium": 107065.0,
-                "modal_premiums": {
-                  "yearly": 107065.0,
-                  "half_yearly": 109206.3,
-                  "quarterly": 111347.6,
-                  "monthly": 115630.2
-                },
-                "sum_assured": 5000000,
-                "policy_term": 20,
-                "premium_paying_term": 20,
-                "total_premium_payable": 2141300.0,
-                "features": [
-                  "Death Benefit",
-                  "Terminal Illness Cover",
-                  "Return of Premium at Maturity",
-                  "Waiver of Premium (ATPD/TI)"
-                ],
-                "benefits": {
-                  "death_benefit": 5000000,
-                  "terminal_illness": 5000000,
-                  "maturity_benefit": "Total Premiums Paid"
-                },
-                "discounts_applied": {
-                  "non_tobacco": {
-                    "name": "Non-tobacco preferred rates",
-                    "percentage": 10,
-                    "amount": 0
-                  }
-                },
-                "discount_amount": 0,
-                "recommended": false,
-                "base_premium": 109250.0,
-                "adjusted_premium": 107065.0,
-                "calculation_breakdown": {
-                  "variant": "Life Shield ROP",
-                  "age_band": "26-30",
-                  "gender": "male",
-                  "tobacco_user": false,
-                  "occupation_category": "class_1",
-                  "health_condition": "good",
-                  "policy_term": 20,
-                  "sum_assured_band": "25_to_50_lakh",
-                  "payment_frequency": "yearly"
-                }
-              }
-            ],
-            "best": {
-              "name": "Life Shield",
-              "variant": "Life Shield",
-              "annual_premium": 6615.0,
-              "modal_premiums": {
-                "yearly": 6615.0,
-                "half_yearly": 6747.3,
-                "quarterly": 6879.6,
-                "monthly": 7144.2
-              },
-              "sum_assured": 5000000,
-              "policy_term": 20,
-              "premium_paying_term": 20,
-              "total_premium_payable": 132300.0,
-              "features": [
-                "Death Benefit",
-                "Terminal Illness Cover",
-                "Waiver of Premium (ATPD/TI)",
-                "Life Stage Upgrade Option"
-              ],
-              "benefits": {
-                "death_benefit": 5000000,
-                "terminal_illness": 5000000
-              },
-              "discounts_applied": {
-                "non_tobacco": {
-                  "name": "Non-tobacco preferred rates",
-                  "percentage": 10,
-                  "amount": 0
-                }
-              },
-              "discount_amount": 0,
-              "recommended": true,
-              "base_premium": 6750.0,
-              "adjusted_premium": 6615.0,
-              "calculation_breakdown": {
-                "variant": "Life Shield",
-                "age_band": "26-30",
-                "gender": "male",
-                "tobacco_user": false,
-                "occupation_category": "class_1",
-                "health_condition": "good",
-                "policy_term": 20,
-                "sum_assured_band": "25_to_50_lakh",
-                "payment_frequency": "yearly"
-              }
-            }
-          },
-          "success": true
-        }
-      ],
-      "final_reply": "Alright, Rajesh! Let's proceed with your term insurance plan. Based on the details you've provided, we can generate a quote for you.",
-      "store_update": {
-        "personalDetails": {
-          "fullName": "Rajesh Hamal",
-          "age": 24,
-          "gender": "male",
-          "smoker": false
-        },
-        "quoteDetails": {
-          "sumAssured": 2000000,
-          "policyTerm_years": 20,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
+      "api_results": [],
+      "final_reply": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! Term insurance is a type of life insurance that provides coverage for a specified period, usually ranging from one to 30 years. If the policyholder dies during this term, the beneficiaries receive a lump sum payment known as the sum assured. It's like buying a 'term' of protection.\n\nWould you like to know more about it or explore some options? If so, I can definitely help with that!\"\n}",
+      "store_update": {}
+    },
+    {
+      "timestamp": "2025-08-12T10:26:30.631292Z",
+      "session_id": "17896202-97e2-4fdb-9620-fc0689da7867",
+      "user_message": "What are the available options",
+      "llm_decision": {
+        "mode": "conversational",
+        "reply": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Great question! For term insurance, we offer various options tailored to different needs. Here are a few key factors you can consider:\n\n1. **Coverage Amount**: This is how much money will be paid out in case of an unfortunate event.\n2. **Policy Term**: The duration for which the policy provides coverage. Options typically range from 1 to 30 years.\n3. **Premium Frequency**: How often the premium (cost) is paid, such as annually or monthly.\n4. **Riders**: Additional benefits that can be added to your term insurance plan.\n\nFor example, you might choose a higher coverage amount if you have dependents who rely on your income. The policy term and frequency will depend on your financial planning needs.\n\nWould you like to explore specific options now? If so, could you please provide some details about yourself such as age, gender, preferred coverage amount, and the term length?\"\n}",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Great question! For term insurance, we offer various options tailored to different needs. Here are a few key factors you can consider:\n\n1. **Coverage Amount**: This is how much money will be paid out in case of an unfortunate event.\n2. **Policy Term**: The duration for which the policy provides coverage. Options typically range from 1 to 30 years.\n3. **Premium Frequency**: How often the premium (cost) is paid, such as annually or monthly.\n4. **Riders**: Additional benefits that can be added to your term insurance plan.\n\nFor example, you might choose a higher coverage amount if you have dependents who rely on your income. The policy term and frequency will depend on your financial planning needs.\n\nWould you like to explore specific options now? If so, could you please provide some details about yourself such as age, gender, preferred coverage amount, and the term length?\"\n}",
+      "store_update": {}
+    },
+    {
+      "timestamp": "2025-08-12T11:03:54.081196Z",
+      "session_id": "17896202-97e2-4fdb-9620-fc0689da7867",
+      "user_message": "What are the available options",
+      "llm_decision": {
+        "mode": "conversational",
+        "reply": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! For term insurance with Bajaj Allianz Life eTouch II, we offer a variety of options tailored to different needs. Here’s what you can consider:\n\n1. **Coverage Amount**: This is how much money will be paid out in case of an unfortunate event.\n2. **Policy Term**: The duration for which the policy provides coverage. Options typically range from 1 to 30 years.\n3. **Premium Frequency**: How often the premium (cost) is paid, such as annually or monthly.\n4. **Riders**: Additional benefits that can be added to your term insurance plan.\n\nFor example, you might choose a higher coverage amount if you have dependents who rely on your income. The policy term and frequency will depend on your financial planning needs.\n\nWould you like to explore specific options now? If so, could you please provide some details about yourself such as age, gender, preferred coverage amount, and the term length?\"\n}",
+        "next_question": null,
+        "extracted": {},
+        "api_calls": [],
+        "reasoning": "parse_fail",
+        "done": false
+      },
+      "api_results": [],
+      "final_reply": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! For term insurance with Bajaj Allianz Life eTouch II, we offer a variety of options tailored to different needs. Here’s what you can consider:\n\n1. **Coverage Amount**: This is how much money will be paid out in case of an unfortunate event.\n2. **Policy Term**: The duration for which the policy provides coverage. Options typically range from 1 to 30 years.\n3. **Premium Frequency**: How often the premium (cost) is paid, such as annually or monthly.\n4. **Riders**: Additional benefits that can be added to your term insurance plan.\n\nFor example, you might choose a higher coverage amount if you have dependents who rely on your income. The policy term and frequency will depend on your financial planning needs.\n\nWould you like to explore specific options now? If so, could you please provide some details about yourself such as age, gender, preferred coverage amount, and the term length?\"\n}",
+      "store_update": {}
     }
   ]
 }

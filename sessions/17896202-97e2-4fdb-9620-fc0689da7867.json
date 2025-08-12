@@ -1,0 +1,87 @@
+{
+  "session_id": "17896202-97e2-4fdb-9620-fc0689da7867",
+  "created_at": "2025-08-12T15:37:11.964743",
+  "updated_at": "2025-08-12T16:33:54.080204",
+  "current_state": "onboarding",
+  "customer_data": {},
+  "selected_variant": null,
+  "quote_data": {},
+  "policy_data": {},
+  "conversation_history": [
+    {
+      "timestamp": "2025-08-12T15:37:21.823981",
+      "user_message": "start",
+      "bot_response": "Great! Let's get started with understanding your insurance needs. Could you please share your full name and date of birth so we can proceed?",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {
+        "full_name": null,
+        "date_of_birth": null,
+        "age": null,
+        "gender": null,
+        "occupation": null,
+        "smoker": null,
+        "mobile_number": null,
+        "email": null,
+        "pin_code": null
+      }
+    },
+    {
+      "timestamp": "2025-08-12T15:55:46.849956",
+      "user_message": "Hi!",
+      "bot_response": "Hi there! Glad to chat with you. How can I assist you today?",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T15:56:08.517363",
+      "user_message": "I want to know what term insurance is and what are the different available options",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! Term insurance is a type of life insurance that provides coverage for a specified period, usually ranging from one to 30 years. If the policyholder dies during this term, the beneficiaries receive a lump sum payment known as the sum assured. It's like buying a 'term' of protection.\n\nWould you like to know more about it or explore some options? If so, I can definitely help with that!\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T15:56:30.630288",
+      "user_message": "What are the available options",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Great question! For term insurance, we offer various options tailored to different needs. Here are a few key factors you can consider:\n\n1. **Coverage Amount**: This is how much money will be paid out in case of an unfortunate event.\n2. **Policy Term**: The duration for which the policy provides coverage. Options typically range from 1 to 30 years.\n3. **Premium Frequency**: How often the premium (cost) is paid, such as annually or monthly.\n4. **Riders**: Additional benefits that can be added to your term insurance plan.\n\nFor example, you might choose a higher coverage amount if you have dependents who rely on your income. The policy term and frequency will depend on your financial planning needs.\n\nWould you like to explore specific options now? If so, could you please provide some details about yourself such as age, gender, preferred coverage amount, and the term length?\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    },
+    {
+      "timestamp": "2025-08-12T16:33:54.080204",
+      "user_message": "What are the available options",
+      "bot_response": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! For term insurance with Bajaj Allianz Life eTouch II, we offer a variety of options tailored to different needs. Here’s what you can consider:\n\n1. **Coverage Amount**: This is how much money will be paid out in case of an unfortunate event.\n2. **Policy Term**: The duration for which the policy provides coverage. Options typically range from 1 to 30 years.\n3. **Premium Frequency**: How often the premium (cost) is paid, such as annually or monthly.\n4. **Riders**: Additional benefits that can be added to your term insurance plan.\n\nFor example, you might choose a higher coverage amount if you have dependents who rely on your income. The policy term and frequency will depend on your financial planning needs.\n\nWould you like to explore specific options now? If so, could you please provide some details about yourself such as age, gender, preferred coverage amount, and the term length?\"\n}",
+      "state": "onboarding",
+      "actions_taken": [],
+      "data_collected": {}
+    }
+  ],
+  "state_context": {},
+  "uploaded_documents": [],
+  "payment_data": {},
+  "form_completion": {
+    "personal_details": {
+      "completed": false,
+      "completion_percentage": 0
+    },
+    "insurance_requirements": {
+      "completed": false,
+      "completion_percentage": 0
+    },
+    "rider_selection": {
+      "completed": false,
+      "completion_percentage": 0
+    },
+    "payment_details": {
+      "completed": false,
+      "completion_percentage": 0
+    }
+  },
+  "state_transitions": [],
+  "selected_product": {},
+  "selected_riders": [],
+  "metadata": {}
+}

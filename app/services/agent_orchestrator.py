@@ -95,7 +95,9 @@ EXAMPLES:
 - User: "Hi, how are you?" → Mode: "conversational", respond warmly
 - User: "I want to buy term insurance" → Mode: "onboarding", start data collection
 - User: "Who am I?" → Mode: "conversational", check if you know them from context, else chat naturally
-- If you have age, gender, coverage_amount, policy_term, smoker → Call "premium_calculation" API automatically
+- CRITICAL: If you have age, gender, coverage_amount, policy_term, and smoker status → You MUST call "premium_calculation" API
+- When user provides insurance requirements, always check if you can generate a quote
+- Quote generation is the primary goal once sufficient data is collected
 """
 )
 
@@ -142,26 +144,52 @@ class AgentOrchestrator:
             self._check_state_transitions(session, extracted_data)
             
         # Check if we have enough data to generate a quote automatically
-        if self._should_generate_quote(session) and not any(call.get("name") == "premium_calculation" for call in llm_json.get("api_calls", [])):
+        should_quote = self._should_generate_quote(session)
+        has_existing_quote_call = any(call.get("name") == "premium_calculation" for call in llm_json.get("api_calls", []))
+        
+        logger.info(f"[Agent] Quote check - should_quote: {should_quote}, has_existing_call: {has_existing_quote_call}, customer_data: {session.customer_data}")
+        
+        if should_quote and not has_existing_quote_call:
             # Add premium calculation to API calls if not already requested
             if "api_calls" not in llm_json:
                 llm_json["api_calls"] = []
+                
+            quote_params = self._get_quote_params(session)
+            logger.info(f"[Agent] Adding automatic premium_calculation with params: {quote_params}")
+            
             llm_json["api_calls"].append({
                 "name": "premium_calculation",
-                "params": self._get_quote_params(session)
+                "params": quote_params
             })
+        elif should_quote and has_existing_quote_call:
+            logger.info(f"[Agent] Quote should be generated and LLM already requested it")
+        elif not should_quote:
+            logger.info(f"[Agent] Quote not eligible yet - missing data or validation failed")
         
         # 2) Execute decided API calls
         api_results: List[Dict[str, Any]] = []
         for call in llm_json.get("api_calls", []) or []:
             name = call.get("name")
             params = call.get("params") or {}
+            logger.info(f"[Agent] Executing API call: {name} with params: {params}")
             try:
                 result = await self._execute_api(name, params)
+                logger.info(f"[Agent] API call {name} successful. Result: {result}")
                 api_results.append({"name": name, "params": params, "result": result, "success": True})
             except Exception as exc:  # pragma: no cover - defensive
-                logger.exception(f"API call failed: {name}")
+                logger.exception(f"API call failed: {name} - Error: {str(exc)}")
                 api_results.append({"name": name, "params": params, "error": str(exc), "success": False})
+
+        # Store quote results in session for future reference
+        quote_results = [r for r in api_results if r.get("name") == "premium_calculation" and r.get("success")]
+        if quote_results:
+            quote_data = quote_results[0].get("result", {})
+            session.quote_data.update({
+                "quotes_generated": quote_data.get("quotes", []),
+                "best_quote": quote_data.get("best", {}),
+                "last_generated": datetime.utcnow().isoformat()
+            })
+            logger.info(f"[Agent] Stored quote data in session: {len(quote_data.get('quotes', []))} quotes")
 
         # 3) Compose final answer via LLM with results
         final_reply = await self._compose_final_reply(session, user_message, llm_json, api_results)
@@ -194,6 +222,24 @@ class AgentOrchestrator:
             store_update,
         )
 
+        # Include quote information in metadata if available
+        metadata = {
+            "mode": conversation_mode,
+            "extracted": llm_json.get("extracted") if conversation_mode == "onboarding" else {},
+            "store_update": llm_json.get("store_update") if conversation_mode == "onboarding" else {}
+        }
+        
+        # Add quote data to metadata if quotes were generated
+        if quote_results:
+            quote_data = quote_results[0].get("result", {})
+            metadata["quotes"] = {
+                "generated": True,
+                "best_quote": quote_data.get("best", {}),
+                "all_quotes": quote_data.get("quotes", []),
+                "quote_count": len(quote_data.get("quotes", []))
+            }
+            logger.info(f"[Agent] Added quote metadata to response")
+
         return {
             "session_id": session.session_id,
             "message": final_reply,
@@ -204,11 +250,7 @@ class AgentOrchestrator:
                 "missing": [],
                 "completion_percentage": 0
             },
-            "metadata": {
-                "mode": conversation_mode,
-                "extracted": llm_json.get("extracted") if conversation_mode == "onboarding" else {},
-                "store_update": llm_json.get("store_update") if conversation_mode == "onboarding" else {}
-            }
+            "metadata": metadata
         }
 
     async def _ask_llm_decide(self, session: SessionData, user_message: str) -> Dict[str, Any]:
@@ -396,9 +438,14 @@ class AgentOrchestrator:
         required_fields = ["age", "gender", "coverage_amount", "policy_term", "smoker"]
         customer_data = session.customer_data
         
+        logger.info(f"[Agent] Checking quote eligibility for session {session.session_id}")
+        logger.info(f"[Agent] Required fields: {required_fields}")
+        logger.info(f"[Agent] Available customer data: {customer_data}")
+        
         # Check if all required fields are present and not None
         for field in required_fields:
             if field not in customer_data or customer_data[field] is None:
+                logger.info(f"[Agent] Missing or null field: {field}")
                 return False
                 
         # Additional validation
@@ -406,13 +453,19 @@ class AgentOrchestrator:
         coverage_amount = customer_data.get("coverage_amount")
         policy_term = customer_data.get("policy_term")
         
+        logger.info(f"[Agent] Validating ranges - age: {age}, coverage: {coverage_amount}, term: {policy_term}")
+        
         if not (18 <= age <= 65):
+            logger.info(f"[Agent] Age {age} out of range (18-65)")
             return False
         if not (100000 <= coverage_amount <= 50000000):  # Min 1L, Max 5Cr
+            logger.info(f"[Agent] Coverage {coverage_amount} out of range (100k-5Cr)")
             return False
         if not (5 <= policy_term <= 40):  # Min 5 years, Max 40 years
+            logger.info(f"[Agent] Policy term {policy_term} out of range (5-40 years)")
             return False
             
+        logger.info(f"[Agent] Quote generation eligible: TRUE")
         return True
 
     def _get_quote_params(self, session: SessionData) -> Dict[str, Any]:
@@ -434,16 +487,21 @@ class AgentOrchestrator:
         llm_json: Dict[str, Any],
         api_results: List[Dict[str, Any]],
     ) -> str:
-        # First, try to use the reply from the initial LLM decision if it's clean text
-        initial_reply = llm_json.get("reply", "")
-        if initial_reply and not self._is_json_string(initial_reply):
-            return initial_reply
+        # Check if we have quote results that need to be incorporated
+        quote_results = [r for r in api_results if r.get("name") == "premium_calculation" and r.get("success")]
         
-        # If the initial reply looks like JSON, extract the reply field
-        if initial_reply and self._is_json_string(initial_reply):
-            cleaned = self._extract_reply_from_json(initial_reply)
-            if cleaned:
-                return cleaned
+        # If we have quote results, we must regenerate the response to include them
+        # Otherwise, use the initial LLM reply if it's clean
+        if not quote_results:
+            initial_reply = llm_json.get("reply", "")
+            if initial_reply and not self._is_json_string(initial_reply):
+                return initial_reply
+            
+            # If the initial reply looks like JSON, extract the reply field
+            if initial_reply and self._is_json_string(initial_reply):
+                cleaned = self._extract_reply_from_json(initial_reply)
+                if cleaned:
+                    return cleaned
         
         # Build conversation context for final reply composition
         conversation_context = []
@@ -482,8 +540,9 @@ class AgentOrchestrator:
             "Be friendly, professional, and conversational. Do not include any structured data in your response."
         )
 
-        # Check if we have quote results to incorporate
-        quote_results = [r for r in api_results if r.get("name") == "premium_calculation" and r.get("success")]
+        logger.info(f"[Agent] Final reply composition - found {len(quote_results)} quote results")
+        if quote_results:
+            logger.info(f"[Agent] Quote result data: {quote_results[0].get('result', {})}")
         
         prompt = (
             f"User just said: \"{user_message}\"\n\n"
@@ -494,12 +553,20 @@ class AgentOrchestrator:
         if quote_results:
             quote_data = quote_results[0].get("result", {})
             best_quote = quote_data.get("best", {})
+            all_quotes = quote_data.get("quotes", [])
+            
+            logger.info(f"[Agent] Including quote in response - best_quote: {best_quote}")
+            
             prompt += (
-                f"\n\nIMPORTANT: You have generated a quote! Include these details naturally in your response:\n"
-                f"- Premium: ₹{best_quote.get('annual_premium', 'N/A')} per year\n"
+                f"\n\nIMPORTANT: You have successfully generated quotes! Include these details naturally in your response:\n"
+                f"**Best Recommended Quote:**\n"
+                f"- Plan: {best_quote.get('name', 'N/A')}\n"
+                f"- Premium: ₹{best_quote.get('annual_premium', 'N/A'):,} per year\n"
                 f"- Coverage: ₹{best_quote.get('sum_assured', 'N/A'):,}\n"
                 f"- Policy Term: {best_quote.get('policy_term', 'N/A')} years\n"
-                f"Present this as a personalized quote recommendation and ask if they'd like to proceed or need any modifications.\n"
+                f"- Features: {', '.join(best_quote.get('features', []))}\n\n"
+                f"You can also mention that {len(all_quotes)} variants are available.\n"
+                f"Present this as a personalized quote result and ask if they'd like to see other options or proceed.\n"
             )
         
         prompt += "\n\nRespond with ONLY the message text that should be shown to the user - no JSON structure."
