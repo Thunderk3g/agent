@@ -63,715 +63,521 @@
   },
   "conversations": [
     {
-      "timestamp": "2025-08-11T12:10:30.568702Z",
-      "session_id": "f7c00bd0-2087-4f61-a94a-d6221b9b0f5f",
-      "user_message": "Hi I want to buy a term insurance",
-      "llm_decision": {
-        "reply": "Great! Let's get started with some details about you and the coverage you need.",
-        "next_question": "Could you please share your full name, date of birth, and gender?",
-        "extracted": {
-          "full_name": null,
-          "date_of_birth": null,
-          "age": null,
-          "gender": null,
-          "occupation": null,
-          "smoker": null,
-          "mobile_number": null,
-          "email": null,
-          "pin_code": null,
-          "coverage_amount": null,
-          "policy_term": null,
-          "premium_frequency": null,
-          "riders_interest": null
-        },
-        "store_update": {
-          "personalDetails": {},
-          "quoteDetails": {}
-        },
-        "api_calls": [],
-        "reasoning": "Initiating the onboarding process by requesting essential personal and coverage details.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "{\n  \"reply\": \"Thank you for providing that information! To continue, could you please tell me your preferred policy term in years?\",\n  \"next_question\": \"What is your preferred policy term in years?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Asking for the policy term to progress the onboarding process.\",\n  \"done\": false\n}",
-      "store_update": {
-        "personalDetails": {},
-        "quoteDetails": {}
-      }
-    },
-    {
-      "timestamp": "2025-08-11T12:11:10.574745Z",
-      "session_id": "ae8c4d62-665e-4a0b-aede-744429fb0b0a",
-      "user_message": "30 years",
-      "llm_decision": {
-        "reply": "Great! Could you please share your date of birth so we can finalize your age?",
-        "next_question": "What is your date of birth (YYYY-MM-DD)?",
-        "extracted": {
-          "full_name": null,
-          "date_of_birth": null,
-          "age": 30,
-          "gender": null,
-          "occupation": null,
-          "smoker": null,
-          "mobile_number": null,
-          "email": null,
-          "pin_code": null,
-          "coverage_amount": null,
-          "policy_term": null,
-          "premium_frequency": null,
-          "riders_interest": null
-        },
-        "store_update": {
-          "personalDetails": {
-            "fullName": null,
-            "dateOfBirth": null,
-            "age": 30,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null,
-            "tobaccoUser": null
-          },
-          "quoteDetails": {
-            "sumAssured": null,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [],
-        "reasoning": "Updated age to 30 and asked for date of birth to proceed further.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "Thank you for providing your age as 30. To continue with your term insurance application, could you please share your full name and date of birth so I can gather more details?\n\n{\n  \"reply\": \"Thank you for providing your age as 30. To proceed further, could you please share your full name and date of birth?\",\n  \"next_question\": \"Please provide your full name and date of birth.\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": 30,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": 30,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting essential personal details to move forward with the application process.\",\n  \"done\": false\n}",
-      "store_update": {
-        "personalDetails": {
-          "fullName": null,
-          "dateOfBirth": null,
-          "age": 30,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null,
-          "tobaccoUser": null
-        },
-        "quoteDetails": {
-          "sumAssured": null,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-11T12:11:45.201378Z",
-      "session_id": "ac327e4a-6058-4ba5-8932-10b96f2cfc10",
-      "user_message": "My name is Diwakar Adhikari , I was born 28-11-2000",
-      "llm_decision": {
-        "reply": "Great to have you on board, Diwakar! Let's move forward with your details.",
-        "next_question": "Could you please tell me about your occupation?",
-        "extracted": {
-          "full_name": "Diwakar Adhikari",
-          "date_of_birth": "2000-11-28",
-          "age": 23,
-          "gender": null,
-          "occupation": null,
-          "smoker": null,
-          "mobile_number": null,
-          "email": null,
-          "pin_code": null,
-          "coverage_amount": null,
-          "policy_term": null,
-          "premium_frequency": null,
-          "riders_interest": null
-        },
-        "store_update": {
-          "personalDetails": {
-            "fullName": "Diwakar Adhikari",
-            "dateOfBirth": "2000-11-28",
-            "age": 23,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null,
-            "tobaccoUser": null
-          },
-          "quoteDetails": {
-            "sumAssured": null,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [],
-        "reasoning": "Extracted user's full name and date of birth. Occupation is needed for the next step.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "Thank you for providing your basic details, Diwakar! Based on what we have, it seems like we're getting ready to discuss more about your occupation and whether you are a smoker or not. This information will help us better understand your needs.\n\nCould you please share your occupation?",
-      "store_update": {
-        "personalDetails": {
-          "fullName": "Diwakar Adhikari",
-          "dateOfBirth": "2000-11-28",
-          "age": 23,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null,
-          "tobaccoUser": null
-        },
-        "quoteDetails": {
-          "sumAssured": null,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-11T12:12:47.469101Z",
-      "session_id": "c92eb9f1-4666-4df0-8396-86e838bd3b35",
-      "user_message": "I work as Software Engineer",
-      "llm_decision": {
-        "reply": "Great! It sounds like a dynamic role. Could you please tell me about any specific riders or benefits you're interested in?",
-        "next_question": "Are there any specific riders or benefits you would like to include in your policy?",
-        "extracted": {
-          "full_name": null,
-          "date_of_birth": null,
-          "age": null,
-          "gender": null,
-          "occupation": "Software Engineer",
-          "smoker": null,
-          "mobile_number": null,
-          "email": null,
-          "pin_code": null,
-          "coverage_amount": null,
-          "policy_term": null,
-          "premium_frequency": null,
-          "riders_interest": [
-            "null"
-          ]
-        },
-        "store_update": {
-          "personalDetails": {
-            "fullName": null,
-            "dateOfBirth": null,
-            "age": null,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null,
-            "tobaccoUser": null
-          },
-          "quoteDetails": {
-            "sumAssured": null,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [],
-        "reasoning": "Extracted occupation from the user's message and asked for specific riders or benefits interest.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "Hello! Based on the information you've provided so far, it seems we need a bit more detail to give you an accurate quote. Could you please share your full name and date of birth? This will help us proceed with your term-insurance application smoothly.\n\n{\n  \"reply\": \"Based on the information you’ve provided so far, we need a bit more detail to give you an accurate quote. Could you please share your full name and date of birth?\",\n  \"next_question\": \"Please provide your full name and date of birth.\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": \"Software Engineer\",\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": [\"null\"]\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting full name and date of birth to continue the onboarding process.\",\n  \"done\": false\n}",
-      "store_update": {
-        "personalDetails": {
-          "fullName": null,
-          "dateOfBirth": null,
-          "age": null,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null,
-          "tobaccoUser": null
-        },
-        "quoteDetails": {
-          "sumAssured": null,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-12T03:42:34.219303Z",
-      "session_id": "63dabbf1-9f4e-4f88-9cf7-42b39cba095e",
-      "user_message": "Hi who am i",
-      "llm_decision": {
-        "reply": "Hello! It seems like there might have been a mix-up. Could you please clarify your full name?",
-        "next_question": "Could you please provide me with your full name?",
-        "extracted": {
-          "full_name": null,
-          "date_of_birth": null,
-          "age": null,
-          "gender": null,
-          "occupation": null,
-          "smoker": null,
-          "mobile_number": null,
-          "email": null,
-          "pin_code": null,
-          "coverage_amount": null,
-          "policy_term": null,
-          "premium_frequency": null,
-          "riders_interest": null
-        },
-        "store_update": {
-          "personalDetails": {},
-          "quoteDetails": {}
-        },
-        "api_calls": [],
-        "reasoning": "The user's query is unclear, and their full name was not provided. Requesting clarification.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "{\n  \"reply\": \"Thank you for providing your details! To continue with your term insurance application, could you please tell me your preferred coverage amount and policy term (in years)?\",\n  \"next_question\": \"What is your desired coverage amount in rupees and how many years would you like the policy to cover?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": null,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Requesting the coverage amount and policy term to progress the onboarding process.\",\n  \"done\": false\n}",
-      "store_update": {
-        "personalDetails": {},
-        "quoteDetails": {}
-      }
-    },
-    {
-      "timestamp": "2025-08-12T03:43:02.361232Z",
-      "session_id": "9eb86635-b4d9-4abb-8d51-a733fdb0734f",
-      "user_message": "2 crores",
-      "llm_decision": {
-        "reply": "Great choice! A coverage amount of 2 crores will provide significant financial protection. Could you please tell me about your occupation?",
-        "next_question": "What is your occupation?",
-        "extracted": {
-          "full_name": null,
-          "date_of_birth": null,
-          "age": null,
-          "gender": null,
-          "occupation": null,
-          "smoker": null,
-          "mobile_number": null,
-          "email": null,
-          "pin_code": null,
-          "coverage_amount": 20000000,
-          "policy_term": null,
-          "premium_frequency": null,
-          "riders_interest": null
-        },
-        "store_update": {
-          "personalDetails": {
-            "fullName": null,
-            "dateOfBirth": null,
-            "age": null,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null,
-            "tobaccoUser": null
-          },
-          "quoteDetails": {
-            "sumAssured": 20000000,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [],
-        "reasoning": "Logged user's coverage amount and asked for occupation.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "It seems you're interested in a term insurance policy with a coverage amount of 20 million rupees. Could you please provide your name and date of birth so we can proceed further?\n\n{\n  \"reply\": \"Great to have your interest! Let's get started by knowing who you are.\",\n  \"next_question\": \"Could you please share your full name and date of birth?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": 20000000,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": 20000000,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Need basic personal details to continue with the onboarding process.\",\n  \"done\": false\n}",
-      "store_update": {
-        "personalDetails": {
-          "fullName": null,
-          "dateOfBirth": null,
-          "age": null,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null,
-          "tobaccoUser": null
-        },
-        "quoteDetails": {
-          "sumAssured": 20000000,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-12T03:43:55.904672Z",
-      "session_id": "9eb86635-b4d9-4abb-8d51-a733fdb0734f",
-      "user_message": "I work as a software engineer",
-      "llm_decision": {
-        "reply": "Thank you for sharing that, a software engineer! Let's move forward by knowing your name and date of birth.",
-        "next_question": "Could you please share your full name and date of birth?",
-        "extracted": {
-          "full_name": null,
-          "date_of_birth": null,
-          "age": null,
-          "gender": null,
-          "occupation": "software engineer",
-          "smoker": null,
-          "mobile_number": null,
-          "email": null,
-          "pin_code": null,
-          "coverage_amount": 20000000,
-          "policy_term": null,
-          "premium_frequency": null,
-          "riders_interest": null
-        },
-        "store_update": {
-          "personalDetails": {
-            "fullName": null,
-            "dateOfBirth": null,
-            "age": null,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null,
-            "tobaccoUser": null
-          },
-          "quoteDetails": {
-            "sumAssured": 20000000,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [],
-        "reasoning": "Need basic personal details to continue with the onboarding process.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "Based on your input so far, we're looking to provide you with a term insurance plan worth ₹20,000,000 with a policy term of [unspecified years]. Could you please share your date of birth and mobile number so we can proceed?\n\n{\n  \"reply\": \"Based on your input so far, we’re looking to provide you with a term insurance plan worth ₹20,000,000 with a policy term of [unspecified years]. Could you please share your date of birth and mobile number so we can proceed?\",\n  \"next_question\": \"Could you please share your date of birth and mobile number so we can proceed?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": \"software engineer\",\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null,\n    \"coverage_amount\": 20000000,\n    \"policy_term\": null,\n    \"premium_frequency\": null,\n    \"riders_interest\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": 20000000,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"Extracted the coverage amount and occupation details, now requesting date of birth and mobile number to continue.\",\n  \"done\": false\n}",
-      "store_update": {
-        "personalDetails": {
-          "fullName": null,
-          "dateOfBirth": null,
-          "age": null,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null,
-          "tobaccoUser": null
-        },
-        "quoteDetails": {
-          "sumAssured": 20000000,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-12T05:06:10.645973Z",
-      "session_id": "9bc5f5f1-c84a-4ea8-a864-e0d60784d83a",
-      "user_message": "Hello who am i",
-      "llm_decision": {
-        "mode": "conversational",
-        "reply": "Hello! It seems like we haven't met before. How can I assist you today?",
-        "store_update": {
-          "personalDetails": {
-            "fullName": null,
-            "dateOfBirth": null,
-            "age": null,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null,
-            "tobaccoUser": null
-          },
-          "quoteDetails": {
-            "sumAssured": null,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "reasoning": "The user's message 'Hello who am i' is a casual question and does not indicate purchase intent. Therefore, the mode is set to conversational.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Sure! Based on our conversation so far, we haven't collected any specific details yet. If you're interested in buying term insurance with Bajaj Allianz Life eTouch II, could you please share your full name and date of birth?\",\n  \"next_question\": \"Could you please share your full name and date of birth?\",\n  \"extracted\": null,\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"As the user hasn't shown a clear purchase intent yet, we're requesting basic personal details to better understand their needs.\",\n  \"done\": false\n}",
-      "store_update": {
-        "personalDetails": {
-          "fullName": null,
-          "dateOfBirth": null,
-          "age": null,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null,
-          "tobaccoUser": null
-        },
-        "quoteDetails": {
-          "sumAssured": null,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-12T05:06:35.467936Z",
-      "session_id": "9bc5f5f1-c84a-4ea8-a864-e0d60784d83a",
-      "user_message": "I am Diwakar Adhikari",
+      "timestamp": "2025-08-12T08:34:08.829944Z",
+      "session_id": "727a2b69-3223-42ae-8170-c9535438ffc0",
+      "user_message": "What is Term Plan",
       "llm_decision": {
         "mode": "informational",
-        "reply": "Hello Diwakar Adhikari! It's nice to meet you. Could you please share your date of birth so I can assist you better with your insurance needs?",
-        "next_question": "Could you please share your date of birth?",
-        "extracted": null,
-        "store_update": {
-          "personalDetails": {
-            "fullName": "Diwakar Adhikari",
-            "dateOfBirth": null,
-            "age": null,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null,
-            "tobaccoUser": null
-          },
-          "quoteDetails": {
-            "sumAssured": null,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [],
-        "reasoning": "The user has provided their full name, and now we need their date of birth to proceed. Since there's no clear purchase intent yet, we're requesting this information naturally.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "{\n  \"mode\": \"conversational\",\n  \"reply\": \"Sure! Based on our conversation, I haven't collected any specific details yet. Are you ready to start by sharing your full name and date of birth so we can proceed with finding the right term insurance plan for you?\",\n  \"next_question\": \"Can you please share your full name and date of birth?\",\n  \"extracted\": {\n    \"full_name\": null,\n    \"date_of_birth\": null,\n    \"age\": null,\n    \"gender\": null,\n    \"occupation\": null,\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": null,\n      \"dateOfBirth\": null,\n      \"age\": null,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null,\n      \"tobaccoUser\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,\n      \"policyTerm_years\": null,\n      \"premiumPayingTerm_years\": null,\n      \"frequency\": null\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"As the user hasn't shown clear purchase intent yet, I'm keeping it conversational and guiding them to share basic personal details for further discussion.\",\n  \"done\": false\n}",
-      "store_update": {
-        "personalDetails": {
-          "fullName": "Diwakar Adhikari",
-          "dateOfBirth": null,
-          "age": null,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null,
-          "tobaccoUser": null
-        },
-        "quoteDetails": {
-          "sumAssured": null,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-12T05:07:13.587979Z",
-      "session_id": "9bc5f5f1-c84a-4ea8-a864-e0d60784d83a",
-      "user_message": "Diwakar Adhikari 28-Nov-2000",
-      "llm_decision": {
-        "mode": "informational",
-        "reply": "Hello Diwakar Adhikari, it's great to have you here! Based on the date of birth you provided (28-Nov-2000), I can see that you are 23 years old. If you're considering term insurance with Bajaj Allianz Life eTouch II, would you like to know more about how it works or perhaps start by getting a quote?",
-        "next_question": null,
-        "extracted": {
-          "full_name": "Diwakar Adhikari",
-          "date_of_birth": "2000-11-28",
-          "age": 23,
-          "gender": null,
-          "occupation": null,
-          "smoker": null,
-          "mobile_number": null,
-          "email": null,
-          "pin_code": null
-        },
-        "store_update": {
-          "personalDetails": {
-            "fullName": "Diwakar Adhikari",
-            "dateOfBirth": "2000-11-28",
-            "age": 23,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null,
-            "tobaccoUser": null
-          },
-          "quoteDetails": {
-            "sumAssured": null,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [],
-        "reasoning": "The user provided their full name and date of birth, which are relevant details. Since they haven't explicitly shown purchase intent yet, I'm providing general information about term insurance to keep the conversation natural.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "Hello Diwakar,\n\nBased on our conversation so far, here’s what we have:\n\n- **Name:** Diwakar Adhikari\n- **Date of Birth:** November 28, 2000 (Age: 23)\n- **Gender and Occupation:** Not provided yet\n\nWould you like to share your gender and occupation so I can help you better with your insurance options? This will allow us to tailor the plan specifically for you.",
-      "store_update": {
-        "personalDetails": {
-          "fullName": "Diwakar Adhikari",
-          "dateOfBirth": "2000-11-28",
-          "age": 23,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null,
-          "tobaccoUser": null
-        },
-        "quoteDetails": {
-          "sumAssured": null,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-12T05:07:52.852302Z",
-      "session_id": "9bc5f5f1-c84a-4ea8-a864-e0d60784d83a",
-      "user_message": "I am Male and I work as a software engineer",
-      "llm_decision": {
-        "mode": "conversational",
-        "reply": "Hello Diwakar! Great to have you here. You're already providing some valuable information about yourself. Since you work as a software engineer, do you have any specific needs or concerns when it comes to term insurance? For instance, are there particular features or coverage amounts that interest you?",
-        "next_question": null,
-        "extracted": {
-          "full_name": "Diwakar Adhikari",
-          "date_of_birth": "2000-11-28",
-          "age": 23,
-          "gender": null,
-          "occupation": "software engineer",
-          "smoker": null,
-          "mobile_number": null,
-          "email": null,
-          "pin_code": null
-        },
-        "store_update": {
-          "personalDetails": {
-            "fullName": "Diwakar Adhikari",
-            "dateOfBirth": "2000-11-28",
-            "age": 23,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null,
-            "tobaccoUser": null
-          },
-          "quoteDetails": {
-            "sumAssured": null,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [],
-        "reasoning": "The user is providing additional information about their occupation, which is helpful for context. However, there's no clear indication of purchase intent yet, so I'm keeping the conversation conversational while guiding towards relevant discussion points.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Hello Diwakar! Based on the information you've provided, we have a term insurance quote for you. Here’s a quick summary: \n\n- **Full Name:** Diwakar Adhikari\n- **Date of Birth:** 28 November 2000\n- **Age:** 23 years old\n- **Occupation:** Software Engineer\n\nWe haven't collected your mobile number, email, or other details yet. Would you like to proceed with this information and add more details later, or do you want to provide all the necessary information now?\",\n  \"next_question\": \"Would you like to provide your contact details and complete the application now?\",\n  \"extracted\": {\n    \"full_name\": \"Diwakar Adhikari\",\n    \"date_of_birth\": \"2000-11-28\",\n    \"age\": 23,\n    \"gender\": null,\n    \"occupation\": \"software engineer\",\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": \"Diwakar Adhikari\",\n      \"dateOfBirth\": \"2000-11-28\",\n      \"age\": 23,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,  // Not provided yet\n      \"policyTerm_years\": null,  // Not provided yet\n      \"premiumPayingTerm_years\": null,  // Not provided yet\n      \"frequency\": null  // Not provided yet\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"The user has expressed interest in proceeding with the application. We need to gather more details to finalize the quote and proceed further.\",\n  \"done\": false\n}",
-      "store_update": {
-        "personalDetails": {
-          "fullName": "Diwakar Adhikari",
-          "dateOfBirth": "2000-11-28",
-          "age": 23,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null,
-          "tobaccoUser": null
-        },
-        "quoteDetails": {
-          "sumAssured": null,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-12T05:14:16.943708Z",
-      "session_id": "9bc5f5f1-c84a-4ea8-a864-e0d60784d83a",
-      "user_message": "Hi",
-      "llm_decision": {
-        "mode": "conversational",
-        "reply": "Hello! How can I assist you today? If you're just looking to chat, feel free to ask any questions or let me know if you're interested in buying term insurance with Bajaj Allianz Life eTouch II.",
-        "next_question": null,
-        "extracted": null,
-        "store_update": {
-          "personalDetails": {
-            "fullName": null,
-            "dateOfBirth": null,
-            "age": null,
-            "gender": null,
-            "mobileNumber": null,
-            "email": null,
-            "pinCode": null
-          },
-          "quoteDetails": {
-            "sumAssured": null,
-            "policyTerm_years": null,
-            "premiumPayingTerm_years": null,
-            "frequency": null
-          }
-        },
-        "api_calls": [],
-        "reasoning": "The user's message is casual, so we'll keep the conversation light and see if they have any specific questions or purchase intent.",
-        "done": false
-      },
-      "api_results": [],
-      "final_reply": "{\n  \"mode\": \"conversational\",\n  \"reply\": \"Sure! Based on our conversation so far, it seems like you're interested in term insurance. Do you want to proceed with getting a quote and learn more about the options available?\",\n  \"next_question\": \"What's your preferred policy term (in years)?\"\n}",
-      "store_update": {
-        "personalDetails": {
-          "fullName": null,
-          "dateOfBirth": null,
-          "age": null,
-          "gender": null,
-          "mobileNumber": null,
-          "email": null,
-          "pinCode": null
-        },
-        "quoteDetails": {
-          "sumAssured": null,
-          "policyTerm_years": null,
-          "premiumPayingTerm_years": null,
-          "frequency": null
-        }
-      }
-    },
-    {
-      "timestamp": "2025-08-12T05:14:37.930643Z",
-      "session_id": "9bc5f5f1-c84a-4ea8-a864-e0d60784d83a",
-      "user_message": "25 years",
-      "llm_decision": {
-        "mode": "conversational",
-        "reply": "{\n  \"mode\": \"onboarding\",\n  \"reply\": \"Got it! You've chosen a policy term of 25 years. Let's move forward with gathering more details to finalize your quote.\",\n  \"next_question\": \"Could you please share your mobile number and email address for further communication?\",\n  \"extracted\": {\n    \"full_name\": \"Diwakar Adhikari\",\n    \"date_of_birth\": \"2000-11-28\",\n    \"age\": 23,\n    \"gender\": null,\n    \"occupation\": \"software engineer\",\n    \"smoker\": null,\n    \"mobile_number\": null,\n    \"email\": null,\n    \"pin_code\": null\n  },\n  \"store_update\": {\n    \"personalDetails\": {\n      \"fullName\": \"Diwakar Adhikari\",\n      \"dateOfBirth\": \"2000-11-28\",\n      \"age\": 23,\n      \"gender\": null,\n      \"mobileNumber\": null,\n      \"email\": null,\n      \"pinCode\": null\n    },\n    \"quoteDetails\": {\n      \"sumAssured\": null,  // Not provided yet\n      \"policyTerm_years\": 25,\n      \"premiumPayingTerm_years\": null,  // Not provided yet\n      \"frequency\": null  // Not provided yet\n    }\n  },\n  \"api_calls\": [],\n  \"reasoning\": \"The user has indicated a policy term of 25 years and is ready to provide more details. We need their contact information for further communication.\",\n  \"done\": false\n}",
+        "reply": "Sure! Term Plan is a type of life insurance that provides coverage for a specific period, as the name suggests. If you pass away during this term, your beneficiaries will receive the agreed sum assured amount. The policy typically comes with flexible terms like 1 to 30 years and can be customized based on your needs.",
         "next_question": null,
         "extracted": {},
+        "store_update": {},
         "api_calls": [],
-        "reasoning": "parse_fail",
+        "reasoning": "The user asked for a definition of Term Plan, which is an informational request. No purchase intent was shown, so we will not proceed with data collection or auto-quote.",
         "done": false
       },
       "api_results": [],
-      "final_reply": "Great choice, Diwakar! A 25-year policy term is a good fit for many people.\n\nNext, could you please share your preferred coverage amount? This will help us tailor the plan to meet your needs effectively. \n\nFor example, if you're looking for Rs. 10 Lakhs in coverage, we can see how much that would cost per year based on your age and occupation as a software engineer.",
+      "final_reply": "Sure! Term Plan is a type of life insurance that provides coverage for a specific period, as the name suggests. If you pass away during this term, your beneficiaries will receive the agreed sum assured amount. The policy typically comes with flexible terms like 1 to 30 years and can be customized based on your needs.",
       "store_update": {}
     },
     {
-      "timestamp": "2025-08-12T05:15:00.057266Z",
-      "session_id": "9bc5f5f1-c84a-4ea8-a864-e0d60784d83a",
-      "user_message": "What is coverage value",
+      "timestamp": "2025-08-12T08:34:41.001793Z",
+      "session_id": "727a2b69-3223-42ae-8170-c9535438ffc0",
+      "user_message": "I want a 2 cr pt policy with 20 year ppt and my name is rajesh hamal and i am 24 non smoker male",
       "llm_decision": {
-        "mode": "informational",
-        "reply": "Sure! The coverage value is the amount of money that will be paid to your beneficiaries if something happens to you during the policy term. For example, if you choose a coverage value of Rs. 1 Crore and an unfortunate event occurs, your beneficiaries would receive Rs. 1 Crore. This helps ensure they have financial security even in difficult times.",
+        "mode": "onboarding",
+        "reply": "Great choice, Rajesh! I can help you with that. Let's get started on your term insurance plan.",
+        "next_question": "Could you please provide your mobile number and email so we can keep in touch during the process?",
+        "extracted": {
+          "full_name": "Rajesh Hamal",
+          "age": 24,
+          "gender": "male",
+          "coverage_amount": 2000000,
+          "policy_term": 20,
+          "smoker": false
+        },
+        "api_calls": [
+          {
+            "name": "premium_calculation",
+            "params": {
+              "age": 24,
+              "gender": "male",
+              "coverage_amount": 2000000,
+              "policy_term": 20,
+              "smoker": false,
+              "premium_frequency": "yearly"
+            }
+          }
+        ]
+      },
+      "api_results": [
+        {
+          "name": "premium_calculation",
+          "params": {
+            "age": 24,
+            "gender": "male",
+            "coverage_amount": 2000000,
+            "policy_term": 20,
+            "smoker": false,
+            "premium_frequency": "yearly"
+          },
+          "result": {
+            "quotes": [
+              {
+                "name": "Life Shield",
+                "variant": "Life Shield",
+                "annual_premium": 2400.0,
+                "modal_premiums": {
+                  "yearly": 2400.0,
+                  "half_yearly": 2448.0,
+                  "quarterly": 2496.0,
+                  "monthly": 2592.0
+                },
+                "sum_assured": 2000000,
+                "policy_term": 20,
+                "premium_paying_term": 20,
+                "total_premium_payable": 48000.0,
+                "features": [
+                  "Death Benefit",
+                  "Terminal Illness Cover",
+                  "Waiver of Premium (ATPD/TI)",
+                  "Life Stage Upgrade Option"
+                ],
+                "benefits": {
+                  "death_benefit": 2000000,
+                  "terminal_illness": 2000000
+                },
+                "discounts_applied": {
+                  "non_tobacco": {
+                    "name": "Non-tobacco preferred rates",
+                    "percentage": 10,
+                    "amount": 0
+                  }
+                },
+                "discount_amount": 0,
+                "recommended": true,
+                "base_premium": 2400.0,
+                "adjusted_premium": 2400.0,
+                "calculation_breakdown": {
+                  "variant": "Life Shield",
+                  "age_band": "18-25",
+                  "gender": "male",
+                  "tobacco_user": false,
+                  "occupation_category": "class_1",
+                  "health_condition": "good",
+                  "policy_term": 20,
+                  "sum_assured_band": "up_to_25_lakh",
+                  "payment_frequency": "yearly"
+                }
+              },
+              {
+                "name": "Life Shield Plus",
+                "variant": "Life Shield Plus",
+                "annual_premium": 2900.0,
+                "modal_premiums": {
+                  "yearly": 2900.0,
+                  "half_yearly": 2958.0,
+                  "quarterly": 3016.0,
+                  "monthly": 3132.0
+                },
+                "sum_assured": 2000000,
+                "policy_term": 20,
+                "premium_paying_term": 20,
+                "total_premium_payable": 58000.0,
+                "features": [
+                  "Death Benefit",
+                  "Terminal Illness Cover",
+                  "Accidental Death Benefit",
+                  "Waiver of Premium (ATPD/TI)",
+                  "Life Stage Upgrade Option"
+                ],
+                "benefits": {
+                  "death_benefit": 2000000,
+                  "terminal_illness": 2000000,
+                  "accidental_death": 2000000
+                },
+                "discounts_applied": {
+                  "non_tobacco": {
+                    "name": "Non-tobacco preferred rates",
+                    "percentage": 10,
+                    "amount": 0
+                  }
+                },
+                "discount_amount": 0,
+                "recommended": false,
+                "base_premium": 2900.0,
+                "adjusted_premium": 2900.0,
+                "calculation_breakdown": {
+                  "variant": "Life Shield Plus",
+                  "age_band": "18-25",
+                  "gender": "male",
+                  "tobacco_user": false,
+                  "occupation_category": "class_1",
+                  "health_condition": "good",
+                  "policy_term": 20,
+                  "sum_assured_band": "up_to_25_lakh",
+                  "payment_frequency": "yearly"
+                }
+              },
+              {
+                "name": "Life Shield ROP",
+                "variant": "Life Shield ROP",
+                "annual_premium": 37000.0,
+                "modal_premiums": {
+                  "yearly": 37000.0,
+                  "half_yearly": 37740.0,
+                  "quarterly": 38480.0,
+                  "monthly": 39960.0
+                },
+                "sum_assured": 2000000,
+                "policy_term": 20,
+                "premium_paying_term": 20,
+                "total_premium_payable": 740000.0,
+                "features": [
+                  "Death Benefit",
+                  "Terminal Illness Cover",
+                  "Return of Premium at Maturity",
+                  "Waiver of Premium (ATPD/TI)"
+                ],
+                "benefits": {
+                  "death_benefit": 2000000,
+                  "terminal_illness": 2000000,
+                  "maturity_benefit": "Total Premiums Paid"
+                },
+                "discounts_applied": {
+                  "non_tobacco": {
+                    "name": "Non-tobacco preferred rates",
+                    "percentage": 10,
+                    "amount": 0
+                  }
+                },
+                "discount_amount": 0,
+                "recommended": false,
+                "base_premium": 37000.0,
+                "adjusted_premium": 37000.0,
+                "calculation_breakdown": {
+                  "variant": "Life Shield ROP",
+                  "age_band": "18-25",
+                  "gender": "male",
+                  "tobacco_user": false,
+                  "occupation_category": "class_1",
+                  "health_condition": "good",
+                  "policy_term": 20,
+                  "sum_assured_band": "up_to_25_lakh",
+                  "payment_frequency": "yearly"
+                }
+              }
+            ],
+            "best": {
+              "name": "Life Shield",
+              "variant": "Life Shield",
+              "annual_premium": 2400.0,
+              "modal_premiums": {
+                "yearly": 2400.0,
+                "half_yearly": 2448.0,
+                "quarterly": 2496.0,
+                "monthly": 2592.0
+              },
+              "sum_assured": 2000000,
+              "policy_term": 20,
+              "premium_paying_term": 20,
+              "total_premium_payable": 48000.0,
+              "features": [
+                "Death Benefit",
+                "Terminal Illness Cover",
+                "Waiver of Premium (ATPD/TI)",
+                "Life Stage Upgrade Option"
+              ],
+              "benefits": {
+                "death_benefit": 2000000,
+                "terminal_illness": 2000000
+              },
+              "discounts_applied": {
+                "non_tobacco": {
+                  "name": "Non-tobacco preferred rates",
+                  "percentage": 10,
+                  "amount": 0
+                }
+              },
+              "discount_amount": 0,
+              "recommended": true,
+              "base_premium": 2400.0,
+              "adjusted_premium": 2400.0,
+              "calculation_breakdown": {
+                "variant": "Life Shield",
+                "age_band": "18-25",
+                "gender": "male",
+                "tobacco_user": false,
+                "occupation_category": "class_1",
+                "health_condition": "good",
+                "policy_term": 20,
+                "sum_assured_band": "up_to_25_lakh",
+                "payment_frequency": "yearly"
+              }
+            }
+          },
+          "success": true
+        }
+      ],
+      "final_reply": "Great choice, Rajesh! I can help you with that. Let's get started on your term insurance plan.",
+      "store_update": {}
+    },
+    {
+      "timestamp": "2025-08-12T08:34:59.698680Z",
+      "session_id": "727a2b69-3223-42ae-8170-c9535438ffc0",
+      "user_message": "Okay!",
+      "llm_decision": {
+        "mode": "onboarding",
+        "reply": "Alright, Rajesh! Let's proceed with your term insurance plan. Based on the details you've provided, we can generate a quote for you.",
         "next_question": null,
-        "extracted": null,
-        "store_update": {},
-        "api_calls": [],
-        "reasoning": "The user is seeking information about the coverage value, so we provide an explanation naturally without forcing data collection.",
+        "extracted": {
+          "full_name": "Rajesh Hamal",
+          "age": 24,
+          "gender": "male",
+          "smoker": false,
+          "coverage_amount": 2000000,
+          "policy_term": 20
+        },
+        "store_update": {
+          "personalDetails": {
+            "fullName": "Rajesh Hamal",
+            "age": 24,
+            "gender": "male",
+            "smoker": false
+          },
+          "quoteDetails": {
+            "sumAssured": 2000000,
+            "policyTerm_years": 20,
+            "premiumPayingTerm_years": null,
+            "frequency": null
+          }
+        },
+        "api_calls": [
+          {
+            "name": "premium_calculation",
+            "params": {}
+          }
+        ],
+        "reasoning": "User has provided all necessary details to generate a quote, so we will proceed with the premium calculation API call.",
         "done": false
       },
-      "api_results": [],
-      "final_reply": "{\n  \"mode\": \"informational\",\n  \"reply\": \"Hi Diwakar! The **coverage value** is essentially the amount of money your beneficiaries would receive if something happens to you during the policy term. For example, if you choose a coverage value of Rs. 20 Lakhs and an unfortunate event occurs, your beneficiaries would get Rs. 20 Lakhs.\n\nSince you're interested in a 25-year policy with this coverage, we can calculate the premium based on that. Do you have a specific amount in mind, or should I suggest some options for you?\",\n  \"next_question\": null,\n  \"extracted\": {\n    \"coverage_amount\": null\n  },\n  \"store_update\": {},\n  \"api_calls\": [],\n  \"reasoning\": \"The user asked about the coverage value, so we provide a clear explanation. Since no specific amount was mentioned, we can ask if they have any preferences or suggest some options.\",\n  \"done\": false\n}",
-      "store_update": {}
+      "api_results": [
+        {
+          "name": "premium_calculation",
+          "params": {},
+          "result": {
+            "quotes": [
+              {
+                "name": "Life Shield",
+                "variant": "Life Shield",
+                "annual_premium": 6615.0,
+                "modal_premiums": {
+                  "yearly": 6615.0,
+                  "half_yearly": 6747.3,
+                  "quarterly": 6879.6,
+                  "monthly": 7144.2
+                },
+                "sum_assured": 5000000,
+                "policy_term": 20,
+                "premium_paying_term": 20,
+                "total_premium_payable": 132300.0,
+                "features": [
+                  "Death Benefit",
+                  "Terminal Illness Cover",
+                  "Waiver of Premium (ATPD/TI)",
+                  "Life Stage Upgrade Option"
+                ],
+                "benefits": {
+                  "death_benefit": 5000000,
+                  "terminal_illness": 5000000
+                },
+                "discounts_applied": {
+                  "non_tobacco": {
+                    "name": "Non-tobacco preferred rates",
+                    "percentage": 10,
+                    "amount": 0
+                  }
+                },
+                "discount_amount": 0,
+                "recommended": true,
+                "base_premium": 6750.0,
+                "adjusted_premium": 6615.0,
+                "calculation_breakdown": {
+                  "variant": "Life Shield",
+                  "age_band": "26-30",
+                  "gender": "male",
+                  "tobacco_user": false,
+                  "occupation_category": "class_1",
+                  "health_condition": "good",
+                  "policy_term": 20,
+                  "sum_assured_band": "25_to_50_lakh",
+                  "payment_frequency": "yearly"
+                }
+              },
+              {
+                "name": "Life Shield Plus",
+                "variant": "Life Shield Plus",
+                "annual_premium": 8085.0,
+                "modal_premiums": {
+                  "yearly": 8085.0,
+                  "half_yearly": 8246.7,
+                  "quarterly": 8408.4,
+                  "monthly": 8731.8
+                },
+                "sum_assured": 5000000,
+                "policy_term": 20,
+                "premium_paying_term": 20,
+                "total_premium_payable": 161700.0,
+                "features": [
+                  "Death Benefit",
+                  "Terminal Illness Cover",
+                  "Accidental Death Benefit",
+                  "Waiver of Premium (ATPD/TI)",
+                  "Life Stage Upgrade Option"
+                ],
+                "benefits": {
+                  "death_benefit": 5000000,
+                  "terminal_illness": 5000000,
+                  "accidental_death": 5000000
+                },
+                "discounts_applied": {
+                  "non_tobacco": {
+                    "name": "Non-tobacco preferred rates",
+                    "percentage": 10,
+                    "amount": 0
+                  }
+                },
+                "discount_amount": 0,
+                "recommended": false,
+                "base_premium": 8250.0,
+                "adjusted_premium": 8085.0,
+                "calculation_breakdown": {
+                  "variant": "Life Shield Plus",
+                  "age_band": "26-30",
+                  "gender": "male",
+                  "tobacco_user": false,
+                  "occupation_category": "class_1",
+                  "health_condition": "good",
+                  "policy_term": 20,
+                  "sum_assured_band": "25_to_50_lakh",
+                  "payment_frequency": "yearly"
+                }
+              },
+              {
+                "name": "Life Shield ROP",
+                "variant": "Life Shield ROP",
+                "annual_premium": 107065.0,
+                "modal_premiums": {
+                  "yearly": 107065.0,
+                  "half_yearly": 109206.3,
+                  "quarterly": 111347.6,
+                  "monthly": 115630.2
+                },
+                "sum_assured": 5000000,
+                "policy_term": 20,
+                "premium_paying_term": 20,
+                "total_premium_payable": 2141300.0,
+                "features": [
+                  "Death Benefit",
+                  "Terminal Illness Cover",
+                  "Return of Premium at Maturity",
+                  "Waiver of Premium (ATPD/TI)"
+                ],
+                "benefits": {
+                  "death_benefit": 5000000,
+                  "terminal_illness": 5000000,
+                  "maturity_benefit": "Total Premiums Paid"
+                },
+                "discounts_applied": {
+                  "non_tobacco": {
+                    "name": "Non-tobacco preferred rates",
+                    "percentage": 10,
+                    "amount": 0
+                  }
+                },
+                "discount_amount": 0,
+                "recommended": false,
+                "base_premium": 109250.0,
+                "adjusted_premium": 107065.0,
+                "calculation_breakdown": {
+                  "variant": "Life Shield ROP",
+                  "age_band": "26-30",
+                  "gender": "male",
+                  "tobacco_user": false,
+                  "occupation_category": "class_1",
+                  "health_condition": "good",
+                  "policy_term": 20,
+                  "sum_assured_band": "25_to_50_lakh",
+                  "payment_frequency": "yearly"
+                }
+              }
+            ],
+            "best": {
+              "name": "Life Shield",
+              "variant": "Life Shield",
+              "annual_premium": 6615.0,
+              "modal_premiums": {
+                "yearly": 6615.0,
+                "half_yearly": 6747.3,
+                "quarterly": 6879.6,
+                "monthly": 7144.2
+              },
+              "sum_assured": 5000000,
+              "policy_term": 20,
+              "premium_paying_term": 20,
+              "total_premium_payable": 132300.0,
+              "features": [
+                "Death Benefit",
+                "Terminal Illness Cover",
+                "Waiver of Premium (ATPD/TI)",
+                "Life Stage Upgrade Option"
+              ],
+              "benefits": {
+                "death_benefit": 5000000,
+                "terminal_illness": 5000000
+              },
+              "discounts_applied": {
+                "non_tobacco": {
+                  "name": "Non-tobacco preferred rates",
+                  "percentage": 10,
+                  "amount": 0
+                }
+              },
+              "discount_amount": 0,
+              "recommended": true,
+              "base_premium": 6750.0,
+              "adjusted_premium": 6615.0,
+              "calculation_breakdown": {
+                "variant": "Life Shield",
+                "age_band": "26-30",
+                "gender": "male",
+                "tobacco_user": false,
+                "occupation_category": "class_1",
+                "health_condition": "good",
+                "policy_term": 20,
+                "sum_assured_band": "25_to_50_lakh",
+                "payment_frequency": "yearly"
+              }
+            }
+          },
+          "success": true
+        }
+      ],
+      "final_reply": "Alright, Rajesh! Let's proceed with your term insurance plan. Based on the details you've provided, we can generate a quote for you.",
+      "store_update": {
+        "personalDetails": {
+          "fullName": "Rajesh Hamal",
+          "age": 24,
+          "gender": "male",
+          "smoker": false
+        },
+        "quoteDetails": {
+          "sumAssured": 2000000,
+          "policyTerm_years": 20,
+          "premiumPayingTerm_years": null,
+          "frequency": null
+        }
+      }
     }
   ]
 }

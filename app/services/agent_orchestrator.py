@@ -31,6 +31,7 @@ CORE BEHAVIOR:
    - Extract data from user messages when relevant
    - Never re-ask for information already provided
    - Ask follow-up questions naturally, not like a form
+   - When you have enough data (age, gender, coverage_amount, policy_term, smoker status), automatically generate a quote
 
 RESPONSE TYPES:
 - **INFORMATIONAL**: For general questions about insurance, explain concepts naturally. Set "mode": "informational"
@@ -94,6 +95,7 @@ EXAMPLES:
 - User: "Hi, how are you?" → Mode: "conversational", respond warmly
 - User: "I want to buy term insurance" → Mode: "onboarding", start data collection
 - User: "Who am I?" → Mode: "conversational", check if you know them from context, else chat naturally
+- If you have age, gender, coverage_amount, policy_term, smoker → Call "premium_calculation" API automatically
 """
 )
 
@@ -129,13 +131,25 @@ class AgentOrchestrator:
         # 1) Ask LLM for extraction + decisions
         llm_json = await self._ask_llm_decide(session, user_message)
 
-        # Only extract data and check transitions in onboarding mode
+        # Extract data and check transitions in onboarding mode, but also check for quote readiness always
         conversation_mode = llm_json.get("mode", "conversational")
-        if conversation_mode == "onboarding":
+        extracted_data = llm_json.get("extracted") or {}
+        
+        if conversation_mode == "onboarding" or extracted_data:
             # Merge extracted into session store for memory
-            self._apply_extracted(session, llm_json.get("extracted") or {})
+            self._apply_extracted(session, extracted_data)
             # Check for state transitions based on form completion
-            self._check_state_transitions(session, llm_json.get("extracted", {}))
+            self._check_state_transitions(session, extracted_data)
+            
+        # Check if we have enough data to generate a quote automatically
+        if self._should_generate_quote(session) and not any(call.get("name") == "premium_calculation" for call in llm_json.get("api_calls", [])):
+            # Add premium calculation to API calls if not already requested
+            if "api_calls" not in llm_json:
+                llm_json["api_calls"] = []
+            llm_json["api_calls"].append({
+                "name": "premium_calculation",
+                "params": self._get_quote_params(session)
+            })
         
         # 2) Execute decided API calls
         api_results: List[Dict[str, Any]] = []
@@ -230,7 +244,10 @@ class AgentOrchestrator:
             f"2. **DETECT INTENT**: Is this informational, conversational, or purchase-focused?\n"
             f"3. **BE NATURAL**: Don't force data collection for casual questions\n"
             f"4. **USE MEMORY**: Reference previously collected information when appropriate\n"
-            f"5. **CHOOSE MODE**: informational/conversational/onboarding based on user intent\n\n"
+            f"5. **CHOOSE MODE**: informational/conversational/onboarding based on user intent\n"
+            f"6. **AUTO-QUOTE**: If you have age, gender, coverage_amount, policy_term, and smoker status, call premium_calculation API\n\n"
+            f"Current customer data: {session.customer_data}\n"
+            f"Session state: {session.current_state.value}\n\n"
             f"Return JSON response following the schema in your system prompt."
         )
         
@@ -308,6 +325,108 @@ class AgentOrchestrator:
             return None
         return None
 
+    def _is_json_string(self, text: str) -> bool:
+        """Check if text appears to be JSON."""
+        if not text:
+            return False
+        text = text.strip()
+        return (text.startswith('{') and text.endswith('}')) or (text.startswith('[') and text.endswith(']'))
+
+    def _extract_reply_from_json(self, text: str) -> str:
+        """Extract reply text from JSON response."""
+        if not text:
+            return text
+            
+        try:
+            # If it's clearly JSON, try to parse and extract reply
+            if self._is_json_string(text):
+                parsed = json.loads(text)
+                if isinstance(parsed, dict):
+                    # Check for reply field first (most common)
+                    if 'reply' in parsed and isinstance(parsed['reply'], str):
+                        reply = parsed['reply']
+                        # Also check for next_question and combine if present
+                        if 'next_question' in parsed and isinstance(parsed['next_question'], str) and parsed['next_question'].strip():
+                            return f"{reply}\n\n{parsed['next_question']}"
+                        return reply
+                    
+                    # Try other common field names
+                    for field in ['message', 'response', 'text', 'content']:
+                        if field in parsed and isinstance(parsed[field], str):
+                            return parsed[field]
+                    
+                    # If it's a complete agent response with mode/api_calls, provide fallback
+                    if any(key in parsed for key in ['mode', 'extracted', 'api_calls', 'reasoning']):
+                        return "I'm working on your request. Please let me know if you need any additional information."
+                        
+        except json.JSONDecodeError:
+            pass
+        
+        # If parsing fails, try to clean common JSON artifacts
+        cleaned = text
+        
+        # Remove complete JSON wrapper patterns
+        json_patterns = [
+            (r'^\{\s*"reply"\s*:\s*"(.+?)"\s*,.*\}$', r'\1'),
+            (r'^\{\s*"reply"\s*:\s*"(.+?)"\s*\}$', r'\1'),
+            (r'^\{\s*"message"\s*:\s*"(.+?)"\s*,.*\}$', r'\1'),
+            (r'^\{\s*"message"\s*:\s*"(.+?)"\s*\}$', r'\1'),
+        ]
+        
+        import re
+        for pattern, replacement in json_patterns:
+            match = re.match(pattern, cleaned, re.DOTALL)
+            if match:
+                cleaned = match.group(1)
+                break
+        
+        # Basic cleanup
+        cleaned = cleaned.replace('\\"', '"')  # Unescape quotes
+        cleaned = cleaned.replace('\\n', '\n')  # Unescape newlines
+        cleaned = cleaned.strip()
+        
+        # Remove outer quotes if the entire string is wrapped
+        if cleaned.startswith('"') and cleaned.endswith('"') and len(cleaned) > 2:
+            cleaned = cleaned[1:-1]
+            
+        return cleaned if cleaned != text and len(cleaned) > 0 else text
+
+    def _should_generate_quote(self, session: SessionData) -> bool:
+        """Check if we have enough data to generate a quote."""
+        required_fields = ["age", "gender", "coverage_amount", "policy_term", "smoker"]
+        customer_data = session.customer_data
+        
+        # Check if all required fields are present and not None
+        for field in required_fields:
+            if field not in customer_data or customer_data[field] is None:
+                return False
+                
+        # Additional validation
+        age = customer_data.get("age")
+        coverage_amount = customer_data.get("coverage_amount")
+        policy_term = customer_data.get("policy_term")
+        
+        if not (18 <= age <= 65):
+            return False
+        if not (100000 <= coverage_amount <= 50000000):  # Min 1L, Max 5Cr
+            return False
+        if not (5 <= policy_term <= 40):  # Min 5 years, Max 40 years
+            return False
+            
+        return True
+
+    def _get_quote_params(self, session: SessionData) -> Dict[str, Any]:
+        """Extract quote parameters from session data."""
+        customer_data = session.customer_data
+        return {
+            "age": customer_data.get("age"),
+            "gender": customer_data.get("gender"),
+            "coverage_amount": customer_data.get("coverage_amount"),
+            "policy_term": customer_data.get("policy_term"),
+            "smoker": customer_data.get("smoker", False),
+            "premium_frequency": customer_data.get("premium_frequency", "yearly")
+        }
+
     async def _compose_final_reply(
         self,
         session: SessionData,
@@ -315,6 +434,17 @@ class AgentOrchestrator:
         llm_json: Dict[str, Any],
         api_results: List[Dict[str, Any]],
     ) -> str:
+        # First, try to use the reply from the initial LLM decision if it's clean text
+        initial_reply = llm_json.get("reply", "")
+        if initial_reply and not self._is_json_string(initial_reply):
+            return initial_reply
+        
+        # If the initial reply looks like JSON, extract the reply field
+        if initial_reply and self._is_json_string(initial_reply):
+            cleaned = self._extract_reply_from_json(initial_reply)
+            if cleaned:
+                return cleaned
+        
         # Build conversation context for final reply composition
         conversation_context = []
         recent_turns = getattr(session, 'conversation_history', [])[-3:]  # Last 3 turns for context
@@ -346,16 +476,40 @@ class AgentOrchestrator:
             },
         }
 
+        # Use a more explicit system prompt to get clean text only
+        clean_text_prompt = (
+            "You are a helpful insurance assistant. Respond with ONLY plain text - no JSON, no formatting, no quotes. "
+            "Be friendly, professional, and conversational. Do not include any structured data in your response."
+        )
+
+        # Check if we have quote results to incorporate
+        quote_results = [r for r in api_results if r.get("name") == "premium_calculation" and r.get("success")]
+        
         prompt = (
             f"User just said: \"{user_message}\"\n\n"
-            f"Based on the conversation context, provide a natural response. "
+            f"Based on the conversation context, provide a natural conversational response. "
             f"Use the conversation history to maintain continuity and reference previous information when relevant. "
-            f"Be conversational and helpful."
         )
         
+        if quote_results:
+            quote_data = quote_results[0].get("result", {})
+            best_quote = quote_data.get("best", {})
+            prompt += (
+                f"\n\nIMPORTANT: You have generated a quote! Include these details naturally in your response:\n"
+                f"- Premium: ₹{best_quote.get('annual_premium', 'N/A')} per year\n"
+                f"- Coverage: ₹{best_quote.get('sum_assured', 'N/A'):,}\n"
+                f"- Policy Term: {best_quote.get('policy_term', 'N/A')} years\n"
+                f"Present this as a personalized quote recommendation and ask if they'd like to proceed or need any modifications.\n"
+            )
+        
+        prompt += "\n\nRespond with ONLY the message text that should be shown to the user - no JSON structure."
+        
         logger.info(f"[Agent] Composing final reply via LLM | mode={llm_json.get('mode')} | history_turns={len(conversation_context)}")
-        reply = await ollama_service.generate_response(prompt, MASTER_SYSTEM_PROMPT, followup_context)
-        return reply
+        reply = await ollama_service.generate_response(prompt, clean_text_prompt, followup_context)
+        
+        # Clean any remaining JSON artifacts
+        cleaned_reply = self._extract_reply_from_json(reply) if self._is_json_string(reply) else reply
+        return cleaned_reply
 
     def _check_state_transitions(self, session: SessionData, extracted_data: Dict[str, Any]):
         """Check if session should transition to next state based on data completeness."""

@@ -4,7 +4,7 @@ A modern insurance agent system with AI-powered conversations and ChatGPT-like i
 
 ## 📋 What You're Getting
 
-✅ **AI Insurance Agent** - Meet Abhinav, your friendly insurance consultant  
+✅ **AI Insurance Agent** - Meet EtouchAgent, your friendly insurance consultant  
 ✅ **ChatGPT-like Interface** - Modern, responsive React frontend  
 ✅ **Comprehensive Premium Engine** - Real actuarial calculations  
 ✅ **Dynamic Forms** - Smart form generation based on conversation flow  
@@ -42,7 +42,7 @@ npm start
 
 ### 4. **Test the System**
 - Open `http://localhost:3000`
-- Start chatting with Abhinav!
+- Start chatting with EtouchAgent!
 - Try: "I want life insurance for my family"
 
 ---
@@ -108,10 +108,10 @@ src/
 
 ## 🧠 Backend Intelligence
 
-### **AI Agent - Abhinav**
+### **AI Agent - EtouchAgent**
 ```python
 # Each state has specialized prompts:
-"You are Abhinav, a friendly insurance agent with 10+ years experience..."
+"You are EtouchAgent, a friendly insurance agent with 10+ years experience..."
 ```
 
 **Personality Traits:**
@@ -177,12 +177,12 @@ final_premium = base_rate * factors - discounts
 
 ---
 
-## 🎭 Agent Persona - "Abhinav"
+## 🎭 Agent Persona - "EtouchAgent"
 
 ### **Conversation Examples**
 
 **Onboarding:**
-> "Hi! I'm Abhinav, your insurance agent with 10+ years at Bajaj Allianz. I'm here to help you protect your family with our eTouch II plan..."
+> "Hi! I'm EtouchAgent, your insurance agent with 10+ years at Bajaj Allianz. I'm here to help you protect your family with our eTouch II plan..."
 
 **Quote Generation:**  
 > "For just ₹2,500 per month, your family gets ₹1 crore protection! That's less than your coffee budget for complete peace of mind..."
@@ -319,7 +319,7 @@ API_CORS_ORIGINS=https://your-domain.com
 
 ## 🎯 Key Features Implemented
 
-✅ **AI-Powered Conversations** - Abhinav understands context and provides personalized responses  
+✅ **AI-Powered Conversations** - EtouchAgent understands context and provides personalized responses  
 ✅ **Comprehensive Premium Engine** - Real actuarial calculations with 100+ factors  
 ✅ **Dynamic UI Generation** - Forms and interfaces adapt to conversation flow  
 ✅ **External Payment Ready** - Built-in payment gateway integration structure  
@@ -339,18 +339,18 @@ API_CORS_ORIGINS=https://your-domain.com
 **Sample Conversation:**
 ```
 You: "Hi, I want life insurance"
-Abhinav: "Hello! I'm Abhinav, your insurance agent. I'd love to help you protect your family..."
+EtouchAgent: "Hello! I'm EtouchAgent, your insurance agent. I'd love to help you protect your family..."
 
 You: "I'm 35 years old with a family"
-Abhinav: "Perfect! For someone your age with family responsibilities, I'd recommend..."
+EtouchAgent: "Perfect! For someone your age with family responsibilities, I'd recommend..."
 [Shows dynamic form for details]
 
 You: [Fills form with details]  
-Abhinav: "Based on your profile, here are the best plans for you..."
+EtouchAgent: "Based on your profile, here are the best plans for you..."
 [Shows interactive quote comparison]
 
 You: [Selects Life Shield Plus]
-Abhinav: "Excellent choice! Let's proceed with payment..."
+EtouchAgent: "Excellent choice! Let's proceed with payment..."
 [Shows payment interface]
 ```
 
